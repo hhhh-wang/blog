@@ -2,7 +2,7 @@ export const projects: Project[] = [
     {
         title: '变量人生的小站',
         description: '🦖 基于 Docusaurus 静态网站生成器实现个人博客',
-        preview: '/img/project/blog.png',
+        preview: '/img/index.png',
         website: 'https://127.0.0.1',
         source: 'https://github.com/hhhh-wang/blog',
         tags: ['opensource', 'design', 'favorite'],
