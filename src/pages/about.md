@@ -71,14 +71,14 @@ import social from '@site/data/social'
 
 <p style={{ display: 'flex', 'align-items': 'center', gap: '0.5rem' }}>
   <Icon icon="ri:mail-open-line" width="20" heigth="20" />
-  <a href={social.email.href} target="_blank">hi@kuizuo.cn</a>
+  <a href={social.email.href} target="_blank">kun64855@gmail.com</a>
 </p>
 
 
 
 ---
 
-非常感谢你能够花费宝贵的时间看到这里，如果你有什么困扰，也可咨询我，在我时间有限的情况下，我会竭力回复。
+非常感谢你耐心读到这里！如果你有任何困惑或想法，别犹豫，随时留言与我交流。在我有限的时间里，我会尽力回应你的每一个问题。期待与你的互动，让我们一起探讨更多有趣的事！
 
 > **既然都看到这了，不妨留下你的评论。**
 
