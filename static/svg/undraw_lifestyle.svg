@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="600" viewBox="0 0 900 600" fill="none">
+  <!-- 背景圆形装饰 -->
+  <circle cx="450" cy="300" r="200" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1"/>
+  <circle cx="450" cy="300" r="180" fill="#F9FAFB" stroke="#E5E7EB" stroke-width="1" opacity="0.5"/>
+  
+  <!-- 阅读区域 -->
+  <rect x="300" y="200" width="120" height="140" rx="8" fill="#93C5FD" opacity="0.7"/>
+  <rect x="310" y="210" width="100" height="120" rx="4" fill="#FFFFFF"/>
+  <rect x="320" y="220" width="80" height="8" rx="2" fill="#E5E7EB"/>
+  <rect x="320" y="235" width="70" height="8" rx="2" fill="#E5E7EB"/>
+  <rect x="320" y="250" width="75" height="8" rx="2" fill="#E5E7EB"/>
+  
+  <!-- 运动元素组 -->
+  <circle cx="520" cy="240" r="50" fill="#34D399" opacity="0.7"/>
+  <path d="M495 240 H 545" stroke="#FFFFFF" stroke-width="4"/>
+  <path d="M520 215 V 265" stroke="#FFFFFF" stroke-width="4"/>
+  <!-- 运动小图标 -->
+  <circle cx="480" cy="220" r="15" fill="#34D399" opacity="0.5"/>
+  <circle cx="560" cy="260" r="20" fill="#34D399" opacity="0.5"/>
+  
+  <!-- 创意灯泡组 -->
+  <circle cx="450" cy="380" r="40" fill="#FCD34D" opacity="0.7"/>
+  <path d="M450 350 V 410" stroke="#FFFFFF" stroke-width="3"/>
+  <path d="M420 380 H 480" stroke="#FFFFFF" stroke-width="3"/>
+  <!-- 创意光芒 -->
+  <path d="M420 360 L 480 400" stroke="#FFFFFF" stroke-width="2"/>
+  <path d="M420 400 L 480 360" stroke="#FFFFFF" stroke-width="2"/>
+  
+  <!-- 音乐元素 -->
+  <circle cx="350" cy="380" r="30" fill="#F472B6" opacity="0.6"/>
+  <path d="M340 370 Q 350 350, 360 370" stroke="#FFFFFF" stroke-width="2" fill="none"/>
+  <circle cx="340" cy="370" r="4" fill="#FFFFFF"/>
+  <circle cx="360" cy="370" r="4" fill="#FFFFFF"/>
+  
+  <!-- 咖啡杯 -->
+  <rect x="530" cy="350" width="40" height="50" rx="4" fill="#60A5FA" opacity="0.6"/>
+  <path d="M525 350 Q 550 350, 575 350" stroke="#60A5FA" stroke-width="3" fill="none"/>
+  <path d="M570 360 Q 580 375, 570 390" stroke="#60A5FA" stroke-width="3" fill="none"/>
+  
+  <!-- 装饰性连接线 -->
+  <path d="M300 300 Q 450 250, 600 300" stroke="#E5E7EB" stroke-width="1" fill="none" stroke-dasharray="5,5"/>
+  <path d="M300 320 Q 450 370, 600 320" stroke="#E5E7EB" stroke-width="1" fill="none" stroke-dasharray="5,5"/>
+  
+  <!-- 小装饰元素 -->
+  <circle cx="650" cy="200" r="20" fill="#EFF6FF" opacity="0.7"/>
+  <circle cx="250" cy="400" r="25" fill="#EFF6FF" opacity="0.7"/>
+  <circle cx="600" cy="450" r="15" fill="#60A5FA" opacity="0.3"/>
+  <circle cx="300" cy="150" r="15" fill="#34D399" opacity="0.3"/>
+  <circle cx="550" cy="150" r="15" fill="#F472B6" opacity="0.3"/>
+  
+  <!-- 心形图标 -->
+  <path d="M420 150 Q 450 120, 480 150 T 540 150 Q 510 200, 480 230 T 420 150" 
+        fill="#F472B6" opacity="0.2"/>
+</svg> 

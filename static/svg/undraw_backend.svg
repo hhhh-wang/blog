@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="600" viewBox="0 0 900 600" fill="none">
+  <!-- 主服务器机架 -->
+  <rect x="150" y="100" width="600" height="400" rx="8" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1"/>
+  
+  <!-- 服务器单元组1 -->
+  <rect x="170" y="120" width="560" height="80" rx="4" fill="#F3F4F6"/>
+  <circle cx="190" cy="160" r="6" fill="#34D399"/>
+  <rect x="210" y="140" width="500" height="15" rx="2" fill="#60A5FA" opacity="0.3"/>
+  <rect x="210" y="165" width="480" height="15" rx="2" fill="#60A5FA" opacity="0.3"/>
+  
+  <!-- 服务器单元组2 -->
+  <rect x="170" y="210" width="560" height="80" rx="4" fill="#F3F4F6"/>
+  <circle cx="190" cy="250" r="6" fill="#34D399"/>
+  <rect x="210" y="230" width="500" height="15" rx="2" fill="#60A5FA" opacity="0.3"/>
+  <rect x="210" y="255" width="480" height="15" rx="2" fill="#60A5FA" opacity="0.3"/>
+  
+  <!-- 服务器单元组3 -->
+  <rect x="170" y="300" width="560" height="80" rx="4" fill="#F3F4F6"/>
+  <circle cx="190" cy="340" r="6" fill="#34D399"/>
+  <rect x="210" y="320" width="500" height="15" rx="2" fill="#60A5FA" opacity="0.3"/>
+  <rect x="210" y="345" width="480" height="15" rx="2" fill="#60A5FA" opacity="0.3"/>
+  
+  <!-- 数据流动效果 -->
+  <path d="M170 400 H 730" stroke="#60A5FA" stroke-width="2" stroke-dasharray="5,5"/>
+  <circle cx="200" cy="400" r="8" fill="#60A5FA" opacity="0.6"/>
+  <circle cx="400" cy="400" r="8" fill="#60A5FA" opacity="0.6"/>
+  <circle cx="600" cy="400" r="8" fill="#60A5FA" opacity="0.6"/>
+  
+  <!-- 网络连接图标 -->
+  <circle cx="750" cy="150" r="40" fill="#60A5FA" opacity="0.2"/>
+  <path d="M730 150 H 770" stroke="#60A5FA" stroke-width="3"/>
+  <path d="M750 130 V 170" stroke="#60A5FA" stroke-width="3"/>
+  
+  <!-- 装饰元素 -->
+  <circle cx="100" cy="200" r="30" fill="#EFF6FF" opacity="0.7"/>
+  <circle cx="800" cy="400" r="25" fill="#EFF6FF" opacity="0.7"/>
+  
+  <!-- 额外的服务器状态指示 -->
+  <rect x="170" y="420" width="120" height="30" rx="4" fill="#60A5FA" opacity="0.2"/>
+  <rect x="300" y="420" width="120" height="30" rx="4" fill="#34D399" opacity="0.2"/>
+  <rect x="430" y="420" width="120" height="30" rx="4" fill="#F472B6" opacity="0.2"/>
+</svg> 
