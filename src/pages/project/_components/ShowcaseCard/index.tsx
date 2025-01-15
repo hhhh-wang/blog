@@ -4,9 +4,11 @@ import { Tags } from '@site/data/projects'
 import { motion } from 'framer-motion'
 
 export default function ShowcaseCard({ project }: { project: Project }) {
+  const linkUrl = project.ip || project.website
+
   return (
     <Link
-      href={project.website}
+      href={linkUrl}
       className="group no-underline"
       style={{ height: '100%' }}
     >
