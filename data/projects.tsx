@@ -3,44 +3,42 @@ export const projects: Project[] = [
         title: '变量人生的小站',
         description: '🦖 基于 Docusaurus 静态网站生成器实现个人博客',
         preview: 'https://cdn.jsdelivr.net/gh/hhhh-wang/MyPic@main/blog/img/blog-index.png',
-        website: 'https://127.0.0.1',
+        website: 'http://bianliangrensheng.cn',
+        ip: 'http://106.52.209.18',
         source: 'https://github.com/hhhh-wang/blog',
         tags: ['opensource', 'design', 'favorite'],
         type: 'web',
     },
     {
         title: '省心租房小程序',
-        description: '🦖 使用Uni-app、Vue3 构建的租房小程序',
+        description: '🍋 使用Uni-app、Vue3 构建的租房小程序',
         preview: 'https://cdn.jsdelivr.net/gh/hhhh-wang/MyPic@main/blog/img/rent-ease-index.png',
         website: 'http://www.rent-ease-admin:8080/house',
         ip: 'http://106.52.209.18:8080/house',
         source: 'https://github.com/hhhh-wang/rent-ease',
-        tags: ['opensource', 'design', 'favorite'],
+        tags: ['product', 'design', 'favorite'],
         type: 'web',
     },
     {
         title: '省心租房后台管理系统',
-        description: '基于 SpringBoot框架',
+        description: '🎁基于 SpringBoot框架',
         preview: 'https://cdn.jsdelivr.net/gh/hhhh-wang/MyPic@main/blog/img/rent-ease-admin-index.png',
         website: 'http://www.rent-ease-admin.com/house',
         ip: 'http://106.52.209.18:1234/house',
-        source: 'https://github.com/hhhh-wang/rent-ease',
-        tags: ['opensource', 'design', 'favorite'],
+        source: 'https://github.com/hhhh-wang/rent-ease-admin',
+        tags: ['product', 'design', 'favorite'],
         type: 'web',
     },
-
     {
         title: 'React18后端管理系统脚手架',
-        description: '基于 React18 ',
+        description: '📦基于 React18 ',
         preview: 'https://cdn.jsdelivr.net/gh/hhhh-wang/MyPic@main/blog/img/analysis2.png',
         website: 'http://www.sapling-react.online/#/login',
-        source: 'https://github.com/hhhh-wang/rent-ease',
+        ip: 'http://www.sapling-react.online/',
+        source: 'https://github.com/hhhh-wang/react-admin',
         tags: ['opensource', 'design', 'favorite'],
         type: 'web',
     },
-
-
-
 
 ]
 
