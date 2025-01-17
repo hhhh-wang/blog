@@ -11,7 +11,7 @@ export const projects: Project[] = [
     },
     {
         title: '省心租房小程序',
-        description: '🍋 使用Uni-app、Vue3 构建的租房小程序',
+        description: '🍋 使用Uni-app、Vue3 构建的高效租房小程序',
         preview: 'https://cdn.jsdelivr.net/gh/hhhh-wang/MyPic@main/blog/img/rent-ease-index.png',
         website: 'http://www.rent-ease-admin:8080/house',
         ip: 'http://106.52.209.18:8080/house',
@@ -21,7 +21,7 @@ export const projects: Project[] = [
     },
     {
         title: '省心租房后台管理系统',
-        description: '🎁基于 SpringBoot框架',
+        description: '🎁基于 SpringBoot、SpringMVC、Mybatis 框架，可用于所有的Web应用程序',
         preview: 'https://cdn.jsdelivr.net/gh/hhhh-wang/MyPic@main/blog/img/rent-ease-admin-index.png',
         website: 'http://www.rent-ease-admin.com/house',
         ip: 'http://106.52.209.18:1234/house',
@@ -30,8 +30,8 @@ export const projects: Project[] = [
         type: 'web',
     },
     {
-        title: 'React18后端管理系统脚手架',
-        description: '📦基于 React18 ',
+        title: '为开发者提供一个轻量级、易上手且可扩展的后台管理解决方案',
+        description: '📦基于 React 18 hooks 构建，后端使用NestJS、TypeORM',
         preview: 'https://cdn.jsdelivr.net/gh/hhhh-wang/MyPic@main/blog/img/analysis2.png',
         website: 'http://www.sapling-react.online/#/login',
         ip: 'http://www.sapling-react.online/',
@@ -39,7 +39,16 @@ export const projects: Project[] = [
         tags: ['opensource', 'design', 'favorite'],
         type: 'web',
     },
-
+    {
+        title: '合作项目还在整理资料中',
+        description: '📦',
+        preview: 'baidu.com',
+        website: '127.0.0.1',
+        ip: '127.0.0.1',
+        source: 'https://github.com/',
+        tags: ['product', 'design', 'large'],
+        type: 'teamwork',
+    },
 ]
 
 export type Tag = {
@@ -48,9 +57,9 @@ export type Tag = {
     color: string
 }
 
-export type TagType = 'favorite' | 'opensource' | 'product' | 'design' | 'large' | 'personal'
+export type TagType = 'favorite' | 'opensource' | 'product' | 'design' | 'large' | 'personal' | 'teamwork'
 
-export type ProjectType = 'web' | 'app' | 'commerce' | 'personal' | 'toy' | 'other'
+export type ProjectType = 'web' | 'app' | 'commerce' | 'personal' | 'toy' | 'other' | 'teamwork'
 
 export const projectTypeMap = {
     web: '🖥️ 商业项目',
@@ -58,7 +67,8 @@ export const projectTypeMap = {
     commerce: '商业项目',
     // personal: '👨‍💻 个人',
     // toy: '🔫 玩具',
-    // other: '🗃️ 其他',
+    // other: '��️ 其他',
+    teamwork: '🤝 合作'
 }
 
 export type Project = {
@@ -103,6 +113,11 @@ export const Tags: Record<TagType, Tag> = {
         description: '个人项目',
         color: '#12affa',
     },
+    teamwork: {
+        label: '合作',
+        description: '合作项目',
+        color: '#0891b2'
+    }
 }
 
 export const TagList = Object.keys(Tags) as TagType[]
