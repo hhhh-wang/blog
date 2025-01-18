@@ -41,8 +41,8 @@ export const projects: Project[] = [
     },
     {
         title: '合作项目还在整理资料中',
-        description: '📦',
-        preview: 'baidu.com',
+        description: '📦整理文档中',
+        preview: 'https://cdn.jsdelivr.net/gh/hhhh-wang/MyPic@main/blog/title/blog-404.jpg',
         website: '127.0.0.1',
         ip: '127.0.0.1',
         source: 'https://github.com/',
