@@ -4,8 +4,8 @@ import { themes } from 'prism-react-renderer'
 import social from './data/social'
 import type { GiscusConfig } from './src/components/Comment'
 
-const beian = '这是备案'
-const beian1 = '这也是备案'
+const beian = '湘ICP备2025099656号-2'
+const beian1 = '这是公安备案'
 
 const config: Config = {
   title: '变量人生',
