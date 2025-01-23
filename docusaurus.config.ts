@@ -94,11 +94,11 @@ const config: Config = {
         </div>
       `,
     },
-    // todo 网站抓取配置暂时还没有，先不做
+    //
     algolia: {
-      appId: 'GV6YN1ODMO',
-      apiKey: '50303937b0e4630bec4a20a14e3b7872',
-      indexName: 'kuizuo',
+      appId: 'AF2UZBUJBQ',
+      apiKey: 'f50d007b70c3ec0ae3a897817aa1dc63',
+      indexName: 'bianliang',
     },
     prism: {
       theme: themes.oneLight,
