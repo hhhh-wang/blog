@@ -97,7 +97,8 @@ const config: Config = {
     //
     algolia: {
       appId: 'AF2UZBUJBQ',
-      apiKey: 'f50d007b70c3ec0ae3a897817aa1dc63',
+      //Search API Key
+      apiKey: 'd5c0943399a8883884022e0c25291a52',
       indexName: 'bianliang',
     },
     prism: {
