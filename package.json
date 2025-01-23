@@ -10,7 +10,7 @@
     "url": "https://github.com/hhhh-wang/blog",
     "type": "git"
   },
-  "homepage": "https://127.0.0.1",
+  "homepage": "http://bianliangrensheng.cn",
   "license": "MIT",
   "scripts": {
     "docusaurus": "docusaurus",

@@ -14,8 +14,8 @@ const ADD_FRIEND_URL = 'https://github.com/hhhh-wang/blog/edit/main/data/friends
 const SITE_INFO = `
 title: '变量人生'
 description: '无论前路如何，探索与学习是我不断进化的动力'
-website: 'https://127.0.0.1'
-avatar: 'https://127.0.0.1/img/logo.png'
+website: 'http://bianliangrensheng.cn'
+avatar: 'http://bianliangrensheng.cn/img/logo.png'
 `
 const friends = Friends
 
