@@ -13,7 +13,7 @@ export default function Github({ className }: GithubProps) {
   const { isDarkTheme } = useColorMode()
 
   const githubStatsUrl = (type: 'overview' | 'languages', isDark: boolean) =>
-    `https://raw.githubusercontent.com/kuizuo/github-stats/master/generated/${type}.svg#gh-${
+    `https://raw.githubusercontent.com/hhhh-wang/github-stats/master/generated/${type}.svg#gh-${
       isDark ? 'dark' : 'light'
     }-mode-only`
 

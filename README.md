@@ -27,7 +27,7 @@
 
 - Docusaurus
 - TailwindCSS
-- Framer motion & magicui 
+- Framer motion & magicui
 
 ## 📊 目录结构
 
@@ -62,7 +62,7 @@
 ## 📥 运行
 
 ```bash
-git clone https://github.com/kuizuo/blog.git
+git clone https://github.com/hhhh-wang/blog.git
 cd blog
 pnpm install
 pnpm start

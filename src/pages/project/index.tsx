@@ -20,7 +20,7 @@ const DESCRIPTION = translate({
   message: '人生充满不确定性，单纯的知识积累不如在变化中找到真正的应用与转化。这里是我在面对无数可能时，不断调整与进步的写照。',
 })
 
-// const GITHUB_URL = 'https://github.com/kuizuo'
+// const GITHUB_URL = 'https://github.com/hhhh-wang'
 
 type ProjectState = {
   scrollTopPosition: number

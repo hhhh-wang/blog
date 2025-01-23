@@ -117,11 +117,12 @@ const config: Config = {
         },
       ],
     },
+    //仓库调整
     giscus: {
-      repo: 'kuizuo/blog',
-      repoId: 'MDEwOlJlcG9zaXRvcnkzOTc2MjU2MTI=',
+      repo: 'hhhh-wang/blog',
+      repoId: 'R_kgDONnA36Q',
       category: 'General',
-      categoryId: 'DIC_kwDOF7NJDM4CPK95',
+      categoryId: 'DIC_kwDONnA36c4Cl5U2',
       theme: 'light',
       darkTheme: 'dark_dimmed',
     } satisfies Partial<GiscusConfig>,
@@ -171,7 +172,7 @@ const config: Config = {
         debug: process.env.NODE_ENV === 'development',
         offlineModeActivationStrategies: ['appInstalled', 'standalone', 'queryString'],
         pwaHead: [
-          { tagName: 'link', rel: 'icon', href: '/img/kuizuo.png' },
+          { tagName: 'link', rel: 'icon', href: '/img/logo.webp' },
           { tagName: 'link', rel: 'manifest', href: '/manifest.json' },
           { tagName: 'meta', name: 'theme-color', content: '#12affa' },
         ],
@@ -191,7 +192,7 @@ const config: Config = {
         editUrl: ({ locale, blogDirPath, blogPath, permalink }) =>
           `https://github.com/kuizuo/blog/edit/main/${blogDirPath}/${blogPath}`,
         editLocalizedFiles: false,
-        blogDescription: '代码人生：编织技术与生活的博客之旅',
+        blogDescription: '变量人生：探索人生变量与无限可能的记录',
         blogSidebarCount: 10,
         blogSidebarTitle: '博文',
         postsPerPage: 12,
@@ -230,7 +231,7 @@ const config: Config = {
                 innerHTML: `
     (${function () {
       console.log(
-        `%c Kz Blog %c https://github.com/kuizuo/blog`,
+        `%c Kz Blog %c https://github.com/hhhh-wang/blog`,
         'color: #fff; margin: 1em 0; padding: 5px 0; background: #12affa;',
         'margin: 1em 0; padding: 5px 0; background: #efefef;',
       )

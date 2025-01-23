@@ -19,7 +19,7 @@
     "text": "article p, article li, article td:last-child"
   },
   "custom_settings": {
-    "attributesForFaceting": ["type", "lang", "language", "version", "docusaurus_tag"],
+    "attributesForFaceting": ["type", "lang", "language", "version", "docusaurus_tag", "authors", "tags"],
     "attributesToRetrieve": ["hierarchy", "content", "anchor", "url", "url_without_anchor", "type"],
     "attributesToHighlight": ["hierarchy", "content"],
     "attributesToSnippet": ["content:10"],
