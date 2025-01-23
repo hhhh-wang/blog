@@ -36,7 +36,7 @@ const config: Config = {
       },
       {
         name: 'keywords',
-        content: '编程爱好者, Web开发者, TS全栈 ,部署运维',
+        content: 'Java开发, 小程序开发, TS全栈开发 ,部署运维',
       },
     ],
     docs: {
@@ -97,7 +97,8 @@ const config: Config = {
     //
     algolia: {
       appId: 'AF2UZBUJBQ',
-      apiKey: 'f50d007b70c3ec0ae3a897817aa1dc63',
+      //Search API Key
+      apiKey: 'd5c0943399a8883884022e0c25291a52',
       indexName: 'bianliang',
     },
     prism: {
