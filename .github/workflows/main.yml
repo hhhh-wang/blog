@@ -1,0 +1,49 @@
+# 定义 GitHub Actions 的工作流程名称
+name: Deploy to Vercel
+
+# 触发条件
+on:
+  push:
+    branches: [ main ] # 当代码推送到 main 分支时触发
+  pull_request:
+    branches: [ main ] # 当针对 main 分支发起 Pull Request 时触发
+
+# 定义工作流程中的作业（jobs）
+jobs:
+  deploy:
+    # 指定运行环境
+    runs-on: ubuntu-latest # 使用最新版本的 Ubuntu 操作系统作为运行环境
+    
+    # 作业中的执行步骤
+    steps:
+      # 步骤 1: 检出代码
+      - uses: actions/checkout@v4 # 使用官方的 checkout Action，从仓库检出代码
+      
+      # 步骤 2: 设置 Node.js 环境
+      - name: Setup Node.js
+        uses: actions/setup-node@v4 # 使用官方的 Node.js Action
+        with:
+          node-version: '20' # 指定使用的 Node.js 版本为 20
+
+      # 步骤 3: 安装 pnpm（Node.js 的包管理工具）
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2 # 使用 pnpm 的官方 GitHub Action
+        with:
+          version: '9.8.0' # 指定安装的 pnpm 版本为 9.8.0
+
+      # 步骤 4: 安装依赖
+      - name: Install Dependencies
+        run: pnpm install # 使用 pnpm 安装项目依赖
+
+      # 步骤 5: 构建项目
+      - name: Build
+        run: pnpm build # 执行项目的构建脚本
+
+      # 步骤 6: 部署到 Vercel
+      - name: Deploy to Vercel
+        uses: amondnet/vercel-action@v25 # 使用 Vercel 的 GitHub Action 第三方插件
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }} # 使用 Vercel 的 Token（存储在 GitHub Secrets 中）
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }} # 指定 Vercel 组织 ID（存储在 GitHub Secrets 中）
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }} # 指定 Vercel 项目 ID（存储在 GitHub Secrets 中）
+          working-directory: ./ # 指定工作目录（项目的根目录）
