@@ -9,7 +9,7 @@ const beian1 = '这是公安备案'
 
 const config: Config = {
   title: '变量人生',
-  url: 'https://127.0.0.1',
+  url: 'http://bianliangrensheng.cn',
   baseUrl: '/',
   favicon: 'img/favicon.ico',
   organizationName: 'bianliang',
