@@ -1,8 +1,8 @@
 {
   // todo 特别重要，网站搜索
   "index_name": "bianliang",
-  "start_urls": ["http://bianliangrensheng.cn/"],
-  "sitemap_urls": ["http://bianliangrensheng.cn/sitemap.xml"],
+  "start_urls": ["http://www.bianliangrensheng.cn/"],
+  "sitemap_urls": ["http://www.bianliangrensheng.cn/sitemap.xml"],
   "selectors": {
     "lvl0": {
       "selector": "(//ul[contains(@class,'menu__list')]//a[contains(@class, 'menu__link menu__link--sublist menu__link--active')]/text() | //nav[contains(@class, 'navbar')]//a[contains(@class, 'navbar__link--active')]/text())[last()]",
