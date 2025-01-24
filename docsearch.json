@@ -1,6 +1,6 @@
 {
-  // todo 特别重要，网站搜索
-  "index_name": "bianliang",
+
+  "index_name": "bianliang-blog",
   "start_urls": ["http://www.bianliangrensheng.cn/"],
   "sitemap_urls": ["http://www.bianliangrensheng.cn/sitemap.xml"],
   "selectors": {
@@ -19,7 +19,7 @@
     "text": "article p, article li, article td:last-child"
   },
   "custom_settings": {
-    "attributesForFaceting": ["type", "lang", "language", "version", "docusaurus_tag", "authors", "tags"],
+    "attributesForFaceting": ["type", "lang", "language", "version", "docusaurus_tag"],
     "attributesToRetrieve": ["hierarchy", "content", "anchor", "url", "url_without_anchor", "type"],
     "attributesToHighlight": ["hierarchy", "content"],
     "attributesToSnippet": ["content:10"],
@@ -36,9 +36,21 @@
     ],
     "distinct": true,
     "attributeForDistinct": "url",
-    "customRanking": ["desc(weight.pageRank)", "desc(weight.level)", "asc(weight.position)"],
-    "ranking": ["words", "filters", "typo", "attribute", "proximity", "exact", "custom"],
-    "highlightPreTag": "<span class='algolia-docsearch-suggestion--highlight'>",
+    "customRanking": [
+      "desc(weight.pageRank)",
+      "desc(weight.level)",
+      "asc(weight.position)"
+    ],
+    "ranking": [
+      "words",
+      "filters",
+      "typo",
+      "attribute",
+      "proximity",
+      "exact",
+      "custom"
+    ],
+    "highlightPreTag": "<span class=\"algolia-docsearch-suggestion--highlight\">",
     "highlightPostTag": "</span>",
     "minWordSizefor1Typo": 3,
     "minWordSizefor2Typos": 7,
@@ -47,8 +59,6 @@
     "ignorePlurals": true,
     "advancedSyntax": true,
     "attributeCriteriaComputedByMinProximity": true,
-    "removeWordsIfNoResults": "allOptional",
-    "separatorsToIndex": "_",
-    "synonyms": [["js", "javascript"], ["ts", "typescript"]]
+    "removeWordsIfNoResults": "allOptional"
   }
 }
