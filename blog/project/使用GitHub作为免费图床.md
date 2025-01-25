@@ -14,6 +14,8 @@ image: https://cdn.jsdelivr.net/gh/hhhh-wang/MyPic@main/blog/img/_e1937734-e770-
 
 最近就想找一款免费的图床来放置自己的图片，逛了一圈下来发现GitHub可以白嫖，于是乎，就有了这篇文章。
 
+<!-- truncate -->
+
 GitHub 是一个非常流行的代码托管平台，除了代码存储外，你还可以使用 GitHub 来托管静态资源，比如图片。通过将图片上传到 GitHub 的仓库，你可以轻松获取图片的 URL，从而在网页或文档中嵌入这些图片。以下是如何使用 GitHub 作为免费图床的详细步骤。
 
 ## 步骤 1: 创建 GitHub 仓库

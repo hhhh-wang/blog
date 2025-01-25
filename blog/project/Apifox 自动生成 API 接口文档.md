@@ -1,5 +1,4 @@
 ---
-id: 1001
 slug: apifox-auto-generates-
 title: Apifox 自动生成 API 接口文档
 date: 2025-01-17
@@ -10,14 +9,13 @@ description: 告别繁琐的手动API文档编写！本文详细介绍如何使�
 image: https://cdn.jsdelivr.net/gh/hhhh-wang/MyPic@main/blog/img/_a4da1013-33fe-4b43-abbd-82359e7c7291.jpg
 ---
 
-
-
-
 # Apifox 自动生成 API 接口文档
+
 
 1. 自动生成接口文档： 不用手写，一键点击就可以自动生成文档，当有更新时，点击一下就可以自动同步接口文档；
 2. 代码零入侵： 完美解决了使用 Swagger 在我们的代码中额外增加各种注解，导致代码可读性极差、入侵了逻辑代码的问题；
 3. 团队合作更方便： 不需要导出文件，云端管理，直接分享链接给团队即可；
+<!-- truncate -->
 
 ## 第一步：安装 Apifox IDEA 插件（Apifox Helper）
 
