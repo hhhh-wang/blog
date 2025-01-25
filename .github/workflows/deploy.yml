@@ -24,15 +24,32 @@ jobs:
       - name: Install Dependencies
         run: pnpm install
         
+      - name: Check Node version and env
+        run: |
+          node -v
+          npm -v
+          pnpm -v
+          pwd
+          ls -la
+          
       - name: Clean Cache
         run: |
           rm -rf .docusaurus
           rm -rf build
         
-      - name: Build
+      - name: Build with Debug
+        env:
+          NODE_ENV: production
+          DEBUG: '*'
         run: pnpm build
         
+      - name: List build output
+        if: always()
+        run: |
+          ls -la build || true
+          
       - name: Deploy to Server
+        if: success()
         uses: appleboy/scp-action@master
         with:
           host: ${{ secrets.SERVER_HOST }}
