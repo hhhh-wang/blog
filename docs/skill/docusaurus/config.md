@@ -13,18 +13,18 @@ authors: kuizuo
 
 ```typescript title='docusaurus.config.ts' icon='logos:docusaurus'
 const config: Config = {
-  title: '愧怍的小站',
-  url: 'https://kuizuo.cn',
+  title: '变量人生的小站',
+  url: 'http://www.bianliangrensheng.cn/',
   baseUrl: '/',
   favicon: 'img/favicon.ico',
-  organizationName: 'kuizuo',
+  organizationName: 'bianliang',
   projectName: 'blog',
   themeConfig: {
     image: 'img/kuizuo.png',
     metadata: [
       {
         name: 'keywords',
-        content: '愧怍, kuizuo, blog, javascript, typescript, node, react, vue, web, 前端, 后端',
+        content: 'bianliang, kuizuo, blog, java, typescript, node, react, vue, web, 前端, 后端',
       },
     ],
     // ...
@@ -47,7 +47,7 @@ export default config
 
 ### 基本信息
 
-站点名和作者名只需要搜索 **愧怍** 或 **kuizuo** 便能找到关键位置，将其更改为你的便可。
+站点名和作者名只需要搜索 **变量人生** 或 **bianliang** 便能找到关键位置，将其更改为你的便可。
 
 ### 关于我 页面
 
