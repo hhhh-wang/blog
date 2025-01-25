@@ -24,6 +24,11 @@ jobs:
       - name: Install Dependencies
         run: pnpm install
         
+      - name: Clean Cache
+        run: |
+          rm -rf .docusaurus
+          rm -rf build
+        
       - name: Build
         run: pnpm build
         
