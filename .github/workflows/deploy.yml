@@ -8,32 +8,31 @@ on:
 jobs:
   deploy-server:
     runs-on: ubuntu-latest
+    # 作业中的执行步骤
     steps:
-      - uses: actions/checkout@v4
-      
+      # 步骤 1: 检出代码
+      - uses: actions/checkout@v4 # 使用官方的 checkout Action，从仓库检出代码
+
+      # 步骤 2: 设置 Node.js 环境
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v4 # 使用官方的 Node.js Action
         with:
-          node-version: '20'
-          
+          node-version: '20' # 指定使用的 Node.js 版本为 20
+
+      # 步骤 3: 安装 pnpm（Node.js 的包管理工具）
       - name: Setup pnpm
-        uses: pnpm/action-setup@v2
+        uses: pnpm/action-setup@v2 # 使用 pnpm 的官方 GitHub Action
         with:
-          version: 8
-          
+          version: '9.8.0' # 指定安装的 pnpm 版本为 9.8.0
+
+      # 步骤 4: 安装依赖
       - name: Install Dependencies
-        run: pnpm install
-          
-      - name: Clean Cache
-        run: |
-          rm -rf .docusaurus
-          rm -rf build
-          
+        run: pnpm install # 使用 pnpm 安装项目依赖
+
+      # 步骤 5: 构建项目
       - name: Build
-        env:
-          NODE_ENV: production
-        run: pnpm build
-        
+        run: pnpm build # 执行项目的构建脚本
+
       - name: Deploy to Server
         uses: appleboy/scp-action@master
         with:
