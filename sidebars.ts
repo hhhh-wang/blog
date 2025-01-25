@@ -1,16 +1,18 @@
 import type { SidebarsConfig } from '@docusaurus/plugin-content-docs'
 
+
+
 const sidebars: SidebarsConfig = {
   skill: [
     'skill/introduction',
-
-/*    {
+    {
       label: 'Docusaurus 主题魔改',
       type: 'category',
       link: {
         type: 'doc',
         id: 'skill/docusaurus/docusaurus-guides',
       },
+      className: 'hidden',
       items: [
         'skill/docusaurus/docusaurus-config',
         'skill/docusaurus/docusaurus-style',
@@ -20,7 +22,7 @@ const sidebars: SidebarsConfig = {
         'skill/docusaurus/docusaurus-comment',
         'skill/docusaurus/docusaurus-deploy',
       ],
-    },*/
+    },
     {
       label: '代码规范',
       type: 'category',
