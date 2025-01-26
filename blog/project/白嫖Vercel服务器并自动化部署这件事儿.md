@@ -1,12 +1,12 @@
 ---
 id: 1004
-slug: github-actions-auto-deploy
+slug: github-actions-auto-vercel
 title: 白嫖 Vercel 服务器并自动化部署这件事儿
 date: 2025-01-26
 authors: bianliang
-tags: [github, action, deploy]
+tags: [github, action, vercel]
 keywords: [GitHub Actions, 自动化部署, CI/CD, Vercel]
-description: 记录使用 GitHub Actions 实现自动化部署到Vercel的经验，从手动部署到自动化的转变过程。
+description: 详细介绍如何利用 GitHub Actions 实现项目自动部署到 Vercel，包括完整配置步骤和最佳实践。
 image: https://cdn.jsdelivr.net/gh/hhhh-wang/MyPic@main/blog/title/%E5%85%B3%E4%BA%8E%E6%88%91%E4%BD%BF%E7%94%A8%20GitHub%20Actions%20%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E8%BF%99%E4%BB%B6%E4%BA%8B%E5%84%BF.jpg
 ---
 
