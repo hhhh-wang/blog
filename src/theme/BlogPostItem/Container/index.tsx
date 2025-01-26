@@ -1,19 +1,18 @@
 import { useBlogPost } from '@docusaurus/plugin-content-blog/client'
 import { useBaseUrlUtils } from '@docusaurus/useBaseUrl'
+import Link from '@docusaurus/Link'
 import { cn } from '@site/src/lib/utils'
 import type { Props } from '@theme/BlogPostItem/Container'
 
 export default function BlogPostItemContainer({ children, className }: Props): JSX.Element {
-  const { frontMatter, assets } = useBlogPost()
+  const { frontMatter, assets, metadata } = useBlogPost()
   const { withBaseUrl } = useBaseUrlUtils()
   const image = assets.image ?? frontMatter.image
-  return (
-    <article
-      className={cn('relative px-4 pt-4 pb-3 lg:px-4', className)}
-      itemProp="blogPost"
-      itemScope
-      itemType="http://schema.org/BlogPosting"
-    >
+  const { permalink } = metadata
+  const { isBlogPostPage } = useBlogPost()
+
+  const content = (
+    <>
       {image && (
         <>
           <meta itemProp="image" content={withBaseUrl(image, { absolute: true })} />
@@ -31,6 +30,31 @@ export default function BlogPostItemContainer({ children, className }: Props): J
         </>
       )}
       {children}
-    </article>
+    </>
+  )
+
+  if (isBlogPostPage) {
+    return (
+      <article
+        className={cn('relative px-4 pt-4 pb-3 lg:px-4', className)}
+        itemProp="blogPost"
+        itemScope
+        itemType="http://schema.org/BlogPosting"
+      >
+        {content}
+      </article>
+    )
+  }
+
+  return (
+    <Link
+      href={permalink}
+      className={cn(
+        'group/blog relative block px-4 pt-4 pb-3 lg:px-4 hover:no-underline',
+        className
+      )}
+    >
+      {content}
+    </Link>
   )
 }
