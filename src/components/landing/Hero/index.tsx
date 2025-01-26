@@ -63,7 +63,7 @@ export default function Hero() {
         <Name />
         <motion.p custom={2} initial="hidden" animate="visible" variants={variants} className="max-lg:px-4">
           <Translate id="homepage.hero.text">
-            一名专注于TS全栈开发的技术从业者。我的博客记录了我对技术和工具的思考与实践，力求通过简洁直接的方式，呈现技术背后的核心。
+            一名专注于全栈开发的技术从业者。我的博客记录了我对技术和工具的思考与实践，力求通过简洁直接的方式，呈现技术背后的核心。
 
             在这里，我不追求华丽的辞藻，而是专注于清晰传递每个概念。我希望通过这些内容，帮助你更好地理解技术，理清思路。
           </Translate>
