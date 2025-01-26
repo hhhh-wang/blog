@@ -33,6 +33,7 @@ jobs:
       - name: Build
         run: pnpm build # 执行项目的构建脚本
 
+      # 步骤 6: 部署到 服务器
       - name: Deploy to Server
         uses: appleboy/scp-action@master
         with:
