@@ -734,7 +734,7 @@ export const resourceData: ResourceCategory[] = [
                 name: 'Node',
                 desc: 'Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行时',
                 logo: 'https://nodejs.org/static/images/favicons/apple-touch-icon.png',
-                href: 'http://nodejs.cn/',
+                href: 'https://nodejs.cn/',
                 tags: ['后端', 'Nodejs', '文档'],
             },
             {

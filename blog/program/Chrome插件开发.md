@@ -17,7 +17,7 @@ keywords: [chrome, plugin, develop]
 
 相关文章 [谷歌官方文档](https://developer.chrome.com/extensions/manifest) (需翻墙)
 
-[Chrome 插件开发全攻略](http://blog.haoji.me/chrome-plugin-develop.html) （强烈推荐看这一篇！）
+[Chrome 插件开发全攻略](https://blog.haoji.me/chrome-plugin-develop.html) （强烈推荐看这一篇！）
 
 你只需要看完上面那篇文章和掌握一些前端开发基础，就足以自行编写一个 Chrome 插件。本文也是基于上面文章加上自己之前写的插件所记。
 
@@ -451,10 +451,10 @@ document.addEventListener('DOMContentLoaded', function () {
 ```json
 {
   "permissions": [
-    "http://www.google.com/",
-    "http://*.google.com/",
+    "https://www.google.com/",
     "https://*.google.com/",
-    "http://*/"
+    "https://*.google.com/",
+    "https://*/"
   ]
 }
 ```
@@ -463,7 +463,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 ```json
 {
-  "permissions": ["http://*/*", "https://*/*"]
+  "permissions": ["https://*/*", "https://*/*"]
 }
 ```
 
@@ -502,7 +502,7 @@ function sendAjaxToBg(url, type, data, callback) {
 这里的话我通信发送的是 js 对象，其中 cmd 决定了我要的操作，后台通过判断 cmd 来执行对应的操作。比较不好理解的是回调函数，由于 JS 自身语言的因素与浏览器的问题，很多事件都是先挂着，后做完在回调，所以我这里就封装成这种形式，例如
 
 ```js
-sendAjaxToBg("http://...", "GET", null, function(response){
+sendAjaxToBg("https://...", "GET", null, function(response){
 	console.log(response)
 	...code
 })

@@ -55,7 +55,7 @@ let data = {
 }
 ```
 
-不过请求头是`Content-Type: application/x-www-form-urlencoded`，那么就需要使用工具将其转化为查询字符串了。比方说 node 中自带的 [querystring](http://nodejs.cn/api/querystring.html) 库。
+不过请求头是`Content-Type: application/x-www-form-urlencoded`，那么就需要使用工具将其转化为查询字符串了。比方说 node 中自带的 [querystring](https://nodejs.cn/api/querystring.html) 库。
 
 ### querystring
 
@@ -116,7 +116,7 @@ let param = json2Qs({ username: 'kuizuo', password: 'a12345678' })
 
 ### URLSearchParams
 
-除了 querystring，实际上还有一个更好的库 [URLSearchParams](http://nodejs.cn/api/url.html#class-urlsearchparams)，具体的使用如下
+除了 querystring，实际上还有一个更好的库 [URLSearchParams](https://nodejs.cn/api/url.html#class-urlsearchparams)，具体的使用如下
 
 ```javascript
 const params = new URLSearchParams({

@@ -20,7 +20,7 @@ import (
 )
 
 func main() {
-  resp, err := http.Get("http://127.0.0.1:5000/api/test")
+  resp, err := http.Get("https://127.0.0.1:5000/api/test")
 
   if err != nil {
     panic(err)
@@ -54,7 +54,7 @@ import (
 func main() {
   payload := strings.NewReader("foo=1&bar=2")
 
-  resp, err := http.Post("http://127.0.0.1:5000/api/test", "application/x-www-form-urlencoded", payload)
+  resp, err := http.Post("https://127.0.0.1:5000/api/test", "application/x-www-form-urlencoded", payload)
 
   if err != nil {
     panic(err)
@@ -80,7 +80,7 @@ import (
 func main() {
   payload := url.Values{"foo": {"1"}, "bar": {"2"}}
 
-  resp, err := http.PostForm("http://127.0.0.1:5000/api/test", payload)
+  resp, err := http.PostForm("https://127.0.0.1:5000/api/test", payload)
 }
 
 ```
@@ -97,7 +97,7 @@ import (
 func main() {
   payload := strings.NewReader(`{"name":"kuizuo"}`)
 
-  req, _ := http.NewRequest("POST", "http://127.0.0.1:5000/api/test", payload)
+  req, _ := http.NewRequest("POST", "https://127.0.0.1:5000/api/test", payload)
 
   req.Header.Add("Content-Type", "application/json")
 
@@ -111,7 +111,7 @@ func main() {
 
 ## HTTP 请求库
 
-[valyala/fasthttp: Fast HTTP package for Go. Tuned for high performance. Zero memory allocations in hot paths. Up to 10x faster than net/http (github.com)](https://github.com/valyala/fasthttp)
+[valyala/fasthttps: Fast HTTP package for Go. Tuned for high performance. Zero memory allocations in hot paths. Up to 10x faster than net/http (github.com)](https://github.com/valyala/fasthttp)
 
 [go-resty/resty: Simple HTTP and REST client library for Go (github.com)](https://github.com/go-resty/resty)
 
@@ -157,7 +157,7 @@ type Result struct {
 
 func (dm *Demo) login() string {
 
-  resp, err := dm.Session.Post("http://127.0.0.1:5000/api/login",
+  resp, err := dm.Session.Post("https://127.0.0.1:5000/api/login",
     &grequests.RequestOptions{
       Data: map[string]string{
         "username": dm.User.Username,
@@ -202,7 +202,7 @@ func main() {
 如果想发送 json 请求的话，grequests 写法也挺简单的，只需要将 Data 替换为 JSON（协议头会自动添加 Content-Type: application/json），如下
 
 ```go
-  resp, err := dm.Session.Post("http://127.0.0.1:5000/api/login",
+  resp, err := dm.Session.Post("https://127.0.0.1:5000/api/login",
     &grequests.RequestOptions{
       JSON: map[string]string{
         "username": dm.User.Username,

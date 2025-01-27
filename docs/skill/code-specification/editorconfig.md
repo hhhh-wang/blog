@@ -22,7 +22,7 @@ keywords: ['code-specification', 'editorconfig']
 创建 `.editorconfig`，示例内容如下
 
 ```editorconfig title='.editorconfig' icon='logos:editorconfig'
-# http://editorconfig.org
+# https://editorconfig.org
 
 root = true
 

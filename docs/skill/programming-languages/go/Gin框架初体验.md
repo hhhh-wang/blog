@@ -48,7 +48,7 @@ func main() {
 
 ![image-20210831045351327](https://img.kuizuo.cn/image-20210831045351327.png)
 
-通过浏览器访问`http:127.0.0.1:8080`便可输出`你好,gin`
+通过浏览器访问`https:127.0.0.1:8080`便可输出`你好,gin`
 
 ### 热加载
 
@@ -83,7 +83,7 @@ r.GET("/json", func(c *gin.Context) {
 })
 ```
 
-浏览器访问http://127.0.0.1:8080/json显示如下数据
+浏览器访问https://127.0.0.1:8080/json显示如下数据
 
 ```json
 { "code": 200, "msg": "成功" }
@@ -159,7 +159,7 @@ r.GET("/html", func(c *gin.Context) {
 r.Static("/static", "./static")
 ```
 
-访问 `http://127.0.0.1:8080/static` 就能访问静态文件夹下的资源
+访问 `https://127.0.0.1:8080/static` 就能访问静态文件夹下的资源
 
 ### 获取 Query 参数
 
@@ -172,7 +172,7 @@ r.GET("/query", func(c *gin.Context) {
 })
 ```
 
-浏览器请求 `http://127.0.0.1:8080/query?username=kuizuo` 便可输出 `kuizuo1`
+浏览器请求 `https://127.0.0.1:8080/query?username=kuizuo` 便可输出 `kuizuo1`
 
 ### 获取 Post 数据
 
@@ -219,7 +219,7 @@ r.GET("/list/:id", func(c *gin.Context) {
 })
 ```
 
-浏览器请求http://127.0.0.1:8080/list/123 id 便可赋值为 123
+浏览器请求https://127.0.0.1:8080/list/123 id 便可赋值为 123
 
 ### 路由分组
 
@@ -260,7 +260,7 @@ r := gin.Default()
 routers.ApiRoutersInit(r)
 ```
 
-访问 [http://127.0.0.1:8080/api/json](http://127.0.0.1:8080/api/json)，显示`{"code":200,"msg":"成功"}`
+访问 [https://127.0.0.1:8080/api/json](https://127.0.0.1:8080/api/json)，显示`{"code":200,"msg":"成功"}`
 
 ### 控制器
 
@@ -368,7 +368,7 @@ r.GET("/", initMiddleware, func(c *gin.Context) {
 })
 ```
 
-访问[http://127.0.0.1:8080](http://127.0.0.1:8080) 便会输出 `1-中间件` `2-中间件`
+访问[https://127.0.0.1:8080](https://127.0.0.1:8080) 便会输出 `1-中间件` `2-中间件`
 
 #### 全局中间件
 
@@ -471,7 +471,7 @@ r.POST("/upload", func(c *gin.Context) {
 使用 curl，即可上传文件
 
 ```bash
-curl -X POST http://localhost:8080/upload \
+curl -X POST https://localhost:8080/upload \
   -F "file=@/Users/appleboy/test.zip" \
   -H "Content-Type: multipart/form-data"
 ```

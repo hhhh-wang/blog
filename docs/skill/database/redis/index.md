@@ -7,7 +7,7 @@ tags: [redis, database]
 keywords: [redis, database]
 ---
 
-[redis 中文官方网站](http://www.redis.cn/)
+[redis 中文官方网站](https://www.redis.cn/)
 
 ## 安装
 
@@ -35,12 +35,12 @@ redis-cli.exe -h 127.0.0.1 -p 6379
 
 ### Linux
 
-[redis 下载](http://redis.io/download)
+[redis 下载](https://redis.io/download)
 
 `redis-6.0.8.tar.gz`
 
 ```bash
-# wget http://download.redis.io/releases/redis-6.0.8.tar.gz
+# wget https://download.redis.io/releases/redis-6.0.8.tar.gz
 # tar xzf redis-6.0.8.tar.gz
 # cd redis-6.0.8
 
@@ -99,13 +99,13 @@ docker run -d  -v /home/app/redis/data:/data --name redis -p 6379:6379 redis  re
 docker run -d  -v /home/app/redis/data:/data  -v /home/app/redis/conf:/usr/local/etc/redis --name redis -p 6379:6379 redis redis-server /usr/local/etc/redis/redis.conf
 ```
 
-> redis 的这个配置文件可以到官方的这个地址上去获取 http://download.redis.io/redis-stable
+> redis 的这个配置文件可以到官方的这个地址上去获取 https://download.redis.io/redis-stable
 
 更多: [Docker 上安装 Redis](https://www.cnblogs.com/vchar/p/14347260.html)
 
 ## 基本命令
 
-[Redis 命令中心（Redis commands）](http://www.redis.cn/commands.html)
+[Redis 命令中心（Redis commands）](https://www.redis.cn/commands.html)
 
 Redis 不区分大小写 一般推荐大写(与 Mysql 一样)
 
@@ -614,7 +614,7 @@ Redis 发布订阅(publsub)是一种消息通信模式 ∶ 发送者(pub)发送�
 
 第一个：消息发布者，第二个频道（消息队列），第三个：消息订阅者
 
-![查看源图像](http://cdn.kuizuo.cn/blogR50ea35ec36a3e4ea16cb132637477df0)
+![查看源图像](https://cdn.kuizuo.cn/blogR50ea35ec36a3e4ea16cb132637477df0)
 
 ### 测试
 
@@ -727,7 +727,7 @@ slave 启动成功连接到 master 后会发送一个 sync 命令 Master 接到�
 
 哨兵模式是一种特殊的模式，首先 Redis 提供了哨兵的命令，哨兵是一个独立的进程，作为进程，它会独立运行。其原理是**哨兵通过发送命令，等待 Redis 服务器响应，从而监控运行的多个 Redis 实例。**
 
-![img](http://cdn.kuizuo.cn/blog11320039-57a77ca2757d0924.png)
+![img](https://cdn.kuizuo.cn/blog11320039-57a77ca2757d0924.png)
 
 ### 配置
 

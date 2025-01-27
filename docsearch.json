@@ -1,8 +1,8 @@
 {
 
   "index_name": "bianliang-blog",
-  "start_urls": ["http://www.bianliangrensheng.cn/"],
-  "sitemap_urls": ["http://www.bianliangrensheng.cn/sitemap.xml"],
+  "start_urls": ["https://www.bianliangrensheng.cn/"],
+  "sitemap_urls": ["https://www.bianliangrensheng.cn/sitemap.xml"],
   "selectors": {
     "lvl0": {
       "selector": "(//ul[contains(@class,'menu__list')]//a[contains(@class, 'menu__link menu__link--sublist menu__link--active')]/text() | //nav[contains(@class, 'navbar')]//a[contains(@class, 'navbar__link--active')]/text())[last()]",

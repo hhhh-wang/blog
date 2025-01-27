@@ -17,7 +17,7 @@ keywords: [elasticsearch, database]
 
 解压，双击 bin 目录下的 `elasticsearch.bat` 即可启动，kibana 也是同理。
 
-启动后输入 http://localhost:9200 与 http://localhost:5601/ 显示正常说明两者都安装成功
+启动后输入 https://localhost:9200 与 https://localhost:5601/ 显示正常说明两者都安装成功
 
 ### linux
 
@@ -255,29 +255,29 @@ elasticdump --input SOURCE --output DESTINATION [OPTIONS]
 
 ```bash
 # 将es数据导入另一台es数据
-elasticdump --input=http://production.es.com:9200/my_index --output=http://staging.es.com:9200/my_index --all=true --limit=2000
+elasticdump --input=https://production.es.com:9200/my_index --output=https://staging.es.com:9200/my_index --all=true --limit=2000
 
 # 或
 elasticdump \
-  --input=http://production.es.com:9200/my_index \
-  --output=http://staging.es.com:9200/my_index \
+  --input=https://production.es.com:9200/my_index \
+  --output=https://staging.es.com:9200/my_index \
   --type=analyzer
 elasticdump \
-  --input=http://production.es.com:9200/my_index \
-  --output=http://staging.es.com:9200/my_index \
+  --input=https://production.es.com:9200/my_index \
+  --output=https://staging.es.com:9200/my_index \
   --type=mapping
 elasticdump \
-  --input=http://production.es.com:9200/my_index \
-  --output=http://staging.es.com:9200/my_index \
+  --input=https://production.es.com:9200/my_index \
+  --output=https://staging.es.com:9200/my_index \
   --type=data
 
 # 备份文件到本地
 elasticdump \
-  --input=http://production.es.com:9200/my_index \
+  --input=https://production.es.com:9200/my_index \
   --output=/data/my_index_mapping.json \
   --type=mapping
 elasticdump \
-  --input=http://production.es.com:9200/my_index \
+  --input=https://production.es.com:9200/my_index \
   --output=/data/my_index.json \
   --type=data
 
@@ -294,17 +294,17 @@ docker pull elasticdump/elasticsearch-dump
 ```
 # Copy an index from production to staging with mappings:
 docker run --rm -ti elasticdump/elasticsearch-dump \
-  --input=http://production.es.com:9200/my_index \
-  --output=http://staging.es.com:9200/my_index \
+  --input=https://production.es.com:9200/my_index \
+  --output=https://staging.es.com:9200/my_index \
   --type=mapping
 docker run --rm -ti elasticdump/elasticsearch-dump \
-  --input=http://production.es.com:9200/my_index \
-  --output=http://staging.es.com:9200/my_index \
+  --input=https://production.es.com:9200/my_index \
+  --output=https://staging.es.com:9200/my_index \
   --type=data
 
 # Backup index data to a file:
 docker run --rm -ti -v /data:/tmp elasticdump/elasticsearch-dump \
-  --input=http://production.es.com:9200/my_index \
+  --input=https://production.es.com:9200/my_index \
   --output=/tmp/my_index_mapping.json \
   --type=data
 ```
@@ -430,13 +430,13 @@ Kibana server is not ready yet
 
 **解决办法**
 
-将配置文件 kibana.yml 中的 elasticsearch.url 改为正确的链接，默认为: [http://elasticsearch:9200](http://elasticsearch:9200)，改为 http://自己的 IP 地址:9200
+将配置文件 kibana.yml 中的 elasticsearch.url 改为正确的链接，默认为: [https://elasticsearch:9200](https://elasticsearch:9200)，改为 https://自己的 IP 地址:9200
 
 ```
 # Default Kibana configuration for docker target
 server.name: kibana
 server.host: "0"
-elasticsearch.hosts: [ "http://elasticsearch:9200" ]
+elasticsearch.hosts: [ "https://elasticsearch:9200" ]
 xpack.monitoring.ui.container.elasticsearch.enabled: true
 ```
 

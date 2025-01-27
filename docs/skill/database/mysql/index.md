@@ -707,7 +707,7 @@ Hash 类型的索引
 
 Btree：INNODB 的默认数据结构
 
-有关索引的一篇文章[MySQL 索引背后的数据结构及算法原理](http://blog.codinglabs.org/articles/theory-of-mysql-index.html)
+有关索引的一篇文章[MySQL 索引背后的数据结构及算法原理](https://blog.codinglabs.org/articles/theory-of-mysql-index.html)
 
 ## 7、角色权限管理
 

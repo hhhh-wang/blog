@@ -232,7 +232,7 @@ func forEachNode(n *html.Node, pre, post func(n *html.Node)) {
 func main() {
   worklist := make(chan []string)
 
-  go func() { worklist <- []string{"http://gopl.io/"} }()
+  go func() { worklist <- []string{"https://gopl.io/"} }()
 
   // Crawl the web concurrently.
   seen := make(map[string]bool)

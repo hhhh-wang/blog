@@ -15,7 +15,7 @@ export const Friends: Friend[] = [
   {
     title: '鲸落',
     description: '心中无女人，代码自然神',
-    website: 'http://www.xiaojunnan.cn',
+    website: 'https://www.xiaojunnan.cn',
     avatar: '/img/friend/xiaojunnan.png',
   },
   {

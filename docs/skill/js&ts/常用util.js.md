@@ -95,7 +95,7 @@ function formatTime(time, option) {
 }
 ```
 
-这里提一下`moment.js`，一个 js 日期处理的类库，有兴趣的可以去了解一下 [moment.js](http://momentjs.cn/)
+这里提一下`moment.js`，一个 js 日期处理的类库，有兴趣的可以去了解一下 [moment.js](https://momentjs.cn/)
 
 ## 3.取随机数，字母
 

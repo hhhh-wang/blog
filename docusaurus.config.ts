@@ -9,7 +9,7 @@ const beian1 = '这是公安备案'
 
 const config: Config = {
   title: '变量人生',
-  url: 'http://www.bianliangrensheng.cn',
+  url: 'https://www.bianliangrensheng.cn',
   baseUrl: '/',
   favicon: 'img/favicon.ico',
   organizationName: 'bianliang',
@@ -77,11 +77,11 @@ const config: Config = {
         <div class="footer-wrapper">
           <div class="footer-content">
             <p class="beian-text">
-              <a href="http://beian.miit.gov.cn/" class="beian-link">${beian}</a>
+              <a href="https://beian.miit.gov.cn/" class="beian-link">${beian}</a>
             </p>
             <p class="police-beian">
               <img src="/img/police.png" alt="police" class="police-icon"/>
-              <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=${
+              <a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=${
                 beian1.match(/\d+/)?.[0]
               }" class="beian-link">${beian1}</a>
             </p>
@@ -204,8 +204,8 @@ const config: Config = {
           title: '变量人生',
           description: 'feedId:41215011978385457+userId:41840354283324416',
           // <!-- 备案下方描述-->
-          // copyright: `Copyright © ${new Date().getFullYear()} 变量人生 Built with Docusaurus.<p><a href="http://beian.miit.gov.cn/" class="footer_lin">${beian}</a></p>`,
-           copyright: `这是描述<p><a href="http://beian.miit.gov.cn/" class="footer_lin">${beian}</a></p>`,
+          // copyright: `Copyright © ${new Date().getFullYear()} 变量人生 Built with Docusaurus.<p><a href="https://beian.miit.gov.cn/" class="footer_lin">${beian}</a></p>`,
+           copyright: `这是描述<p><a href="https://beian.miit.gov.cn/" class="footer_lin">${beian}</a></p>`,
         },
       },
     ],

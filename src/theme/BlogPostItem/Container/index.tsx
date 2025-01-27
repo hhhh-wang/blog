@@ -39,7 +39,7 @@ export default function BlogPostItemContainer({ children, className }: Props): J
         className={cn('relative px-4 pt-4 pb-3 lg:px-4', className)}
         itemProp="blogPost"
         itemScope
-        itemType="http://schema.org/BlogPosting"
+        itemType="https://schema.org/BlogPosting"
       >
         {content}
       </article>

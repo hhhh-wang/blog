@@ -14,7 +14,7 @@ authors: kuizuo
 ```typescript title='docusaurus.config.ts' icon='logos:docusaurus'
 const config: Config = {
   title: '变量人生的小站',
-  url: 'http://www.bianliangrensheng.cn/',
+  url: 'https://www.bianliangrensheng.cn/',
   baseUrl: '/',
   favicon: 'img/favicon.ico',
   organizationName: 'bianliang',

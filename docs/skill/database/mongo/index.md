@@ -224,8 +224,8 @@ let UserSchema = mongoose.Schema({
   headImg: {
     type: String,
     set(params) {
-      if (!params.includes('https://') || !params.includes('http://')) {
-        return 'http://' + params
+      if (!params.includes('https://') || !params.includes('https://')) {
+        return 'https://' + params
       }
       return params
     },
@@ -295,8 +295,8 @@ let UserSchema = mongoose.Schema({
   headImg: {
     type: String,
     set(params) {
-      if (!params.includes("https://") || !params.includes("http://")) {
-        return 'http://' + params
+      if (!params.includes("https://") || !params.includes("https://")) {
+        return 'https://' + params
       }
       return params
     }
