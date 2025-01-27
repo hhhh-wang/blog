@@ -9,7 +9,7 @@ const beian1 = '这是公安备案'
 
 const config: Config = {
   title: '变量人生',
-  url: 'https://www.bianliangrensheng.cn',
+  url: 'https://bianliangrensheng.cn',
   baseUrl: '/',
   favicon: 'img/favicon.ico',
   organizationName: 'bianliang',
@@ -260,6 +260,14 @@ Love what you do and do what you love.
       attributes: {
         name: 'description',
         content: '变量人生的个人博客',
+      },
+    },
+    {
+      //seo优化，防止重复内容问题，提高网站在搜索引擎中的排名
+      tagName: 'link',
+      attributes: {
+        rel: 'canonical',
+        href: 'https://bianliangrensheng.cn',
       },
     },
   ],
