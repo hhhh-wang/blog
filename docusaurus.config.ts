@@ -155,7 +155,7 @@ const config: Config = {
           priority: 0.5,
         },
         gtag: {
-          trackingID: 'G-S4SD5NXWXF',
+          trackingID: 'G-YZK05M1X66',
           anonymizeIP: true,
         },
         debug: process.env.NODE_ENV === 'development',
