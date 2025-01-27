@@ -4,7 +4,7 @@ export const projects: Project[] = [
         description: '🦖 基于 Docusaurus 静态网站生成器实现个人博客',
         preview: 'https://cdn.jsdelivr.net/gh/hhhh-wang/MyPic@main/blog/img/blog-index.png',
         website: 'https://bianliangrensheng.cn',
-        ip: 'https://106.52.209.18',
+        ip: 'https://bianliangrensheng.cn',
         source: 'https://github.com/hhhh-wang/blog',
         tags: ['opensource', 'design', 'favorite'],
         type: 'web',
