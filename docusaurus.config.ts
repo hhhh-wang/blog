@@ -17,7 +17,7 @@ const config: Config = {
   customFields: {
     bio: '无论前路如何，探索与学习是我不断进化的动力',
     description:
-      '是一个由变量人生创建的个人博客，主要分享编程开发知识和项目，该网站基于 React 驱动的静态网站生成器 Docusaurus 构建。',
+        '这里是一片探索技术的乐园，记录着开发者的成长足迹。作为一个技术分享平台，网站采用现代化的 Docusaurus 框架打造，致力于为读者提供高质量的编程经验和项目实践心得。',
   },
   themeConfig: {
     // announcementBar: {
@@ -36,7 +36,7 @@ const config: Config = {
       },
       {
         name: 'keywords',
-        content: 'Java开发, 小程序开发, TS全栈开发 ,部署运维',
+        content: 'Java开发, 小程序开发, TS全栈开发, 部署运维, 软件开发, 软件定制, 网站建设, 网站开发, 信息化, 项目管理, 前后端分离, 快速开发, 敏捷开发',
       },
     ],
     docs: {
