@@ -12,7 +12,7 @@ const showProjects = projects.filter(i => i.preview)
 const Slider = ({ items }: { items: Project[] }) => {
   return (
     <div className="relative flex min-h-[260px] items-center overflow-hidden">
-      // 将布尔值 gradient 改为字符串值 "true" 这样可以避免 React 对非布尔属性使用布尔值的警告
+      {/* 将布尔值 gradient 改为字符串值 "true" 这样可以避免 React 对非布尔属性使用布尔值的警告*/}
       <Marquee pauseOnHover gradient="true" className="[--duration:60s]">
         {items.map(item => {
           const linkUrl = item.ip || item.website
