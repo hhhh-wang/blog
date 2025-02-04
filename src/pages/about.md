@@ -47,7 +47,7 @@ import social from '@site/data/social'
 - **萌爪联盟**：宠物社交平台
 - **E家智慧物业系统**：智慧物业管理
 - **租房小程序**：（中介跑路）
-- **银闪闪App配套后台**：数据流开发
+- **银闪闪App配套后台**：实时数据流开发
 :::
 
 ### <Icon icon="ri:tools-line" width="20" /> 技术工具箱
