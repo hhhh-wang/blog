@@ -8,6 +8,7 @@ export type Social = {
     zhihu?: string
     email?: string
     discord?: string
+    bilibili?: string
 }
 
 type SocialValue = {
@@ -27,6 +28,7 @@ const social: Social = {
     // cloudmusic: 'https://music.163.com/#/user/home?',
     email: 'mailto:kun64855@gmail.com',
     // discord: 'https://discord.gg/',
+    bilibili: 'https://space.bilibili.com/336186486',
 }
 
 const socialSet: Record<keyof Social | 'rss', SocialValue> = {
@@ -79,11 +81,17 @@ const socialSet: Record<keyof Social | 'rss', SocialValue> = {
         color: '#D44638',
     },
     // cloudmusic: {
-    //   href: social.cloudmusic,
-    //   title: '网易云',
-    //   icon: 'ri:netease-cloud-music-line',
-    //   color: '#C20C0C',
+    //     href: social.cloudmusic,
+    //     title: '网易云',
+    //     icon: 'ri:netease-cloud-music-line',
+    //     color: '#C20C0C',
     // },
+    bilibili: {
+        href: social.bilibili,
+        title: '哔哩哔哩',
+        icon: 'ri:bilibili-line',
+        color: '#FB7299',
+    },
     rss: {
         href: '/blog/rss.xml',
         title: 'RSS',
