@@ -19,7 +19,7 @@ const FEATURES: FeatureItem[] = [
     }),
     description: (
       <Translate>
-        熟悉前端开发的核心技术栈，能够高效构建响应式、用户友好的网页界面，擅长使用 React 和 Vue 开发单页应用，精通使用 Tailwind 提高开发效率，拥有良好的 TypeScript 和 HTML/CSS 编写习惯。
+        熟悉前端开发的核心技术栈，能够高效构建响应式、用户友好的网页界面，擅长使用 React 和 Vue 开发单页应用，使用 Tailwind 提高开发效率，拥有良好的 TypeScript 和 HTML/CSS 编写习惯。
       </Translate>
     ),
     header: <FrontendSvg className={'h-auto w-full'} height={150} role="img" />,
