@@ -1,4 +1,5 @@
 ---
+id: 1006
 slug: apifox-auto-generates-
 title: Apifox 自动生成 API 接口文档
 date: 2025-01-17
