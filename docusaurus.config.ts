@@ -270,6 +270,14 @@ Love what you do and do what you love.
         href: 'https://bianliangrensheng.cn',
       },
     },
+    { //支持谷歌广告，让站点有一定的收益。
+      tagName: 'script',
+      attributes: {
+        async: true,
+        src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4860086622819454',
+        crossorigin: 'anonymous',
+      },
+    },
   ],
   stylesheets: [
     'https://cdn.jsdelivr.net/npm/misans@4.0.0/lib/Normal/MiSans-Normal.min.css',
