@@ -5,7 +5,7 @@ import social from './data/social'
 import type { GiscusConfig } from './src/components/Comment'
 
 const beian = '湘ICP备2025099656号-2'
-const beian1 = '这是公安备案'
+const beian1 = '湘公网安备43310002000135号'
 
 const config: Config = {
   title: '变量人生',
@@ -87,8 +87,7 @@ const config: Config = {
             </p>
             <p class="copyright-text">
             <!-- 备案下方描述-->
-              <!--Copyright © 2020 - ${new Date().getFullYear()}. | Built with Docusaurus.-->
-              这是一个描述
+              Copyright © 2020 - ${new Date().getFullYear()}. | Built with Docusaurus.
             </p>
           </div>
         </div>
@@ -204,8 +203,7 @@ const config: Config = {
           title: '变量人生',
           description: 'feedId:41215011978385457+userId:41840354283324416',
           // <!-- 备案下方描述-->
-          // copyright: `Copyright © ${new Date().getFullYear()} 变量人生 Built with Docusaurus.<p><a href="https://beian.miit.gov.cn/" class="footer_lin">${beian}</a></p>`,
-           copyright: `这是描述<p><a href="https://beian.miit.gov.cn/" class="footer_lin">${beian}</a></p>`,
+           copyright: `Copyright © ${new Date().getFullYear()} 变量人生 Built with Docusaurus.<p><a href="https://beian.miit.gov.cn/" class="footer_lin">${beian}</a></p>`,
         },
       },
     ],
