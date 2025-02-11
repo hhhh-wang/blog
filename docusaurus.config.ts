@@ -56,6 +56,7 @@ const config: Config = {
         { label: '项目', position: 'right', to: 'project' },
         { label: '友链', position: 'right', to: 'friends' },
         { label: '关于', position: 'right', to: 'about' },
+        { label: '商务', position: 'right', to: 'business' }, // 新增商务菜单
         {
           label: '更多',
           position: 'right',
