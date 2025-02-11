@@ -1,12 +1,10 @@
 import { type Variants, motion } from 'framer-motion'
 
 import Translate from '@docusaurus/Translate'
-
-import HeroSvg from './img/hero.svg'
-
 import SocialLinks from '@site/src/components/SocialLinks'
 import { MovingButton } from '../../magicui/moving-border'
 import styles from './styles.module.css'
+import CodeEditor from './CodeEditor'
 
 const variants: Variants = {
   visible: i => ({
@@ -84,7 +82,7 @@ export default function Hero() {
         </motion.div>
       </div>
       <motion.div className={styles.background}>
-        <HeroSvg />
+        <CodeEditor />
         <Circle />
       </motion.div>
     </motion.div>

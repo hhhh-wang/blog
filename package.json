@@ -64,6 +64,7 @@
     "@docusaurus/types": "3.6.1",
     "@iconify/react": "^5.0.1",
     "@tailwindcss/typography": "^0.5.13",
+    "tailwind-scrollbar": "^4.0.0",
     "typescript": "~5.5.2"
   },
   "engines": {

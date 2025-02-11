@@ -1,6 +1,7 @@
 import svgToDataUri from 'mini-svg-data-uri'
 import type { Config } from 'tailwindcss'
 import plugin from 'tailwindcss/plugin'
+import tailwindScrollbar from 'tailwind-scrollbar'
 
 const { default: flattenColorPalette } = require('tailwindcss/lib/util/flattenColorPalette')
 
@@ -19,7 +20,7 @@ const twConfig: Config = {
         border: 'var(--ifm-border-color)',
       },
       fontFamily: {
-        misans: ['misans'],
+        code: ['JetBrains Mono', 'Consolas', 'Microsoft YaHei', 'monospace'],
       },
       borderRadius: {
         card: 'var(--ifm-card-border-radius)',
@@ -64,6 +65,7 @@ const twConfig: Config = {
       )
     }),
     addVariablesForColors,
+    tailwindScrollbar({ nocompatible: true }),
   ],
 }
 
