@@ -49,6 +49,16 @@ export const projects: Project[] = [
         tags: ['product', 'design', 'large'],
         type: 'teamwork',
     },
+    {
+        title: 'Boss慧眼',
+        description: '👀 一款帮助求职者提高简历投递效率的Chrome插件，可以过滤掉不在线的HR，提高沟通效率',
+        preview: 'https://cdn.jsdelivr.net/gh/hhhh-wang/MyPic@main/blog/img/image-20250212112406382.png', // 建议更换为插件的实际截图
+        website: 'https://github.com/hhhh-wang/boss-huiyan',
+        ip: 'https://github.com/hhhh-wang/boss-huiyan',
+        source: 'https://github.com/hhhh-wang/boss-huiyan',
+        tags: ['opensource', 'tools', 'personal'],
+        type: 'tools',
+    },
 ]
 
 export type Tag = {
@@ -57,18 +67,16 @@ export type Tag = {
     color: string
 }
 
-export type TagType = 'favorite' | 'opensource' | 'product' | 'design' | 'large' | 'personal' | 'teamwork'
+export type TagType = 'favorite' | 'opensource' | 'product' | 'design' | 'large' | 'personal' | 'teamwork' | 'tools'
 
-export type ProjectType = 'web' | 'app' | 'commerce' | 'personal' | 'toy' | 'other' | 'teamwork'
+export type ProjectType = 'web' | 'app' | 'commerce' | 'personal' | 'toy' | 'other' | 'teamwork' | 'tools'
 
 export const projectTypeMap = {
     web: '🖥️ 商业项目',
     app: '💫 应用',
     commerce: '商业项目',
-    // personal: '👨‍💻 个人',
-    // toy: '🔫 玩具',
-    // other: '��️ 其他',
-    teamwork: '🤝 合作'
+    teamwork: '🤝 合作',
+    tools: '🛠️ 实用工具'
 }
 
 export type Project = {
@@ -117,6 +125,11 @@ export const Tags: Record<TagType, Tag> = {
         label: '合作',
         description: '合作项目',
         color: '#0891b2'
+    },
+    tools: {
+        label: '工具',
+        description: '实用的前端开发工具',
+        color: '#555555'
     }
 }
 
