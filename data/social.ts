@@ -22,7 +22,7 @@ const social: Social = {
     github: 'https://github.com/hhhh-wang',
     x: 'https://twitter.com/kunwang853028',
     juejin: 'https://juejin.cn/user/3120872724108442',
-    wx: 'https://bianliangrensheng.cn/gImage/wechat.png',
+    wx: 'https://bianliangrensheng.cn/gImage/title/wechat.png',
     // qq: 'https://img..cn/qq.png',
     // zhihu: 'https://www.zhihu.com/people/',
     // cloudmusic: 'https://music.163.com/#/user/home?',

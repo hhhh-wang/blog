@@ -210,7 +210,7 @@ import { Icon } from '@iconify/react'
 
 </div>
 
-![软件开发流程](https://bianliangrensheng.cn/gImage/softwareDevelopmentProcess.png)
+![软件开发流程](https://bianliangrensheng.cn/gImage/content/softwareDevelopmentProcess.png)
 
 ## <Icon icon="ri:customer-service-2-line" width="24" className="inline-block mr-2" /> 服务内容
 
@@ -614,7 +614,7 @@ import { Icon } from '@iconify/react'
     content.style.position = 'relative';
     
     const img = document.createElement('img');
-    img.src = 'https://bianliangrensheng.cn/gImage/wechat.png';
+    img.src = 'https://bianliangrensheng.cn/gImage/title/wechat.png';
     img.style.maxWidth = '300px';
     img.style.height = 'auto';
     
