@@ -7,7 +7,7 @@ authors: bianliang
 keywords: [HTTPS,SSL证书,自动化部署,DevOps,httpsok]
 tags: [HTTPS,SSL证书,自动化部署,DevOps,httpsok]
 description: 分享如何使用 httpsok 解决免费SSL证书自动续签的痛点,真正实现证书管理自动化。
-image: https://cdn.jsdelivr.net/gh/hhhh-wang/MyPic@main/blog/title/ssl%E8%AF%81%E4%B9%A6%E8%87%AA%E5%8A%A8%E7%BB%AD%E7%AD%BE%E4%B8%8E%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5.jpg
+image: https://bianliangrensheng.cn/gImage/title/ssl-certificate-auto-renewal-and-deployment-best-practices.jpg
 ---
 
 # SSL证书自动续签与自动化部署最佳实践

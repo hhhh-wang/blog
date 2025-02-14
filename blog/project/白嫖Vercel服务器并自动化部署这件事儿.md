@@ -7,7 +7,7 @@ authors: bianliang
 tags: [github, action, vercel]
 keywords: [GitHub Actions, 自动化部署, CI/CD, Vercel]
 description: 详细介绍如何利用 GitHub Actions 实现项目自动部署到 Vercel，包括完整配置步骤和最佳实践。
-image: https://cdn.jsdelivr.net/gh/hhhh-wang/MyPic@main/blog/title/%E5%85%B3%E4%BA%8E%E6%88%91%E4%BD%BF%E7%94%A8%20GitHub%20Actions%20%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E8%BF%99%E4%BB%B6%E4%BA%8B%E5%84%BF.jpg
+image: https://bianliangrensheng.cn/gImage/title/about-my-github-actions-automation-deployment.jpg
 ---
 
 最近我把博客的部署方式从手动部署改成了使用 GitHub Actions 自动部署，这让我体会到了自动化带来的便利。在这篇文章中，我想分享一下这个转变的过程。

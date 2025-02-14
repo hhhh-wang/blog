@@ -7,7 +7,7 @@ authors: bianliang
 tags: [github, action, cloud]
 keywords: [GitHub Actions, 自动化部署, CI/CD, 云服务器]
 description: 详细介绍如何利用 GitHub Actions 实现项目自动部署到云服务器，包括完整配置步骤和最佳实践。
-image: https://cdn.jsdelivr.net/gh/hhhh-wang/MyPic@main/blog/title/%E4%BD%BF%E7%94%A8GitHub-Actions%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2%E5%88%B0%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8.jpg
+image: https://bianliangrensheng.cn/gImage/title/deploy-to-cloud-server-with-github-actions.jpg
 ---
 
 在上一篇文章中，讲解了如何使用 GitHub Actions 自动部署到 Vercel。这次，来看看如何将项目自动部署到自己的云服务器上。
