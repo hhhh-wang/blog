@@ -210,7 +210,7 @@ import { Icon } from '@iconify/react'
 
 </div>
 
-![软件开发流程](C:\Users\Administrator\Desktop\软件开发流程.png)
+![软件开发流程](https://bianliangrensheng.cn/gImage/softwareDevelopmentProcess.png)
 
 ## <Icon icon="ri:customer-service-2-line" width="24" className="inline-block mr-2" /> 服务内容
 
@@ -523,19 +523,34 @@ import { Icon } from '@iconify/react'
   boxShadow: '0 2px 8px rgba(0, 0, 0, 0.05)',
   color: '#334155'
 }}>
-<h4 style={{ color: '#0f172a', marginBottom: '12px' }}>💡 费用示例</h4>
-- 例如需要我们协助您开发一个小程序或者公众号，费用由以下组成：
-- 基础认证费：小程序/公众号认证（300元微信收取）
-- 基础设施费：
-  - 服务器费用（云服务商定价）
-  - 域名费用（因域名后缀定价不同）
-  - SSL证书费用（免费~数千不等）
-- 第三方服务费：
-  - 短信服务（约0.05元/条，可选）
-  - 图片存储（按存储容量和流量计费，可选）
-  - 图像识别（按API调用次数计费，可选）
-- 交易服务费：支付手续费（一般为交易额的0.6%，可选）
-- 开发服务费：根据项目复杂度和工作量评估
+
+### 💡 项目费用构成案例
+
+#### 1️⃣ 开发费用（支付给我们）
+- 项目开发服务费：根据需求复杂度和工作量评估
+- 包含：需求分析、开发实现、测试部署等全流程服务
+
+#### 2️⃣ 基础设施费用（支付给云服务商）
+- 服务器费用：根据配置和规格定价
+- 域名费用：取决于域名后缀类型
+- SSL证书费用：免费~数千元不等
+
+#### 3️⃣ 平台认证费用（支付给微信等平台）
+- 小程序认证费：300元
+- 公众号认证费：300元
+
+#### 4️⃣ 增值服务费用（按需使用，支付给对应服务商）
+- 短信服务：约0.05元/条
+- 对象存储：按存储容量和流量计费
+- 图像识别：按API调用次数计费
+- 支付手续费：一般为交易额的0.6%
+
+费用说明
+- 除开发费用外，其他费用均直接支付给第三方服务商
+- 部分服务为可选项，根据实际需求选择
+- 项目启动前会提供详细的费用预算清单
+
+
 </div>
 
 <div style={{
@@ -567,5 +582,79 @@ import { Icon } from '@iconify/react'
 :::
 
 ## <Icon icon="ri:contacts-line" width="24" className="inline-block mr-2" /> 联系方式
+
+<div style={{
+  background: '#fffbeb',
+  padding: '24px',
+  borderRadius: '12px',
+  boxShadow: '0 2px 8px rgba(0, 0, 0, 0.05)',
+  textAlign: 'center'
+}}>
+
+<button
+  onClick={() => {
+    const modal = document.createElement('div');
+    modal.style.position = 'fixed';
+    modal.style.top = '0';
+    modal.style.left = '0';
+    modal.style.width = '100%';
+    modal.style.height = '100%';
+    modal.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+    modal.style.display = 'flex';
+    modal.style.justifyContent = 'center';
+    modal.style.alignItems = 'center';
+    modal.style.zIndex = '1000';
+    
+    const content = document.createElement('div');
+    content.style.background = '#fff';
+    content.style.padding = '24px';
+    content.style.borderRadius = '12px';
+    content.style.maxWidth = '90%';
+    content.style.maxHeight = '90%';
+    content.style.position = 'relative';
+    
+    const img = document.createElement('img');
+    img.src = 'https://bianliangrensheng.cn/gImage/wechat.png';
+    img.style.maxWidth = '300px';
+    img.style.height = 'auto';
+    
+    const closeBtn = document.createElement('button');
+    closeBtn.innerHTML = '关闭';
+    closeBtn.style.marginTop = '16px';
+    closeBtn.style.padding = '8px 16px';
+    closeBtn.style.background = '#2563eb';
+    closeBtn.style.color = '#fff';
+    closeBtn.style.border = 'none';
+    closeBtn.style.borderRadius = '6px';
+    closeBtn.style.cursor = 'pointer';
+    
+    closeBtn.onclick = () => document.body.removeChild(modal);
+    
+    content.appendChild(img);
+    content.appendChild(closeBtn);
+    modal.appendChild(content);
+    document.body.appendChild(modal);
+  }}
+  style={{
+    background: '#2563eb',
+    color: '#fff',
+    padding: '12px 24px',
+    borderRadius: '8px',
+    border: 'none',
+    fontSize: '1.1rem',
+    cursor: 'pointer',
+    display: 'inline-flex',
+    alignItems: 'center',
+    gap: '8px'
+  }}
+>
+<Icon icon="mdi:wechat" width="24" /> 查看微信二维码
+</button>
+
+<p style={{ marginTop: '16px', color: '#334155' }}>
+扫描二维码添加微信，请注明"项目合作"，并简要说明您的需求。
+</p>
+
+</div>
 
 </div> 
