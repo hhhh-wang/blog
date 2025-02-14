@@ -2,7 +2,7 @@ export const projects: Project[] = [
     {
         title: '变量人生的小站',
         description: '🦖 基于 Docusaurus 静态网站生成器实现个人博客',
-        preview: 'https://cdn.jsdelivr.net/gh/hhhh-wang/MyPic@main/blog/img/blog-index.png',
+        preview: 'https://bianliangrensheng.cn/gImage/title/blog-index.png',
         website: 'https://bianliangrensheng.cn',
         ip: 'https://bianliangrensheng.cn',
         source: 'https://github.com/hhhh-wang/blog',
@@ -12,7 +12,7 @@ export const projects: Project[] = [
     {
         title: '省心租房小程序',
         description: '🍋 使用Uni-app、Vue3 构建的高效租房小程序',
-        preview: 'https://cdn.jsdelivr.net/gh/hhhh-wang/MyPic@main/blog/img/rent-ease-index.png',
+        preview: 'https://bianliangrensheng.cn/gImage/title/rent-ease-index.png',
         website: 'https://rent-app.bianliangrensheng.cn',
         ip: 'https://rent-app.bianliangrensheng.cn',
         source: 'https://github.com/hhhh-wang/rent-ease',
@@ -22,7 +22,7 @@ export const projects: Project[] = [
     {
         title: '省心租房后台管理系统',
         description: '🎁基于 SpringBoot、SpringMVC、Mybatis 框架，可用于所有的Web应用程序',
-        preview: 'https://cdn.jsdelivr.net/gh/hhhh-wang/MyPic@main/blog/img/rent-ease-admin-index.png',
+        preview: 'https://bianliangrensheng.cn/gImage/title/rent-ease-admin-index.png',
         website: 'https://rent-ease-admin.bianliangrensheng.cn',
         ip: 'https://rent-ease-admin.bianliangrensheng.cn',
         source: 'https://github.com/hhhh-wang/rent-ease-admin',
@@ -32,7 +32,7 @@ export const projects: Project[] = [
     {
         title: '为开发者提供一个轻量级、易上手且可扩展的后台管理解决方案',
         description: '📦基于 React 18 hooks 构建，后端使用NestJS、TypeORM',
-        preview: 'https://cdn.jsdelivr.net/gh/hhhh-wang/MyPic@main/blog/img/analysis2.png',
+        preview: 'https://bianliangrensheng.cn/gImage/title/analysis2.png',
         website: 'https://sapling-react.bianliangrensheng.cn/#/login',
         ip: 'https://sapling-react.bianliangrensheng.cn',
         source: 'https://github.com/hhhh-wang/react-admin',
@@ -42,7 +42,7 @@ export const projects: Project[] = [
     {
         title: '合作项目还在整理资料中',
         description: '📦整理文档中',
-        preview: 'https://cdn.jsdelivr.net/gh/hhhh-wang/MyPic@main/blog/title/blog-404.jpg',
+        preview: 'https://bianliangrensheng.cn/gImage/title/blog-404.jpg',
         website: 'https://bianliangrensheng.cn',
         ip: 'https://bianliangrensheng.cn',
         source: 'https://github.com/',
@@ -52,7 +52,7 @@ export const projects: Project[] = [
     {
         title: 'Boss慧眼',
         description: '👀 一款帮助求职者提高简历投递效率的Chrome插件，可以过滤掉不在线的HR，提高沟通效率',
-        preview: 'https://cdn.jsdelivr.net/gh/hhhh-wang/MyPic@main/blog/img/image-20250212112406382.png', // 建议更换为插件的实际截图
+        preview: 'https://bianliangrensheng.cn/gImage/title/boss-huiyan.png',
         website: 'https://github.com/hhhh-wang/boss-huiyan',
         ip: 'https://github.com/hhhh-wang/boss-huiyan',
         source: 'https://github.com/hhhh-wang/boss-huiyan',
