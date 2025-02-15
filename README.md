@@ -76,6 +76,8 @@ pnpm build
 
 ## 📷 截图
 
+![首页](https://bianliangrensheng.cn/gImage/title/blog-index.png)
+
 ## 📝 许可证
 
 [MIT](./LICENSE)
