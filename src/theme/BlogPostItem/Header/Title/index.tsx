@@ -14,9 +14,7 @@ export default function BlogPostItemHeaderTitle({ className }: Props): JSX.Eleme
       {isBlogPostPage ? (
         title
       ) : (
-        <Link itemProp="url" to={permalink} className={styles.titleLink}>
-          {title}
-        </Link>
+        <span className={styles.titleLink}>{title}</span>
       )}
     </TitleHeading>
   )
