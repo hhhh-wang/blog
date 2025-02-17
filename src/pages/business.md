@@ -1,6 +1,6 @@
 ---
-title: 商务合作
-description: 变量人生的商务合作服务
+title: 商务合作 | Java开发 | 小程序开发 | TS全栈开发 | 软件定制
+description: 变量人生提供专业的软件开发、网站建设、信息化解决方案，采用前后端分离架构，快速开发交付，一站式软件定制服务
 hide_table_of_contents: true
 ---
 
@@ -10,7 +10,7 @@ import { Icon } from '@iconify/react'
 
 # 商务合作 <Icon icon="emojione:handshake" className="inline-block ml-2" width="32" />
 
-:::tip 前言：让我们一起开启愉快的合作之旅，为您的项目注入专业的技术动力。
+:::tip 前言：让我们一起开启愉快的合作之旅，为您的项目注入专业的技术动力。我们提供Java开发、小程序开发、TS全栈开发等全方位软件定制服务。
 :::
 
 <div style={{
@@ -35,7 +35,7 @@ import { Icon } from '@iconify/react'
   borderRadius: '12px',
   boxShadow: '0 2px 8px rgba(0, 0, 0, 0.05)'
 }}>
-欢迎所有正在寻找优质开发者的朋友！作为一名拥有8年+全栈开发经验的工程师，我可以为您提供专业的技术服务。不仅仅如此，还有我和9位来自不同行业的优秀工程师成立的一个外包团队，他们拥有丰富的技术经验：
+欢迎所有正在寻找优质开发者的朋友！作为一支专注于软件开发和网站建设的团队，我们提供从信息化规划到项目管理的全流程服务。团队拥有8年+全栈开发经验，采用前后端分离架构，实践敏捷开发方法论，确保快速开发和交付。我们的团队由9位来自不同行业的优秀工程师组成，他们在Java开发、小程序开发、TS全栈开发等领域都有丰富的经验：
 
 <div style={{ marginLeft: '24px', marginTop: '16px', color: '#334155' }}>
 - 🎯 有产品经理负责需求分析和产品设计
@@ -230,8 +230,8 @@ import { Icon } from '@iconify/react'
 
 ### 💻 Web开发
 - React/Next.js/Vue3 前端开发
-- Node.js/Java/Python后端开发
-- 企业官网
+- Java开发/Node.js/Python后端开发
+- 企业网站建设与开发
 - 企业后台管理系统
 - 数据可视化平台
 </div>
@@ -299,7 +299,7 @@ import { Icon } from '@iconify/react'
 - 🔧 后端: Node.js、Java、Spring Boot、Spring Cloud、NestJS
 - 💾 数据库: MySQL、Redis、PostgreSQL、TiDb、Doris
 - 📊 数据开发：Python、Flink、Hive
-- 🚀 部署: Nginx、CI/CD、Linux
+- 🚀 部署运维: Nginx、CI/CD、Linux、自动化部署
 </div>
 :::
 
@@ -651,9 +651,9 @@ import { Icon } from '@iconify/react'
 <Icon icon="mdi:wechat" width="24" /> 查看微信二维码
 </button>
 
-<p style={{ marginTop: '16px', color: '#334155' }}>
+<div style={{ marginTop: '16px', color: '#334155' }}>
 扫描二维码添加微信，请注明"项目合作"，并简要说明您的需求。
-</p>
+</div>
 
 </div>
 
