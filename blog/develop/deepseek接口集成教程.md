@@ -11,437 +11,262 @@ image: https://bianliangrensheng.cn/gImage/title/deepseek-Integration-hub.jpg
 
 # 2025年最新 DeepSeek API 集成指南：Docusaurus博客完整实践
 
-在这个最新的DeepSeek API集成教程中，我将从零开始，详细介绍如何在Docusaurus博客中开发AI对话助手。本教程涵盖完整的开发流程，包括环境配置、API对接、组件开发、性能优化等核心内容，帮助你快速掌握AI助手的开发技巧。
+在这个最新的 DeepSeek API 集成教程中，我将详细介绍如何在 Docusaurus 博客中开发 AI 对话助手。本教程基于实际项目实践，包含完整的代码示例和实现步骤。
 
 <!-- truncate -->
 
-## 1. 基础知识
-### 1.1 什么是 DeepSeek API
-DeepSeek API 是一个强大的AI对话接口，能够提供智能对话、文本生成等功能。通过集成DeepSeek API，我们可以在博客中添加智能对话助手，提升用户体验。
+## 1. 基础环境准备
 
-:::tip DeepSeek API集成小知识
-DeepSeek API提供了丰富的模型选择和参数配置，可以根据实际需求进行调整以获得最佳效果
-:::
-
-### 1.2 开发环境准备
-1. Node.js 环境（推荐 v16 以上）
-2. 包管理工具（推荐 pnpm）
-3. DeepSeek API 密钥
-4. 代码编辑器（推荐 VS Code）
-
-## 2. 项目依赖安装
-### 2.1 安装必要的依赖包
-```bash
-pnpm add axios @types/node dotenv openai
-```
-
-### 2.2 环境变量配置
-在项目根目录创建 `.env` 文件：
-```
-DEEPSEEK_API_KEY=你的DeepSeek API密钥
-DEEPSEEK_API_BASE_URL=https://api.deepseek.com/v1
-```
-
-:::warning 注意
-请确保将 `.env` 文件添加到 `.gitignore` 中，避免敏感信息泄露
-:::
-
-## 3. 核心功能实现
-### 3.1 安装依赖
-首先需要安装 OpenAI SDK：
+### 1.1 安装依赖
+首先需要安装必要的依赖包：
 
 ```bash
 pnpm add openai
 ```
 
-### 3.2 创建服务类
-在 `src/services/deepseek` 目录下创建 `index.ts` 文件：
+### 1.2 项目结构
+我们需要创建以下文件：
+
+```
+src/
+  ├── components/
+  │   └── DeepseekChat/
+  │       └── index.tsx      # 聊天组件
+  ├── utils/
+  │   └── deepseek.ts       # DeepSeek 工具类
+  └── pages/
+      └── ai-chat.tsx       # AI 聊天页面
+```
+
+## 2. 核心代码实现
+
+### 2.1 DeepSeek 工具类
+在 `src/utils/deepseek.ts` 中实现 DeepSeek API 的调用：
 
 ```typescript
 import OpenAI from 'openai';
 import type { ChatCompletionMessageParam } from 'openai/resources/chat/completions';
 
-// DeepSeek配置接口
-export interface DeepSeekConfig {
-  apiKey: string;
-  baseURL: string;
-  model: string;
-  temperature?: number;
-  maxTokens?: number;
-}
-
-// 默认配置
-const DEFAULT_CONFIG: DeepSeekConfig = {
-  apiKey: process.env.DEEPSEEK_API_KEY || 'your-api-key',
-  baseURL: 'https://api.deepseek.com',
-  model: 'deepseek-chat',
-  temperature: 0.7,
-  maxTokens: 1000,
-};
-
-export class DeepSeekService {
-  private client: OpenAI;
-  private config: DeepSeekConfig;
-
-  constructor(config: Partial<DeepSeekConfig> = {}) {
-    this.config = { ...DEFAULT_CONFIG, ...config };
-    this.client = new OpenAI({
-      apiKey: this.config.apiKey,
-      baseURL: this.config.baseURL,
+// 创建 OpenAI 客户端工厂函数
+function createOpenAIClient(apiKey: string) {
+    return new OpenAI({
+        baseURL: 'https://api.deepseek.com',
+        apiKey,
+        dangerouslyAllowBrowser: true // 警告：这种方式在生产环境中不安全
     });
-  }
-
-  // 发送聊天请求
-  async chat(messages: ChatCompletionMessageParam[]) {
-    try {
-      const completion = await this.client.chat.completions.create({
-        messages,
-        model: this.config.model,
-        temperature: this.config.temperature,
-        max_tokens: this.config.maxTokens,
-      });
-
-      return completion.choices[0].message;
-    } catch (error) {
-      console.error('DeepSeek API Error:', error);
-      throw error;
-    }
-  }
-
-  // 流式响应聊天
-  async streamChat(messages: ChatCompletionMessageParam[]) {
-    try {
-      const stream = await this.client.chat.completions.create({
-        messages,
-        model: this.config.model,
-        temperature: this.config.temperature,
-        max_tokens: this.config.maxTokens,
-        stream: true,
-      });
-
-      return stream;
-    } catch (error) {
-      console.error('DeepSeek Stream API Error:', error);
-      throw error;
-    }
-  }
 }
 
-// 导出单例实例
-export const deepseekService = new DeepSeekService();
-```
+// 基本的聊天完成函数
+export async function chatWithDeepseek(
+    messages: ChatCompletionMessageParam[],
+    apiKey: string,
+    model: string = 'deepseek-chat'
+) {
+    const openai = createOpenAIClient(apiKey);
 
-### 3.3 使用示例
+    try {
+        const completion = await openai.chat.completions.create({
+            messages,
+            model,
+        });
 
-#### 基础使用
-```typescript
-import { deepseekService } from '@/services/deepseek';
+        return completion.choices[0]?.message?.content || '';
+    } catch (error) {
+        console.error('Deepseek API 调用错误:', error);
+        throw error;
+    }
+}
 
-// 基本对话
-async function basicChat() {
-  try {
-    const response = await deepseekService.chat([
-      { role: "system", content: "You are a helpful assistant." },
-      { role: "user", content: "你好，请介绍一下你自己" }
-    ]);
+// 使用系统预设的聊天函数
+export async function chatWithSystem(
+    content: string,
+    apiKey: string,
+    systemPrompt: string = 'You are a helpful assistant.'
+) {
+    const messages: ChatCompletionMessageParam[] = [
+        { role: 'system', content: systemPrompt },
+        { role: 'user', content }
+    ];
     
-    console.log(response.content);
-  } catch (error) {
-    console.error('Chat error:', error);
-  }
-}
-
-// 流式对话
-async function streamChat() {
-  try {
-    const stream = await deepseekService.streamChat([
-      { role: "system", content: "You are a helpful assistant." },
-      { role: "user", content: "你好，请介绍一下你自己" }
-    ]);
-
-    for await (const chunk of stream) {
-      process.stdout.write(chunk.choices[0]?.delta?.content || '');
-    }
-  } catch (error) {
-    console.error('Stream chat error:', error);
-  }
+    return chatWithDeepseek(messages, apiKey);
 }
 ```
 
-#### 在React组件中使用
+### 2.2 聊天组件
+在 `src/components/DeepseekChat/index.tsx` 中实现聊天界面：
+
 ```typescript
 import React, { useState } from 'react';
-import { deepseekService } from '@/services/deepseek';
+import { chatWithSystem } from '@site/src/utils/deepseek';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 
-export const ChatComponent: React.FC = () => {
-  const [messages, setMessages] = useState<Array<{ role: string; content: string }>>([]);
-  const [input, setInput] = useState('');
-  const [loading, setLoading] = useState(false);
+export default function DeepseekChat() {
+    const [input, setInput] = useState('');
+    const [response, setResponse] = useState('');
+    const [loading, setLoading] = useState(false);
+    const {siteConfig} = useDocusaurusContext();
+    const apiKey = siteConfig.customFields?.deepseekApiKey as string;
 
-  const handleSend = async () => {
-    if (!input.trim() || loading) return;
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        if (!input.trim() || !apiKey) return;
 
-    const userMessage = { role: "user", content: input.trim() };
-    setMessages(prev => [...prev, userMessage]);
-    setInput('');
-    setLoading(true);
+        setLoading(true);
+        try {
+            const result = await chatWithSystem(input, apiKey);
+            setResponse(result || '抱歉，没有得到回应');
+        } catch (error: any) {
+            console.error('聊天出错:', error);
+            let errorMessage = '抱歉，发生了错误，请稍后再试';
+            
+            // 处理特定错误类型
+            if (error?.message?.includes('402 Insufficient Balance')) {
+                errorMessage = '抱歉，API 账户余额不足，请联系管理员充值。';
+            } else if (error?.message?.includes('429')) {
+                errorMessage = '请求太频繁，请稍后再试。';
+            } else if (error?.message?.includes('401')) {
+                errorMessage = 'API Key 无效，请检查配置。';
+            }
+            
+            setResponse(errorMessage);
+        } finally {
+            setLoading(false);
+        }
+    };
 
-    try {
-      const response = await deepseekService.chat([
-        { role: "system", content: "You are a helpful assistant." },
-        ...messages,
-        userMessage
-      ]);
-
-      setMessages(prev => [...prev, { role: "assistant", content: response.content }]);
-    } catch (error) {
-      console.error('Chat error:', error);
-    } finally {
-      setLoading(false);
+    if (!apiKey) {
+        return (
+            <div className="w-full max-w-2xl mx-auto p-4">
+                <p className="text-red-500">API Key 未配置，请检查网站配置。</p>
+            </div>
+        );
     }
-  };
 
-  return (
-    <div>
-      {/* 聊天消息展示 */}
-      <div>
-        {messages.map((msg, index) => (
-          <div key={index}>
-            <strong>{msg.role}:</strong> {msg.content}
-          </div>
-        ))}
-        {loading && <div>正在思考...</div>}
-      </div>
+    return (
+        <div className="w-full max-w-2xl mx-auto p-4 space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-2">
+                <textarea
+                    value={input}
+                    onChange={(e) => setInput(e.target.value)}
+                    placeholder="请输入你的问题..."
+                    className="w-full p-2 border rounded-lg min-h-[100px] bg-white dark:bg-gray-800"
+                />
+                <button
+                    type="submit"
+                    disabled={loading}
+                    className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50"
+                >
+                    {loading ? '正在思考...' : '发送'}
+                </button>
+            </form>
 
-      {/* 输入框 */}
-      <div>
-        <input
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          placeholder="输入消息..."
-          disabled={loading}
-        />
-        <button onClick={handleSend} disabled={loading}>
-          发送
-        </button>
-      </div>
-    </div>
-  );
-};
-```
-
-### 3.4 环境变量配置
-在项目根目录创建 `.env` 文件：
-
-```env
-DEEPSEEK_API_KEY=xxxxxxxxxxxxxxxxxxxx
-DEEPSEEK_API_BASE_URL=https://api.deepseek.com
-```
-
-:::warning 注意
-请确保将 `.env` 文件添加到 `.gitignore` 中，避免 API 密钥泄露。在生产环境中，应该使用更安全的方式管理密钥。
-:::
-
-## 4. 样式配置
-### 4.1 创建样式文件
-在 `src/css/chat.css` 中添加样式：
-
-```css
-.chat-container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-.messages-container {
-  height: 500px;
-  overflow-y: auto;
-  border: 1px solid #eee;
-  padding: 10px;
-  margin-bottom: 20px;
-}
-
-.chat-message {
-  margin: 10px 0;
-  padding: 10px;
-  border-radius: 8px;
-}
-
-.chat-message.user {
-  background: #e3f2fd;
-  margin-left: 20%;
-}
-
-.chat-message.assistant {
-  background: #f5f5f5;
-  margin-right: 20%;
-}
-
-.chat-input {
-  display: flex;
-  gap: 10px;
-}
-
-.chat-input input {
-  flex: 1;
-  padding: 8px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-
-.chat-input button {
-  padding: 8px 16px;
-  background: #1976d2;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+            {response && (
+                <div className={`p-4 rounded-lg ${response.includes('抱歉') ? 'bg-red-50 dark:bg-red-900/30 text-red-600 dark:text-red-400' : 'bg-gray-100 dark:bg-gray-900'}`}>
+                    <h3 className="font-bold mb-2">{response.includes('抱歉') ? '错误提示：' : 'AI 回应：'}</h3>
+                    <p className="whitespace-pre-wrap">{response}</p>
+                </div>
+            )}
+        </div>
+    );
 }
 ```
 
-
-## 5. Docusaurus配置
-### 5.1 修改配置文件
-在 `docusaurus.config.ts` 中添加以下配置：
+### 2.3 AI 聊天页面
+在 `src/pages/ai-chat.tsx` 中创建页面：
 
 ```typescript
-import type * as Preset from '@docusaurus/preset-classic';
-import type { Config } from '@docusaurus/types';
+import React from 'react';
+import Layout from '@theme/Layout';
+import DeepseekChat from '@site/src/components/DeepseekChat';
 
+export default function AiChat() {
+    return (
+        <Layout
+            title="AI 助手"
+            description="与 AI 助手进行对话"
+        >
+            <main className="container margin-vert--lg">
+                <h1 className="text-3xl font-bold text-center mb-8">AI 助手</h1>
+                <p className="text-center mb-8 text-gray-600 dark:text-gray-400">
+                    这是一个基于 Deepseek 的 AI 助手，可以回答你的问题、提供建议和帮助。
+                </p>
+                <DeepseekChat />
+            </main>
+        </Layout>
+    );
+}
+```
+
+## 3. Docusaurus 配置
+
+### 3.1 配置 API Key
+在 `docusaurus.config.ts` 中添加 DeepSeek API Key：
+
+```typescript
 const config: Config = {
-  // ... 其他基础配置
-  
-  // 添加 DeepSeek 相关配置
+  // ... 其他配置
   customFields: {
     bio: '无论前路如何，探索与学习是我不断进化的动力',
-    description: '这里是一片探索技术的乐园，记录着开发者的成长足迹。',
-    deepseekEnabled: true, // 启用 DeepSeek
-    deepseekConfig: {
-      apiKey: process.env.DEEPSEEK_API_KEY,
-      baseURL: process.env.DEEPSEEK_API_BASE_URL,
-      defaultModel: 'deepseek-chat',
-      temperature: 0.7,
-      maxTokens: 1000,
-    },
+    description: '这里是一片探索技术的乐园...',
+    deepseekApiKey: 'your-api-key-here',
   },
-  
-  // 添加环境变量插件配置
-  plugins: [
-    // ... 其他插件
-    async function setupDeepSeek() {
-      return {
-        name: 'docusaurus-deepseek-plugin',
-        async loadContent() {
-          if (!process.env.DEEPSEEK_API_KEY) {
-            throw new Error('Missing DEEPSEEK_API_KEY environment variable');
-          }
-          return {
-            apiKey: process.env.DEEPSEEK_API_KEY,
-          };
-        },
-      };
-    },
-  ],
-  
-  // 添加主题配置
-  themeConfig: {
-    // ... 其他主题配置
-    navbar: {
-      items: [
-        // ... 其他导航项
-        {
-          label: 'AI助手',
-          position: 'right',
-          to: '/ai-assistant',
-        },
-      ],
-    },
-  } satisfies Preset.ThemeConfig,
+  // ... 其他配置
 };
-
-export default config;
 ```
 
-:::tip 配置说明
-1. `customFields`: 添加 DeepSeek 相关的自定义配置
-2. `plugins`: 添加环境变量检查插件
-3. `navbar`: 添加 AI 助手导航项
-:::
-
-### 5.2 类型声明
-为了支持 TypeScript 类型检查，需要在 `src/types.d.ts` 中添加类型声明：
+### 3.2 添加导航菜单
+在 `docusaurus.config.ts` 的 `navbar.items` 中添加 AI 助手菜单：
 
 ```typescript
-declare module '@docusaurus/types' {
-  export interface DocusaurusConfig {
-    customFields: {
-      deepseekEnabled: boolean;
-      deepseekConfig: {
-        apiKey: string;
-        baseURL: string;
-        defaultModel: string;
-        temperature: number;
-        maxTokens: number;
-      };
-    };
-  }
+navbar: {
+  items: [
+    // ... 其他菜单项
+    { label: 'AI助手', position: 'right', to: 'ai-chat' },
+  ],
 }
 ```
-### 5.3 特别说明：DeepSeek API 服务状态
 
-:::caution DeepSeek API 服务维护通知
-目前 DeepSeek API 存在以下问题：
-1. 无法正常充值
-2. 服务可能存在维护状态
-3. 可能受到请求限制
+## 4. 安全注意事项
 
-由于以上原因，本博客的 AI 助手功能尚未正式上线。我会持续关注 DeepSeek 的服务状态，在服务恢复正常后第一时间完成集成。
+:::warning 安全警告
+当前实现方式将 API Key 暴露在前端，这在生产环境中是不安全的。在实际生产环境中，建议：
+
+1. 创建后端 API 服务来代理 DeepSeek API 调用
+2. 在后端安全存储 API Key
+3. 实现请求频率限制和用户认证
+4. 添加内容审核机制
 :::
 
-:::tip 替代方案
-在 DeepSeek API 服务恢复之前，您可以：
-1. 关注我的更新通知
-2. 使用其他 AI 服务提供商的 API
-3. 等待 DeepSeek 官方服务恢复
-:::
+## 5. 错误处理
+当前实现已经包含了以下错误处理：
 
+1. API Key 未配置的提示
+2. 402 余额不足的错误提示
+3. 429 请求频率限制的错误提示
+4. 401 API Key 无效的错误提示
+5. 其他通用错误的提示
 
-## 6. 高级开发指南与性能优化技巧
+## 6. 样式适配
+组件已经支持：
 
-### 6.1 性能调优方案
-1. **消息缓存**：使用 localStorage 缓存历史消息
-2. **防抖处理**：对用户输入进行防抖处理
-3. **懒加载**：组件按需加载
-4. **错误重试**：添加请求失败重试机制
+1. 响应式布局
+2. 深色模式适配
+3. 错误状态的样式区分
+4. 加载状态的显示
 
-### 6.2 用户体验提升方案
-1. **加载状态**：添加消息发送loading效果
-2. **打字机效果**：实现AI回复打字机效果
-3. **markdown渲染**：支持markdown格式显示
-4. **代码高亮**：集成代码语法高亮
+## 7. 常见问题
 
-### 6.3 安全防护策略
-1. **API密钥保护**：确保API密钥安全存储
-2. **请求限制**：添加请求频率限制
-3. **内容过滤**：添加敏感内容过滤
-4. **错误处理**：完善错误提示机制
+### Q: 为什么会遇到 402 Insufficient Balance 错误？
+A: 这表示你的 DeepSeek API 账户余额不足，需要在 DeepSeek 平台充值后才能继续使用。
 
-## 7. 常见问题解答
+### Q: 为什么在浏览器中调用 API 会有安全警告？
+A: 这是因为在浏览器中直接使用 API Key 是不安全的。我们使用了 `dangerouslyAllowBrowser: true` 选项来允许浏览器端调用，但这仅适用于开发环境。
 
-### Q: API 调用的并发限制是多少？是否可以提高账号的并发上限？
-A: 当前阶段，DeepSeek 没有按照用户设置硬性并发上限。在系统总负载量较高时，基于系统负载和用户短时历史用量的动态限流模型可能会导致用户收到 503 或 429 错误码。目前暂不支持针对单个账号提高并发上限。
-
-### Q: 为什么感觉 API 返回比网页端慢？
-A: 这是因为网页端默认使用流式输出（stream=true），即模型每输出一个字符，都会增量地显示在前端。而 API 默认使用非流式输出（stream=false），即模型在所有内容输出完后，才会返回给用户。您可以通过开启 API 的 stream 模式来提升交互性。
-
-### Q: 为什么调用 API 时，持续返回空行？
-A: 为了保持 TCP 连接不会因超时中断，DeepSeek 会在请求等待调度过程中，持续返回空行（非流式请求）或 SSE keep-alive 注释（: keep-alive，流式请求）。如果您在自己解析 HTTP 响应，请注意处理这些空行或注释。
-
-### Q: 是否支持 LangChain？
-A: 支持。LangChain 支持 OpenAI API 接口，而 DeepSeek API 接口与 OpenAI 兼容。您可以通过配置 LangChain 的 API 基础地址和密钥来使用 DeepSeek API。
+### Q: 如何实现更安全的部署方案？
+A: 建议创建一个后端服务来代理 API 调用，将 API Key 安全地存储在服务器端。
 
 ## 8. 参考资源
-- [DeepSeek API官方文档](https://api-docs.deepseek.com/zh-cn)
-- [Docusaurus官方文档](https://docusaurus.io/)
-- [React官方文档](https://reactjs.org/)
-- [Axios文档](https://axios-http.com/)
+
+- [DeepSeek API 文档](https://platform.deepseek.com/docs)
+- [OpenAI SDK 文档](https://github.com/openai/openai-node)
+- [Docusaurus 文档](https://docusaurus.io/)

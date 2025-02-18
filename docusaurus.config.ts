@@ -18,6 +18,7 @@ const config: Config = {
     bio: '无论前路如何，探索与学习是我不断进化的动力',
     description:
         '这里是一片探索技术的乐园，记录着开发者的成长足迹。作为一个技术分享平台，网站采用现代化的 Docusaurus 框架打造，致力于为读者提供高质量的编程经验和项目实践心得。',
+    deepseekApiKey: 'sk-4c308839e3614f5f856bb15808dd85ed',
   },
   themeConfig: {
     // announcementBar: {
@@ -56,7 +57,8 @@ const config: Config = {
         { label: '项目', position: 'right', to: 'project' },
         { label: '友链', position: 'right', to: 'friends' },
         { label: '关于', position: 'right', to: 'about' },
-        { label: '商务', position: 'right', to: 'business' }, // 新增商务菜单
+        { label: '商务', position: 'right', to: 'business' },
+        { label: 'AI助手', position: 'right', to: 'ai-chat' },
         {
           label: '更多',
           position: 'right',
