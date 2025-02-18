@@ -47,157 +47,153 @@ DEEPSEEK_API_BASE_URL=https://api.deepseek.com/v1
 :::
 
 ## 3. 核心功能实现
-### 3.1 项目结构
+### 3.1 安装依赖
+首先需要安装 OpenAI SDK：
+
 ```bash
-src/
-  services/
-    deepseek/
-      config.ts      # DeepSeek配置
-      types.ts       # 类型定义
-      service.ts     # API服务
-  components/
-    Chat/
-      index.tsx      # 聊天组件
-      ChatInput.tsx  # 输入组件  
-      ChatMessage.tsx # 消息组件
+pnpm add openai
 ```
 
-### 3.2 DeepSeek服务配置
+### 3.2 创建服务类
+在 `src/services/deepseek` 目录下创建 `index.ts` 文件：
 
-#### config.ts 配置
 ```typescript
-export const DEEPSEEK_CONFIG = {
-  apiKey: process.env.DEEPSEEK_API_KEY,
-  baseURL: process.env.DEEPSEEK_API_BASE_URL,
+import OpenAI from 'openai';
+import type { ChatCompletionMessageParam } from 'openai/resources/chat/completions';
+
+// DeepSeek配置接口
+export interface DeepSeekConfig {
+  apiKey: string;
+  baseURL: string;
+  model: string;
+  temperature?: number;
+  maxTokens?: number;
+}
+
+// 默认配置
+const DEFAULT_CONFIG: DeepSeekConfig = {
+  apiKey: process.env.DEEPSEEK_API_KEY || 'your-api-key',
+  baseURL: 'https://api.deepseek.com',
   model: 'deepseek-chat',
   temperature: 0.7,
-  max_tokens: 1000
-}
-```
+  maxTokens: 1000,
+};
 
-#### types.ts 类型定义
-```typescript
-export interface ChatMessage {
-  role: 'user' | 'assistant' | 'system';
-  content: string;
-}
+export class DeepSeekService {
+  private client: OpenAI;
+  private config: DeepSeekConfig;
 
-export interface ChatResponse {
-  id: string;
-  choices: {
-    message: ChatMessage;
-    finish_reason: string;
-  }[];
-}
-```
-
-#### service.ts API服务
-```typescript
-import axios from 'axios';
-import { DEEPSEEK_CONFIG } from './config';
-import type { ChatMessage, ChatResponse } from './types';
-
-const deepseekApi = axios.create({
-  baseURL: DEEPSEEK_CONFIG.baseURL,
-  headers: {
-    'Authorization': `Bearer ${DEEPSEEK_CONFIG.apiKey}`,
-    'Content-Type': 'application/json'
-  }
-});
-
-export const chatCompletion = async (messages: ChatMessage[]) => {
-  try {
-    const response = await deepseekApi.post<ChatResponse>('/chat/completions', {
-      model: DEEPSEEK_CONFIG.model,
-      messages,
-      temperature: DEEPSEEK_CONFIG.temperature,
-      max_tokens: DEEPSEEK_CONFIG.max_tokens
+  constructor(config: Partial<DeepSeekConfig> = {}) {
+    this.config = { ...DEFAULT_CONFIG, ...config };
+    this.client = new OpenAI({
+      apiKey: this.config.apiKey,
+      baseURL: this.config.baseURL,
     });
-    return response.data;
-  } catch (error) {
-    console.error('DeepSeek API Error:', error);
-    throw error;
   }
-};
-```
 
-### 3.3 聊天组件开发
+  // 发送聊天请求
+  async chat(messages: ChatCompletionMessageParam[]) {
+    try {
+      const completion = await this.client.chat.completions.create({
+        messages,
+        model: this.config.model,
+        temperature: this.config.temperature,
+        max_tokens: this.config.maxTokens,
+      });
 
-#### ChatMessage.tsx
-```typescript
-import React from 'react';
-import type { ChatMessage } from '@/services/deepseek/types';
-
-interface Props {
-  message: ChatMessage;
-}
-
-export const ChatMessage: React.FC<Props> = ({ message }) => {
-  return (
-    <div className={`chat-message ${message.role}`}>
-      <div className="message-content">
-        {message.content}
-      </div>
-    </div>
-  );
-};
-```
-
-#### ChatInput.tsx
-```typescript
-import React, { useState } from 'react';
-
-interface Props {
-  onSend: (message: string) => void;
-}
-
-export const ChatInput: React.FC<Props> = ({ onSend }) => {
-  const [input, setInput] = useState('');
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (input.trim()) {
-      onSend(input);
-      setInput('');
+      return completion.choices[0].message;
+    } catch (error) {
+      console.error('DeepSeek API Error:', error);
+      throw error;
     }
-  };
+  }
 
-  return (
-    <form onSubmit={handleSubmit} className="chat-input">
-      <input
-        type="text"
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
-        placeholder="输入消息..."
-      />
-      <button type="submit">发送</button>
-    </form>
-  );
-};
+  // 流式响应聊天
+  async streamChat(messages: ChatCompletionMessageParam[]) {
+    try {
+      const stream = await this.client.chat.completions.create({
+        messages,
+        model: this.config.model,
+        temperature: this.config.temperature,
+        max_tokens: this.config.maxTokens,
+        stream: true,
+      });
+
+      return stream;
+    } catch (error) {
+      console.error('DeepSeek Stream API Error:', error);
+      throw error;
+    }
+  }
+}
+
+// 导出单例实例
+export const deepseekService = new DeepSeekService();
 ```
 
-#### Chat/index.tsx
+### 3.3 使用示例
+
+#### 基础使用
+```typescript
+import { deepseekService } from '@/services/deepseek';
+
+// 基本对话
+async function basicChat() {
+  try {
+    const response = await deepseekService.chat([
+      { role: "system", content: "You are a helpful assistant." },
+      { role: "user", content: "你好，请介绍一下你自己" }
+    ]);
+    
+    console.log(response.content);
+  } catch (error) {
+    console.error('Chat error:', error);
+  }
+}
+
+// 流式对话
+async function streamChat() {
+  try {
+    const stream = await deepseekService.streamChat([
+      { role: "system", content: "You are a helpful assistant." },
+      { role: "user", content: "你好，请介绍一下你自己" }
+    ]);
+
+    for await (const chunk of stream) {
+      process.stdout.write(chunk.choices[0]?.delta?.content || '');
+    }
+  } catch (error) {
+    console.error('Stream chat error:', error);
+  }
+}
+```
+
+#### 在React组件中使用
 ```typescript
 import React, { useState } from 'react';
-import { ChatMessage } from './ChatMessage';
-import { ChatInput } from './ChatInput';
-import { chatCompletion } from '@/services/deepseek/service';
-import type { ChatMessage as ChatMessageType } from '@/services/deepseek/types';
+import { deepseekService } from '@/services/deepseek';
 
-export const Chat: React.FC = () => {
-  const [messages, setMessages] = useState<ChatMessageType[]>([]);
+export const ChatComponent: React.FC = () => {
+  const [messages, setMessages] = useState<Array<{ role: string; content: string }>>([]);
+  const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const handleSend = async (content: string) => {
-    try {
-      setLoading(true);
-      const userMessage: ChatMessageType = { role: 'user', content };
-      setMessages(prev => [...prev, userMessage]);
+  const handleSend = async () => {
+    if (!input.trim() || loading) return;
 
-      const response = await chatCompletion([...messages, userMessage]);
-      const assistantMessage = response.choices[0].message;
-      
-      setMessages(prev => [...prev, assistantMessage]);
+    const userMessage = { role: "user", content: input.trim() };
+    setMessages(prev => [...prev, userMessage]);
+    setInput('');
+    setLoading(true);
+
+    try {
+      const response = await deepseekService.chat([
+        { role: "system", content: "You are a helpful assistant." },
+        ...messages,
+        userMessage
+      ]);
+
+      setMessages(prev => [...prev, { role: "assistant", content: response.content }]);
     } catch (error) {
       console.error('Chat error:', error);
     } finally {
@@ -206,17 +202,45 @@ export const Chat: React.FC = () => {
   };
 
   return (
-    <div className="chat-container">
-      <div className="messages-container">
+    <div>
+      {/* 聊天消息展示 */}
+      <div>
         {messages.map((msg, index) => (
-          <ChatMessage key={index} message={msg} />
+          <div key={index}>
+            <strong>{msg.role}:</strong> {msg.content}
+          </div>
         ))}
+        {loading && <div>正在思考...</div>}
       </div>
-      <ChatInput onSend={handleSend} />
+
+      {/* 输入框 */}
+      <div>
+        <input
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          placeholder="输入消息..."
+          disabled={loading}
+        />
+        <button onClick={handleSend} disabled={loading}>
+          发送
+        </button>
+      </div>
     </div>
   );
 };
 ```
+
+### 3.4 环境变量配置
+在项目根目录创建 `.env` 文件：
+
+```env
+DEEPSEEK_API_KEY=xxxxxxxxxxxxxxxxxxxx
+DEEPSEEK_API_BASE_URL=https://api.deepseek.com
+```
+
+:::warning 注意
+请确保将 `.env` 文件添加到 `.gitignore` 中，避免 API 密钥泄露。在生产环境中，应该使用更安全的方式管理密钥。
+:::
 
 ## 4. 样式配置
 ### 4.1 创建样式文件
