@@ -5,8 +5,11 @@ hide_table_of_contents: true
 ---
 
 import { Icon } from '@iconify/react'
+import FloatChat from '@site/src/components/FloatChat'
 
 <div className="business-page">
+
+<FloatChat />
 
 # 商务合作 <Icon icon="emojione:handshake" className="inline-block ml-2" width="32" />
 
