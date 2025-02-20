@@ -1,15 +1,15 @@
 ---
 id: 1010
 slug: deepseek-api-integration-guide-docusaurus
-title: DeepSeek API 集成指南：Docusaurus博客完整实践
+title: DeepSeek API 集成教程：在 Docusaurus 博客中开发 AI 对话助手
 authors: [bianliang]
 tags: [DeepSeek, API集成, React开发, Docusaurus, AI助手, 前端开发]
-keywords: [DeepSeek API教程, Docusaurus集成, AI对话实现, React组件开发, AI助手开发, 2025教程, API对接, 前端集成]
+keywords: [DeepSeek API,Docusaurus集成,AI对话助手,前端开发教程,React组件,API Key配置,项目实践,聊天功能实现]
 description: DeepSeek API集成教程，从环境配置到完整实现，手把手教你在Docusaurus博客中开发AI对话助手。包含代码示例、性能优化和最佳实践。
 image: https://bianliangrensheng.cn/gImage/title/deepseek-Integration-hub.jpg
 ---
 
-#  DeepSeek API 集成指南：Docusaurus博客完整实践
+#  DeepSeek API 集成教程：在 Docusaurus 博客中开发 AI 对话助手
 
 在这个最新的 DeepSeek API 集成教程中，我将详细介绍如何在 Docusaurus 博客中开发 AI 对话助手。本教程基于实际项目实践，包含完整的代码示例和实现步骤。
 
