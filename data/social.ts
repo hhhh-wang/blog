@@ -20,7 +20,7 @@ type SocialValue = {
 
 const social: Social = {
     github: 'https://github.com/hhhh-wang',
-    x: 'https://twitter.com/kunwang853028',
+    x: 'https://x.com/bianliangrs',
     juejin: 'https://juejin.cn/user/3120872724108442',
     wx: 'https://bianliangrensheng.cn/gImage/title/wechat.png',
     // qq: 'https://img..cn/qq.png',
