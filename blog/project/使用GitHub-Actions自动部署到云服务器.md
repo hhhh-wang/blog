@@ -5,7 +5,7 @@ title: 使用 GitHub Actions 自动部署到云服务器
 date: 2025-01-27
 authors: bianliang
 tags: [github, action, cloud]
-keywords: [GitHub Actions, 自动化部署, CI/CD, 云服务器]
+keywords: [GitHub Actions, 自动部署, 云服务器, Nginx 配置, SSH 密钥配置, Node.js 环境, 部署流程, 流水线配置]
 description: 详细介绍如何利用 GitHub Actions 实现项目自动部署到云服务器，包括完整配置步骤和最佳实践。
 image: https://bianliangrensheng.cn/gImage/title/deploy-to-cloud-server-with-github-actions.jpg
 ---
