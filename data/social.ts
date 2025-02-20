@@ -24,7 +24,7 @@ const social: Social = {
     juejin: 'https://juejin.cn/user/3120872724108442',
     wx: 'https://bianliangrensheng.cn/gImage/title/wechat.png',
     // qq: 'https://img..cn/qq.png',
-    // zhihu: 'https://www.zhihu.com/people/',
+    zhihu: 'https://zhihu.com/people/bianliangrensheng',
     // cloudmusic: 'https://music.163.com/#/user/home?',
     email: 'mailto:kun64855@gmail.com',
     // discord: 'https://discord.gg/',
