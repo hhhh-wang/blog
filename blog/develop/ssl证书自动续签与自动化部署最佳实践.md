@@ -1,10 +1,10 @@
 ---
 id: 1008
 slug: https-cert-auto-renew
-title: SSL证书自动续签与自动化部署最佳实践
+title: SSL证书自动续签与部署的完全解决方案
 date: 2025-02-08
 authors: bianliang
-keywords: [HTTPS,SSL证书,自动化部署,DevOps,httpsok]
+keywords: [SSL证书, 自动续签, 自动化部署, httpsok, 免费证书管理, 证书监控, Nginx配置, 运维效率提升]
 tags: [HTTPS,SSL证书,自动化部署,DevOps,httpsok]
 description: 分享如何使用 httpsok 解决免费SSL证书自动续签的痛点,真正实现证书管理自动化。
 image: https://bianliangrensheng.cn/gImage/title/ssl-certificate-auto-renewal-and-deployment-best-practices.jpg
