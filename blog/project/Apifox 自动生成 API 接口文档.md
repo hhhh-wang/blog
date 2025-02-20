@@ -1,16 +1,16 @@
 ---
 id: 1006
 slug: apifox-auto-generates
-title: Apifox 自动生成 API 接口文档
+title: Apifox：自动生成API接口文档解析
 date: 2025-01-17
 authors: bianliang
-keywords: [Apifox ,Idea,Project]
+keywords: [Apifox, 自动生成接口文档, API 文档, 零代码侵入, 团队协作, IDEA 插件, 接口同步, 开发工具]
 tags:  [Apifox ,Idea,Project]
 description: 告别繁琐的手动API文档编写！本文详细介绍如何使用Apifox自动生成接口文档，从安装配置到一键生成，让团队协作更高效，代码更整洁。一个现代化的API文档解决方案。
 image: https://bianliangrensheng.cn/gImage/title/apifox-auto-generates.jpg
 ---
 
-# Apifox 自动生成 API 接口文档
+# Apifox：自动生成API接口文档解析
 
 
 1. 自动生成接口文档： 不用手写，一键点击就可以自动生成文档，当有更新时，点击一下就可以自动同步接口文档；

@@ -1,16 +1,16 @@
 ---
 id: 1000
 slug: use-github-trusteeship-images
-title: 使用GiHub作为图床
+title: 使用GitHub搭建免费的图床教程
 date: 2025-01-17
 authors: bianliang
-keywords: [GitHub,PicGo,JsDelivr]
+keywords: [GitHub, 图床, 免费图床, 图片上传, PicGo, Typora, GitHub 仓库, 静态资源]
 tags: [GitHub,PicGo,JsDelivr]
 description: 使用GitHub 图床,无论是博客写作还是前端项目开发，这都将是一个非常棒的方式
 image: https://bianliangrensheng.cn/gImage/title/apifox-auto-generates.jpg
 ---
 
-# 使用 GitHub 作为免费图床的文档
+# 使用GitHub搭建免费的图床教程
 
 最近就想找一款免费的图床来放置自己的图片，逛了一圈下来发现GitHub可以白嫖，于是乎，就有了这篇文章。
 
