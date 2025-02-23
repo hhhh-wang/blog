@@ -1,10 +1,17 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const blogPluginExports = require('@docusaurus/plugin-content-blog')
 const { default: blogPlugin } = blogPluginExports
+const { submitToIndexNow } = require('./IndexNow');
 
 async function blogPluginEnhanced(context, options) {
   const blogPluginInstance = await blogPlugin(context, options)
   const { postsPerPage } = options
+  const { siteConfig } = context;
+  const siteUrl = siteConfig.url;
+  
+  // 从配置中获取 IndexNow 设置
+  const indexNowConfig = siteConfig.customFields?.indexNow || {};
+  const host = new URL(siteUrl).hostname;
 
   return {
     ...blogPluginInstance,
@@ -34,10 +41,41 @@ async function blogPluginEnhanced(context, options) {
         postNum: content.blogPosts.length,
         tagNum: Object.keys(blogTags).length,
       })
+
+      // 收集所有博客文章的 URL
+      const urlList = content.blogPosts.map(post => {
+        // 确保 URL 正确生成
+        const path = post.metadata.permalink;
+        if (!path) {
+          console.warn('Post permalink is undefined:', post.id);
+          return null;
+        }
+        return `${siteUrl}${path}`;
+      }).filter(Boolean); // 过滤掉 null 值
+
+      // 如果有有效的 URL 且配置了 IndexNow key 才提交
+      if (urlList.length > 0 && indexNowConfig.key) {
+        try {
+          await submitToIndexNow(urlList, {
+            host,
+            key: indexNowConfig.key
+          });
+          console.log('Successfully submitted URLs to IndexNow:', urlList);
+        } catch (error) {
+          console.error('Failed to submit URLs to IndexNow:', error.response?.data || error.message);
+        }
+      } else {
+        if (!indexNowConfig.key) {
+          console.warn('IndexNow key not configured in docusaurus.config.ts');
+        }
+        if (urlList.length === 0) {
+          console.warn('No valid URLs found to submit to IndexNow');
+        }
+      }
     },
   }
 }
 
 module.exports = Object.assign({}, blogPluginExports, {
   default: blogPluginEnhanced,
-})
+});

@@ -9,6 +9,7 @@ const beian1 = '湘公网安备43310002000135号'
 
 const config: Config = {
   title: '变量人生',
+  tagline: '记录生活，记录成长',
   url: 'https://bianliangrensheng.cn',
   baseUrl: '/',
   favicon: 'img/favicon.ico',
@@ -19,6 +20,9 @@ const config: Config = {
     description:
         '这里是一片探索技术的乐园，记录着开发者的成长足迹。作为一个技术分享平台，网站采用现代化的 Docusaurus 框架打造，致力于为读者提供高质量的编程经验和项目实践心得。',
     deepseekApiKey: 'sk-4c308839e3614f5f856bb15808dd85ed',
+    indexNow: {
+      key: '57cbafe50d9f4792b8056c635a805aa0'
+    }
   },
   themeConfig: {
     // announcementBar: {
