@@ -1,5 +1,5 @@
 ---
-id: 1010
+id: 1011
 slug: ai-customer-service-assistant
 title: 完整指南：用 React + Deepseek 开发智能客服助手
 authors: [bianliang]

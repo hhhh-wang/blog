@@ -1,4 +1,5 @@
 ---
+id: 1006
 slug: docusaurus-indexnow-integration
 title: Docusaurus集成IndexNow：加速搜索引擎收录
 authors: [bianliang]
