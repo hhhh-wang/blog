@@ -40,14 +40,14 @@ export const projects: Project[] = [
         type: 'web',
     },
     {
-        title: '合作项目还在整理资料中',
-        description: '📦整理文档中',
-        preview: 'https://bianliangrensheng.cn/gImage/title/blog-404.jpg',
-        website: 'https://bianliangrensheng.cn',
-        ip: 'https://bianliangrensheng.cn',
-        source: 'https://github.com/',
-        tags: ['product', 'design', 'large'],
-        type: 'teamwork',
+        title: '健康饮食',
+        description: '🥗 基于Uni-app、Vue3构建的饮食管理小程序',
+        preview: 'https://bianliangrensheng.cn/gImage/title/health-bite-cover.png',
+        website: 'https://health-bite.bianliangrensheng.cn',
+        ip: 'https://health-bite.bianliangrensheng.cn',
+        source: 'https://github.com/hhhh-wang/health-bite',
+        tags: ['product', 'design', 'favorite'],
+        type: 'ongoing',
     },
     {
         title: 'Boss慧眼',
@@ -59,6 +59,17 @@ export const projects: Project[] = [
         tags: ['opensource', 'tools', 'personal'],
         type: 'tools',
     },
+
+    {
+        title: '合作项目还在整理资料中',
+        description: '📦整理文档中',
+        preview: 'https://bianliangrensheng.cn/gImage/title/blog-404.jpg',
+        website: 'https://bianliangrensheng.cn',
+        ip: 'https://bianliangrensheng.cn',
+        source: 'https://github.com/',
+        tags: ['product', 'design', 'large'],
+        type: 'teamwork',
+    },
 ]
 
 export type Tag = {
@@ -67,16 +78,17 @@ export type Tag = {
     color: string
 }
 
-export type TagType = 'favorite' | 'opensource' | 'product' | 'design' | 'large' | 'personal' | 'teamwork' | 'tools'
+export type TagType = 'favorite' | 'opensource' | 'product' | 'design' | 'large' | 'personal' | 'teamwork' | 'tools' | 'ongoing'
 
-export type ProjectType = 'web' | 'app' | 'commerce' | 'personal' | 'toy' | 'other' | 'teamwork' | 'tools'
+export type ProjectType = 'web' | 'app' | 'commerce' | 'personal' | 'toy' | 'other' | 'teamwork' | 'tools' | 'ongoing'
 
 export const projectTypeMap = {
     web: '🖥️ 商业项目',
     app: '💫 应用',
     commerce: '商业项目',
-    teamwork: '🤝 合作',
-    tools: '🛠️ 实用工具'
+    ongoing: '🚀 进行中',
+    tools: '🛠️ 实用工具',
+    teamwork: '🤝 合作'
 }
 
 export type Project = {
@@ -130,6 +142,11 @@ export const Tags: Record<TagType, Tag> = {
         label: '工具',
         description: '实用的前端开发工具',
         color: '#555555'
+    },
+    ongoing: {
+        label: '进行中',
+        description: '正在进行的项目',
+        color: '#007bff'
     }
 }
 
