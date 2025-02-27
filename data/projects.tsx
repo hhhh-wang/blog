@@ -41,7 +41,7 @@ export const projects: Project[] = [
     },
     {
         title: '健康饮食',
-        description: '🥗 基于Uni-app、Vue3构建的饮食管理小程序',
+        description: '🥗 基于Uni-app、Vue3构建的饮食管理小程序（还在开发中，有一些BUG没时间修复）',
         preview: 'https://bianliangrensheng.cn/gImage/title/health-bite-cover.png',
         website: 'https://health-bite.bianliangrensheng.cn',
         ip: 'https://health-bite.bianliangrensheng.cn',
