@@ -21,7 +21,7 @@ export const projects: Project[] = [
     },
     {
         title: '省心租房后台管理系统',
-        description: '🎁基于 SpringBoot、SpringMVC、Mybatis 框架，可用于所有的Web应用程序',
+        description: '🎁基于 SpringBoot、SpringMVC、Mybatis 框架，可用于所有的Web应用程序（暂时下架）',
         preview: 'https://bianliangrensheng.cn/gImage/title/rent-ease-admin-index.png',
         website: 'https://rent-ease-admin.bianliangrensheng.cn',
         ip: 'https://rent-ease-admin.bianliangrensheng.cn',
@@ -54,7 +54,7 @@ export const projects: Project[] = [
         description: '🍽️ 基于SpringBoot构建的饮食管理系统后端与API，包含饮食数据分析、营养计算等功能，接入支付与AI，同步编写软件著作权（最近比较忙还没有来得及部署）',
         preview: 'https://bianliangrensheng.cn/gImage/title/health-bite-backend.png',
         website: 'https://health-bite-api.bianliangrensheng.cn',
-        ip: '',
+        ip: 'https://health-bite-admin.bianliangrensheng.cn',
         source: 'https://github.com/hhhh-wang/health-bite-admin',
         tags: ['product', 'personal', 'ongoing'],
         type: 'ongoing',
