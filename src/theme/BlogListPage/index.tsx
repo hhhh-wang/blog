@@ -12,6 +12,59 @@ import { type ViewType, useViewType } from '@site/src/hooks/useViewType'
 import BlogPostGridItems from '../BlogPostGridItems'
 
 import MyLayout from '../MyLayout'
+import { useState } from 'react'
+
+interface BlogCategory {
+  label: string
+  folder: string
+  count: number
+}
+
+interface BlogCategoriesProps {
+  categories: BlogCategory[]
+  activeCategory: string
+  onSelectCategory: (category: string) => void
+}
+
+function BlogCategories({ categories, activeCategory, onSelectCategory }: BlogCategoriesProps) {
+  return (
+    <div className="my-8">
+      <div className="flex flex-wrap gap-2 justify-center items-center">
+        <button
+          className={cn(
+            'px-4 py-1.5 text-sm font-medium rounded-full transition-all duration-200',
+            'hover:shadow-md hover:transform hover:scale-105',
+            'border border-transparent',
+            activeCategory === 'all'
+              ? 'bg-primary text-white shadow-sm hover:bg-primary/90'
+              : 'bg-gray-50 text-gray-600 hover:text-primary hover:border-primary/30',
+            'dark:bg-gray-800/50 dark:text-gray-300 dark:hover:text-primary',
+          )}
+          onClick={() => onSelectCategory('all')}
+        >
+          全部文章
+        </button>
+        {categories.map((category) => (
+          <button
+            key={category.label}
+            className={cn(
+              'px-4 py-1.5 text-sm font-medium rounded-full transition-all duration-200',
+              'hover:shadow-md hover:transform hover:scale-105',
+              'border border-transparent',
+              activeCategory === category.label
+                ? 'bg-primary text-white shadow-sm hover:bg-primary/90'
+                : 'bg-gray-50 text-gray-600 hover:text-primary hover:border-primary/30',
+              'dark:bg-gray-800/50 dark:text-gray-300 dark:hover:text-primary',
+            )}
+            onClick={() => onSelectCategory(category.label)}
+          >
+            {category.label} ({category.count})
+          </button>
+        ))}
+      </div>
+    </div>
+  )
+}
 
 function BlogListPageMetadata(props: Props): JSX.Element {
   const { metadata } = props
@@ -56,11 +109,46 @@ function ViewTypeSwitch({
 
 function BlogListPageContent(props: Props) {
   const { metadata, items } = props
-
   const { viewType, toggleViewType } = useViewType()
+  const [activeCategory, setActiveCategory] = useState('all')
 
-  const isListView = viewType === 'list'
-  const isGridView = viewType === 'grid'
+  const categories: BlogCategory[] = [
+    { 
+      label: '开发教程', 
+      folder: 'develop',
+      count: items.filter(item => 
+        item.content.metadata.source.includes('/blog/develop/')
+      ).length 
+    },
+    { 
+      label: '技术讨论', 
+      folder: 'discuss',
+      count: items.filter(item => 
+        item.content.metadata.source.includes('/blog/discuss/')
+      ).length 
+    },
+    { 
+      label: '生活随笔', 
+      folder: 'lifestyle',
+      count: items.filter(item => 
+        item.content.metadata.source.includes('/blog/lifestyle/')
+      ).length 
+    },
+    { 
+      label: '项目实践', 
+      folder: 'project',
+      count: items.filter(item => 
+        item.content.metadata.source.includes('/blog/project/')
+      ).length 
+    }
+  ]
+
+  const filteredItems = activeCategory === 'all' 
+    ? items 
+    : items.filter(item => {
+        const category = categories.find(c => c.label === activeCategory)
+        return category && item.content.metadata.source.includes(`/blog/${category.folder}/`)
+      })
 
   return (
     <MyLayout>
@@ -68,16 +156,24 @@ function BlogListPageContent(props: Props) {
         <Translate id="theme.blog.title.new">博客</Translate>
       </h2>
       <p className="mb-4 text-center">变量人生：探索人生变量与无限可能的记录</p>
+
       <ViewTypeSwitch viewType={viewType} toggleViewType={toggleViewType} />
+
+      <BlogCategories 
+        categories={categories}
+        activeCategory={activeCategory}
+        onSelectCategory={setActiveCategory}
+      />
+      
       <div className="row">
         <div className={'col col--12'}>
           <>
-            {isListView && (
+            {viewType === 'list' && (
               <div className="mb-4">
-                <BlogPostItems items={items} />
+                <BlogPostItems items={filteredItems} />
               </div>
             )}
-            {isGridView && <BlogPostGridItems items={items} />}
+            {viewType === 'grid' && <BlogPostGridItems items={filteredItems} />}
           </>
           <BlogListPaginator metadata={metadata} />
         </div>
