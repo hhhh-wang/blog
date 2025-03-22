@@ -97,8 +97,8 @@ body {
 }
 
 body {
-  font-family: misans, system-ui, -apple-system, 'PingFang SC',
-    'Microsoft YaHei';
+  font-family: "Microsoft YaHei", "微软雅黑", misans, system-ui, -apple-system, 'PingFang SC';
+  font-size: 16px;
 }
 
 .navbar__item {

@@ -62,7 +62,6 @@ const config: Config = {
         { label: '友链', position: 'right', to: 'friends' },
         { label: '关于', position: 'right', to: 'about' },
         { label: '商务', position: 'right', to: 'business' },
-        { label: 'AI助手', position: 'right', to: 'ai-chat' },
         {
           label: '更多',
           position: 'right',
