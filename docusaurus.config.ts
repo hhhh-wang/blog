@@ -21,7 +21,7 @@ const config: Config = {
         '这里是一片探索技术的乐园，记录着开发者的成长足迹。作为一个技术分享平台，网站采用现代化的 Docusaurus 框架打造，致力于为读者提供高质量的编程经验和项目实践心得。',
     deepseekApiKey: 'sk-4c308839e3614f5f856bb15808dd85ed',
     indexNow: {
-      key: 'b96ba7f80684437aa0f13fe7ea35e9f4'
+      key: '78510668c3f04067a1358f3df2f70dd2'
     }
   },
   themeConfig: {
