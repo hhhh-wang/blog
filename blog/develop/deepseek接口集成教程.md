@@ -7,6 +7,7 @@ tags: [DeepSeek, API集成, React开发, Docusaurus, AI助手, 前端开发]
 keywords: [DeepSeek API,Docusaurus集成,AI对话助手,前端开发教程,React组件,API Key配置,项目实践,聊天功能实现]
 description: DeepSeek API集成教程，从环境配置到完整实现，手把手教你在Docusaurus博客中开发AI对话助手。包含代码示例、性能优化和最佳实践。
 image: https://bianliangrensheng.cn/gImage/title/deepseek-Integration-hub.jpg
+date: 2025-03-17
 ---
 
 #  DeepSeek API 集成教程：在 Docusaurus 博客中开发 AI 对话助手

@@ -7,6 +7,7 @@ tags: [Docusaurus, SEO, IndexNow, JavaScript]
 keywords: [Docusaurus, IndexNow集成, 搜索引擎收录, SEO优化, 网站收录加速]
 description: 详细介绍如何在Docusaurus中集成IndexNow，实现网站内容的快速收录，提升搜索引擎优化效果
 image: https://bianliangrensheng.cn/gImage/title/indexnow-integration-cover.jpg
+date: 2025-03-11
 ---
 
 # Docusaurus集成IndexNow：加速搜索引擎收录

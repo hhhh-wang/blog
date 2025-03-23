@@ -7,6 +7,7 @@ tags: [React, TypeScript, AI, Deepseek, Docusaurus]
 keywords: [React, Deepseek, 智能客服助手, TypeScript, API开发, 聊天组件, 技术咨询, 用户体验]
 description: 详细介绍如何使用 React、TypeScript 和 Deepseek API 开发一个智能客服助手组件，包含完整的代码实现和最佳实践
 image: https://bianliangrensheng.cn/gImage/title/ai-customer-service-assistant.jpg
+date: 2025-03-20
 ---
 
 # 完整指南：用 React + Deepseek 开发智能客服助手

@@ -7,6 +7,7 @@ tags: [uni-app, Vue, JavaScript, 前端开发, UI组件]
 keywords: [uni-app开发, 日期选择器, 横向滚动, Vue组件, 移动端UI, 前端组件开发]
 description: 详细介绍如何在uni-app中实现一个优雅的日期横向滚动选择器，包含完整的代码实现和最佳实践
 image: https://bianliangrensheng.cn/gImage/title/select-date-move-center.png
+date: 2025-03-12
 ---
 
 # uniapp选中日期移动到中间
