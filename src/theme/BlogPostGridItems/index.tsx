@@ -5,7 +5,6 @@ import Tag from '@site/src/theme/Tag'
 import type { Props as BlogPostItemsProps } from '@theme/BlogPostItems'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useState } from 'react'
-import LazyImage from '@site/src/components/LazyImage'
 
 import styles from './styles.module.css'
 
@@ -14,8 +13,8 @@ export default function BlogPostGridItems({ items }: BlogPostItemsProps): JSX.El
 
   const data = items.map(({ content: BlogPostContent }) => {
     const { metadata, frontMatter } = BlogPostContent
-    const { title, sticky, image } = frontMatter as BlogPostFrontMatter & { sticky: number }
-    const { permalink, date, tags, description } = metadata
+    const { title, sticky } = frontMatter as BlogPostFrontMatter & { sticky: number }
+    const { permalink, date, tags } = metadata
     const dateObj = new Date(date)
     const dateString = `${dateObj.getFullYear()}-${`0${dateObj.getMonth() + 1}`.slice(
       -2,
@@ -27,22 +26,17 @@ export default function BlogPostGridItems({ items }: BlogPostItemsProps): JSX.El
       tags,
       date: dateString,
       sticky,
-      image,
-      description,
     }
   })
 
   return (
     <div className={cn('grid grid-cols-1 py-10 sm:grid-cols-2 lg:grid-cols-3')}>
       {data.map((item, idx) => (
-        <motion.div
+        <div
           key={item.link}
           className="group relative block h-full w-full p-2"
           onMouseEnter={() => setHoveredIndex(idx)}
           onMouseLeave={() => setHoveredIndex(null)}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: idx * 0.1 }}
         >
           <Link href={item.link} className="hover:no-underline">
             <AnimatePresence>
@@ -95,18 +89,9 @@ export default function BlogPostGridItems({ items }: BlogPostItemsProps): JSX.El
                 </div>
                 <div className="text-[var(--ifm-color-emphasis-600)] text-xs">{item.date}</div>
               </CardFooter>
-              <div className="relative aspect-[16/9] overflow-hidden">
-                {item.image && (
-                  <LazyImage
-                    src={item.image}
-                    alt={item.title}
-                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
-                  />
-                )}
-              </div>
             </Card>
           </Link>
-        </motion.div>
+        </div>
       ))}
     </div>
   )
