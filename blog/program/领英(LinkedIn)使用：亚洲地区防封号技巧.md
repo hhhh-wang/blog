@@ -6,7 +6,7 @@ authors: bianliang
 keywords: [LinkedIn, 领英, 社交网络, 职场社交, 账号安全, 防封号, 亚洲用户, 职业发展]
 tags: [LinkedIn, 职场社交, 账号安全]
 description: 针对亚洲地区用户分享LinkedIn(领英)使用心得，提供防止账号被封的实用技巧，帮助你安全有效地使用这一重要职场社交平台
-image: https://cdn.jsdelivr.net/gh/hhhh-wang/MyPic@main/blog/img/linkedin-cover.jpg
+image: https://bianliangrensheng.cn/gImage/title/linkedin-cover.png
 date: 2025-03-23
 ---
 
@@ -134,7 +134,7 @@ Sincerely,
 [你的姓名]
 [在此附上身份证明材料]
 ```
-
+![领英申诉成功回复](https://bianliangrensheng.cn/gImage/content/lingyingshensuhuifu.png)
 
 ### 🐦 二、通过Twitter寻求帮助
 
