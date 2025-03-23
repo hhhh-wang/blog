@@ -40,6 +40,17 @@ export const projects: Project[] = [
         type: 'web',
     },
     {
+        title: '萌爪联盟抓娃娃机',
+        description: '🎮 线上抓娃娃机互动平台，让用户随时随地体验抓娃娃的乐趣',
+        preview: 'https://bianliangrensheng.cn/gImage/title/mengzhua-lianmeng.png',
+        website: 'https://qnsharing.com',
+        ip: 'https://qnsharing.com',
+        source: null,
+        tags: ['product', 'design', 'teamwork'],
+        type: 'web',
+    },
+
+    {
         title: '健康饮食',
         description: '🥗 基于Uni-app、Vue3构建的饮食管理小程序（还在开发中，有一些明显的BUG会在后续修复）',
         preview: 'https://bianliangrensheng.cn/gImage/title/health-bite-cover.png',
