@@ -22,8 +22,33 @@ const config: Config = {
     deepseekApiKey: 'sk-4c308839e3614f5f856bb15808dd85ed',
     indexNow: {
       key: '78510668c3f04067a1358f3df2f70dd2'
-    }
+    },
+      // 博客分类配置
+    blogCategories: {
+      develop: {
+        name: '开发教程',
+        description: '各类技术开发教程和指南',
+        folder: 'develop'
+      },
+      discuss: {
+        name: '技术讨论',
+        description: '关于技术、职业和生活的思考',
+        folder: 'discuss'
+      },
+      lifestyle: {
+        name: '生活随笔',
+        description: '记录生活点滴和日常感悟',
+        folder: 'lifestyle'
+      },
+      project: {
+        name: '项目实践',
+        description: '实际项目经验和最佳实践分享',
+        folder: 'project'
+      },
+    },
   },
+
+
   themeConfig: {
     // announcementBar: {
     //   id: 'announcementBar-3',

@@ -13,6 +13,7 @@ import BlogPostGridItems from '../BlogPostGridItems'
 
 import MyLayout from '../MyLayout'
 import { useState } from 'react'
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
 
 interface BlogCategory {
   label: string
@@ -111,37 +112,19 @@ function BlogListPageContent(props: Props) {
   const { metadata, items } = props
   const { viewType, toggleViewType } = useViewType()
   const [activeCategory, setActiveCategory] = useState('all')
-
-  const categories: BlogCategory[] = [
-    { 
-      label: '开发教程', 
-      folder: 'develop',
-      count: items.filter(item => 
-        item.content.metadata.source.includes('/blog/develop/')
-      ).length 
-    },
-    { 
-      label: '技术讨论', 
-      folder: 'discuss',
-      count: items.filter(item => 
-        item.content.metadata.source.includes('/blog/discuss/')
-      ).length 
-    },
-    { 
-      label: '生活随笔', 
-      folder: 'lifestyle',
-      count: items.filter(item => 
-        item.content.metadata.source.includes('/blog/lifestyle/')
-      ).length 
-    },
-    { 
-      label: '项目实践', 
-      folder: 'project',
-      count: items.filter(item => 
-        item.content.metadata.source.includes('/blog/project/')
-      ).length 
-    }
-  ]
+  
+  // 从配置文件获取分类信息
+  const { siteConfig } = useDocusaurusContext()
+  const blogCategoriesConfig = siteConfig.customFields?.blogCategories || {}
+  
+  // 根据配置生成分类列表
+  const categories: BlogCategory[] = Object.entries(blogCategoriesConfig).map(([key, category]) => ({
+    label: category.name,
+    folder: category.folder,
+    count: items.filter(item => 
+      item.content.metadata.source.includes(`/blog/${category.folder}/`)
+    ).length
+  }))
 
   const filteredItems = activeCategory === 'all' 
     ? items 
