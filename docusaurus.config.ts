@@ -45,6 +45,11 @@ const config: Config = {
         description: '实际项目经验和最佳实践分享',
         folder: 'project'
       },
+      program: {
+        name: '工具应用',
+        description: '各类软件和平台的使用技巧与经验分享',
+        folder: 'program'
+      },
     },
   },
 
