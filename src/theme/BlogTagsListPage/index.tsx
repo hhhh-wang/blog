@@ -12,7 +12,7 @@ import MyLayout from '../MyLayout'
 export default function BlogTagsListPage({ tags, sidebar }: Props): JSX.Element {
   const title = translateTagsPageTitle()
 
-  const [type, setType] = useState<'list' | 'grid'>('list')
+  const [type, setType] = useState<'list' | 'grid'>('grid')
 
   return (
     <HtmlClassNameProvider className={cn(ThemeClassNames.wrapper.blogPages, ThemeClassNames.page.blogTagsListPage)}>

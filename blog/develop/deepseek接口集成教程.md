@@ -1,5 +1,5 @@
 ---
-id: 1010
+id: 1009
 slug: deepseek-api-integration-guide-docusaurus
 title: DeepSeek API 集成教程：在 Docusaurus 博客中开发 AI 对话助手
 authors: [bianliang]

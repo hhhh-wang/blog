@@ -57,7 +57,19 @@ const config: Config = {
       },
       hideOnScroll: true,
       items: [
-        { label: '博客', position: 'right', to: 'blog' },
+        { 
+          label: '博客', 
+          position: 'right', 
+          to: 'blog',
+          activeBaseRegex: '^/blog/?$|^/blog/page/|^/blog/archive/|^/blog/\\d{4}/'
+        },
+        { label: '分类', position: 'right', to: 'categories' },
+        { 
+          label: '标签', 
+          position: 'right', 
+          to: 'blog/tags',
+          activeBaseRegex: '^/blog/tags'
+        },
         { label: '项目', position: 'right', to: 'project' },
         { label: '友链', position: 'right', to: 'friends' },
         { label: '关于', position: 'right', to: 'about' },
@@ -67,6 +79,7 @@ const config: Config = {
           position: 'right',
           items: [
             { label: '归档', to: 'blog/archive' },
+
             { label: '笔记', to: 'docs/skill' },
             { label: '工具推荐', to: 'docs/tools' },
           ],

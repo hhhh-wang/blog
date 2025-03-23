@@ -1,5 +1,5 @@
 ---
-id: 1018
+id: 1020
 slug: seo-content-writing-guide
 title: SEO文章写作指南：打造高转化内容的核心方法
 authors: bianliang

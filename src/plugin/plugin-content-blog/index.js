@@ -37,7 +37,23 @@ async function blogPluginEnhanced(context, options) {
       const { setGlobalData } = actions
 
       setGlobalData({
-        posts: content.blogPosts.slice(0, 10), // Only store 10 posts
+         //posts: content.blogPosts.slice(0, 10), // Only store 10 posts
+         //posts: content.blogPosts
+        // 只保留必要字段来减小存储体积
+        posts: content.blogPosts.map(post => ({
+          id: post.id,
+          metadata: {
+            permalink: post.metadata.permalink,
+            title: post.metadata.title,
+            description: post.metadata.description,
+            date: post.metadata.date,
+            source: post.metadata.source, // 添加 source 字段用于分类
+            tags: post.metadata.tags,  // 保留标签信息用于分类功能
+            frontMatter: {
+              image: post.metadata.frontMatter?.image || null
+            }
+          }
+        })),
         postNum: content.blogPosts.length,
         tagNum: Object.keys(blogTags).length,
       })
