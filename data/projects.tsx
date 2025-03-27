@@ -80,7 +80,16 @@ export const projects: Project[] = [
         tags: ['opensource', 'tools', 'personal'],
         type: 'tools',
     },
-
+    {
+        title: '专注自习室',
+        description: '⏱️ 基于番茄工作法的时间管理工具，帮助用户提高工作效率和专注力',
+        preview: 'https://bianliangrensheng.cn/gImage/title/study-room.png',
+        website: 'https://bianliangrensheng.cn/study-room',
+        ip: 'https://bianliangrensheng.cn/study-room',
+        source: 'https://github.com/hhhh-wang/blog',
+        tags: ['opensource', 'tools', 'personal'],
+        type: 'tools',
+    },
     {
         title: '合作项目还在整理资料中',
         description: '📦整理文档中',
