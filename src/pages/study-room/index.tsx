@@ -118,11 +118,37 @@ export default function StudyRoom() {
         return `${mins}:${secs.toString().padStart(2, '0')}`;
     };
 
-    // 开始番茄时钟
+    // 在组件顶部添加新的状态
+    const [startTimestamp, setStartTimestamp] = useState<number | null>(null);
+    const [targetEndTime, setTargetEndTime] = useState<number | null>(null);
+    const [lastVisibilityChangeTime, setLastVisibilityChangeTime] = useState<number | null>(null);
+
+    // 添加页面可见性变化检测
+    useEffect(() => {
+        const handleVisibilityChange = () => {
+            if (document.visibilityState === 'visible' && isRunning) {
+                // 页面重新变为可见时，根据真实经过时间调整
+                setLastVisibilityChangeTime(Date.now());
+            }
+        };
+
+        document.addEventListener('visibilitychange', handleVisibilityChange);
+        
+        return () => {
+            document.removeEventListener('visibilitychange', handleVisibilityChange);
+        };
+    }, [isRunning]);
+
+    // 替换原有的计时器逻辑
     const startTomato = () => {
+        const currentTime = Date.now();
+        const endTime = currentTime + timeSettings.focusTime * 60 * 1000;
+        
+        setStartTimestamp(currentTime);
+        setTargetEndTime(endTime);
+        setTimeLeft(timeSettings.focusTime * 60);
         setIsRunning(true);
         setIsBreak(false);
-        setTimeLeft(timeSettings.focusTime * 60);
 
         timerRef.current = window.setInterval(() => {
             setTimeLeft(prev => {
@@ -137,12 +163,15 @@ export default function StudyRoom() {
 
     // 开始休息
     const startBreak = () => {
+        const breakDuration = (cycles + 1) % 4 === 0 ? timeSettings.longBreakTime : timeSettings.shortBreakTime;
+        const currentTime = Date.now();
+        const endTime = currentTime + breakDuration * 60 * 1000;
+        
+        setStartTimestamp(currentTime);
+        setTargetEndTime(endTime);
+        setTimeLeft(breakDuration * 60);
         setIsRunning(true);
         setIsBreak(true);
-
-        // 根据完成的番茄数决定休息时间
-        const breakTime = (cycles + 1) % 4 === 0 ? timeSettings.longBreakTime : timeSettings.shortBreakTime;
-        setTimeLeft(breakTime * 60);
 
         timerRef.current = window.setInterval(() => {
             setTimeLeft(prev => {
@@ -155,61 +184,96 @@ export default function StudyRoom() {
         }, 1000);
     };
 
-    // 停止计时器
+    // 替换计时器效果
+    useEffect(() => {
+        let timer: NodeJS.Timeout | null = null;
+        
+        if (isRunning && targetEndTime) {
+            timer = setInterval(() => {
+                const now = Date.now();
+                const remaining = Math.max(0, Math.floor((targetEndTime - now) / 1000));
+                
+                // 检查是否从后台返回
+                if (lastVisibilityChangeTime && lastVisibilityChangeTime > startTimestamp!) {
+                    // 计算实际应该剩余的时间
+                    const elapsed = now - startTimestamp!;
+                    const totalDuration = isBreak 
+                        ? ((cycles + 1) % 4 === 0 ? timeSettings.longBreakTime : timeSettings.shortBreakTime) * 60 * 1000
+                        : timeSettings.focusTime * 60 * 1000;
+                    const newRemaining = Math.max(0, Math.floor((totalDuration - elapsed) / 1000));
+                    
+                    // 更新目标结束时间
+                    setTargetEndTime(now + newRemaining * 1000);
+                    setLastVisibilityChangeTime(null);
+                }
+                
+                setTimeLeft(remaining);
+                
+                // 如果时间结束
+                if (remaining <= 0) {
+                    clearInterval(timer!);
+                    handleTimerComplete();
+                }
+            }, 500); // 更频繁检查以提高精度
+        }
+        
+        return () => {
+            if (timer) {
+                clearInterval(timer);
+            }
+        };
+    }, [isRunning, targetEndTime, lastVisibilityChangeTime, startTimestamp]);
+
+    const handleTimerComplete = () => {
+        if (!isBreak) {
+            // 完成专注时间...
+            setTomatoCount(prev => prev + 1);
+            setTotalFocusTime(prev => prev + timeSettings.focusTime * 60);
+            
+            // 记录番茄
+            const newRecord = {
+                id: Date.now().toString(),
+                startTime: startTimestamp!,
+                endTime: Date.now(),
+                taskId: activeTaskId || '',
+                type: 'focus'
+            };
+            setTomatoRecords(prev => [...prev, newRecord]);
+            
+            // 如果是第4个番茄，增加cycles计数
+            if (tomatoCount > 0 && (tomatoCount + 1) % 4 === 0) {
+                setCycles(prev => prev + 1);
+            }
+        }
+        
+        // 重置状态
+        setIsRunning(false);
+        setStartTimestamp(null);
+        setTargetEndTime(null);
+        // 播放通知声音或显示通知
+        playNotificationSound();
+    };
+
     const stopTimer = () => {
         if (timerRef.current) {
             clearInterval(timerRef.current);
             timerRef.current = null;
         }
         setIsRunning(false);
+        setStartTimestamp(null);
+        setTargetEndTime(null);
+        setLastVisibilityChangeTime(null);
         setTimeLeft(timeSettings.focusTime * 60);
     };
 
-    // 完成一个番茄
-    const completeTomato = () => {
-        if (timerRef.current) {
-            clearInterval(timerRef.current);
-            timerRef.current = null;
+    // 添加声音通知函数
+    const playNotificationSound = () => {
+        try {
+            const audio = new Audio('/notification.mp3');  // 确保有此文件
+            audio.play();
+        } catch (error) {
+            console.error('无法播放通知声音', error);
         }
-
-        setIsRunning(false);
-        setCycles(prev => prev + 1);
-        setTomatoCount(prev => prev + 1);
-        setTotalFocusTime(prev => prev + timeSettings.focusTime * 60);
-
-        // 创建记录
-        const newRecord: TomatoRecord = {
-            id: Date.now().toString(),
-            startTime: Date.now() - timeSettings.focusTime * 60 * 1000,
-            endTime: Date.now(),
-            taskId: activeTaskId
-        };
-
-        setTomatoRecords(prev => [...prev, newRecord]);
-
-        // 如果有活动任务，更新其状态
-        if (activeTaskId) {
-            setTasks(prev => 
-                prev.map(task => 
-                    task.id === activeTaskId 
-                        ? { ...task, status: 'completed', completedAt: Date.now() } 
-                        : task
-                )
-            );
-            setActiveTaskId(null);
-        }
-    };
-
-    // 完成休息
-    const completeBreak = () => {
-        if (timerRef.current) {
-            clearInterval(timerRef.current);
-            timerRef.current = null;
-        }
-
-        setIsRunning(false);
-        setIsBreak(false);
-        setTimeLeft(timeSettings.focusTime * 60);
     };
 
     // 添加任务
