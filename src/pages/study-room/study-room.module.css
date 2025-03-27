@@ -270,6 +270,12 @@
   background-color: var(--ifm-color-emphasis-300);
 }
 
+.fullWidthPreset {
+  width: 100%;
+  margin-top: 8px;
+  justify-content: center;
+}
+
 /* 任务区域 */
 .tasksSection {
   background-color: var(--ifm-card-background-color);
@@ -493,4 +499,3 @@
   }
 }
 
-/* 暗黑模式支持由Docusaurus变量自动处理 */

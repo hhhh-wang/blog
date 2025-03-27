@@ -269,20 +269,19 @@ export default function StudyRoom() {
                         animate={{opacity: 1, y: 0}}
                         transition={{duration: 0.5, delay: 0.4}}
                     >
-                        <h2 className={styles.sectionTitle}>设置</h2>
+                        <h2 className={styles.sectionTitle}>⚙️ 时间设置</h2>
 
                         <div className={styles.settingItem}>
-                            <label className={styles.settingLabel}>时间设置:</label>
-                            
                             <div className={styles.timeSettingsPanel}>
                                 <div className={styles.timeSettingItem}>
-                                    <label>专注时间 (分钟):</label>
+                                    <label>专注时间 (分钟)</label>
                                     <div className={styles.timeInputGroup}>
                                         <button
                                             className={styles.timeAdjustButton}
                                             onClick={() => updateTimeSetting('focusTime', timeSettings.focusTime - 1)}
+                                            aria-label="减少时间"
                                         >
-                                            -
+                                            <span>-</span>
                                         </button>
                                         <input
                                             type="number"
@@ -291,24 +290,27 @@ export default function StudyRoom() {
                                             min="1"
                                             max="60"
                                             className={styles.timeInput}
+                                            aria-label="专注时间"
                                         />
                                         <button
                                             className={styles.timeAdjustButton}
                                             onClick={() => updateTimeSetting('focusTime', timeSettings.focusTime + 1)}
+                                            aria-label="增加时间"
                                         >
-                                            +
+                                            <span>+</span>
                                         </button>
                                     </div>
                                 </div>
 
                                 <div className={styles.timeSettingItem}>
-                                    <label>短休息时间 (分钟):</label>
+                                    <label>短休息时间 (分钟)</label>
                                     <div className={styles.timeInputGroup}>
                                         <button
                                             className={styles.timeAdjustButton}
                                             onClick={() => updateTimeSetting('shortBreakTime', timeSettings.shortBreakTime - 1)}
+                                            aria-label="减少时间"
                                         >
-                                            -
+                                            <span>-</span>
                                         </button>
                                         <input
                                             type="number"
@@ -317,24 +319,27 @@ export default function StudyRoom() {
                                             min="1"
                                             max="30"
                                             className={styles.timeInput}
+                                            aria-label="短休息时间"
                                         />
                                         <button
                                             className={styles.timeAdjustButton}
                                             onClick={() => updateTimeSetting('shortBreakTime', timeSettings.shortBreakTime + 1)}
+                                            aria-label="增加时间"
                                         >
-                                            +
+                                            <span>+</span>
                                         </button>
                                     </div>
                                 </div>
 
                                 <div className={styles.timeSettingItem}>
-                                    <label>长休息时间 (分钟):</label>
+                                    <label>长休息时间 (分钟)</label>
                                     <div className={styles.timeInputGroup}>
                                         <button
                                             className={styles.timeAdjustButton}
                                             onClick={() => updateTimeSetting('longBreakTime', timeSettings.longBreakTime - 1)}
+                                            aria-label="减少时间"
                                         >
-                                            -
+                                            <span>-</span>
                                         </button>
                                         <input
                                             type="number"
@@ -343,29 +348,21 @@ export default function StudyRoom() {
                                             min="5"
                                             max="60"
                                             className={styles.timeInput}
+                                            aria-label="长休息时间"
                                         />
                                         <button
                                             className={styles.timeAdjustButton}
                                             onClick={() => updateTimeSetting('longBreakTime', timeSettings.longBreakTime + 1)}
+                                            aria-label="增加时间"
                                         >
-                                            +
+                                            <span>+</span>
                                         </button>
                                     </div>
                                 </div>
 
                                 <div className={styles.timePresets}>
                                     <button
-                                        className={styles.presetButton}
-                                        onClick={() => setTimeSettings({
-                                            focusTime: 25,
-                                            shortBreakTime: 5,
-                                            longBreakTime: 15
-                                        })}
-                                    >
-                                        标准 (25-5-15)
-                                    </button>
-                                    <button
-                                        className={styles.presetButton}
+                                        className={cn(styles.presetButton, timeSettings.focusTime === 50 && timeSettings.shortBreakTime === 10 && timeSettings.longBreakTime === 30 ? styles.activePreset : '')}
                                         onClick={() => setTimeSettings({
                                             focusTime: 50,
                                             shortBreakTime: 10,
@@ -375,7 +372,7 @@ export default function StudyRoom() {
                                         长专注 (50-10-30)
                                     </button>
                                     <button
-                                        className={styles.presetButton}
+                                        className={cn(styles.presetButton, timeSettings.focusTime === 15 && timeSettings.shortBreakTime === 3 && timeSettings.longBreakTime === 10 ? styles.activePreset : '')}
                                         onClick={() => setTimeSettings({
                                             focusTime: 15,
                                             shortBreakTime: 3,
@@ -383,6 +380,16 @@ export default function StudyRoom() {
                                         })}
                                     >
                                         短专注 (15-3-10)
+                                    </button>
+                                    <button
+                                        className={cn(styles.presetButton, styles.fullWidthPreset, timeSettings.focusTime === 25 && timeSettings.shortBreakTime === 5 && timeSettings.longBreakTime === 15 ? styles.activePreset : '')}
+                                        onClick={() => setTimeSettings({
+                                            focusTime: 25,
+                                            shortBreakTime: 5,
+                                            longBreakTime: 15
+                                        })}
+                                    >
+                                        标准 (25-5-15)
                                     </button>
                                 </div>
                             </div>
@@ -463,7 +470,7 @@ export default function StudyRoom() {
                         animate={{opacity: 1, y: 0}}
                         transition={{duration: 0.5, delay: 0.5}}
                     >
-                        <h2 className={styles.sectionTitle}>待办事项</h2>
+                        <h2 className={styles.sectionTitle}>📋 待办事项</h2>
 
                         <form onSubmit={addTask} className={styles.addTaskForm}>
                             <input
@@ -481,19 +488,16 @@ export default function StudyRoom() {
                                 <div className={styles.emptyState}>暂无任务，添加一个吧！</div>
                             ) : (
                                 tasks.map(task => (
-                                    <motion.div
-                                        key={task.id}
+                                    <div 
+                                        key={task.id} 
                                         className={cn(
                                             styles.taskItem,
-                                            task.status === 'completed' ? styles.completedTask : '',
-                                            task.id === activeTaskId ? styles.activeTask : ''
+                                            task.status === 'completed' && styles.completedTask,
+                                            activeTaskId === task.id && styles.activeTask
                                         )}
-                                        initial={{opacity: 0, y: 10}}
-                                        animate={{opacity: 1, y: 0}}
-                                        transition={{duration: 0.3}}
                                     >
                                         <div className={styles.taskContent}>
-                                            <span className={styles.taskText}>{task.content}</span>
+                                            <div className={styles.taskText}>{task.content}</div>
                                             {task.status === 'completed' && (
                                                 <span className={styles.completedTag}>已完成</span>
                                             )}
@@ -503,9 +507,9 @@ export default function StudyRoom() {
                                                 <button
                                                     className={styles.selectTaskButton}
                                                     onClick={() => selectTask(task.id)}
-                                                    disabled={task.id === activeTaskId}
+                                                    disabled={isRunning && activeTaskId !== task.id}
                                                 >
-                                                    选择
+                                                    {activeTaskId === task.id ? '当前任务' : '选择'}
                                                 </button>
                                             )}
                                             <button
@@ -515,7 +519,7 @@ export default function StudyRoom() {
                                                 删除
                                             </button>
                                         </div>
-                                    </motion.div>
+                                    </div>
                                 ))
                             )}
                         </div>
