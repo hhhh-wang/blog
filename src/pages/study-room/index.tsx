@@ -397,7 +397,10 @@ export default function StudyRoom() {
 
                                 <div className={styles.timePresets}>
                                     <button
-                                        className={cn(styles.presetButton, timeSettings.focusTime === 50 && timeSettings.shortBreakTime === 10 && timeSettings.longBreakTime === 30 ? styles.activePreset : '')}
+                                        className={cn(
+                                            styles.presetButton, 
+                                            timeSettings.focusTime === 50 && timeSettings.shortBreakTime === 10 && timeSettings.longBreakTime === 30 ? styles.activePreset : ''
+                                        )}
                                         onClick={() => setTimeSettings({
                                             focusTime: 50,
                                             shortBreakTime: 10,
@@ -407,7 +410,10 @@ export default function StudyRoom() {
                                         长专注 (50-10-30)
                                     </button>
                                     <button
-                                        className={cn(styles.presetButton, timeSettings.focusTime === 15 && timeSettings.shortBreakTime === 3 && timeSettings.longBreakTime === 10 ? styles.activePreset : '')}
+                                        className={cn(
+                                            styles.presetButton, 
+                                            timeSettings.focusTime === 15 && timeSettings.shortBreakTime === 3 && timeSettings.longBreakTime === 10 ? styles.activePreset : ''
+                                        )}
                                         onClick={() => setTimeSettings({
                                             focusTime: 15,
                                             shortBreakTime: 3,
@@ -417,7 +423,11 @@ export default function StudyRoom() {
                                         短专注 (15-3-10)
                                     </button>
                                     <button
-                                        className={cn(styles.presetButton, styles.fullWidthPreset, timeSettings.focusTime === 25 && timeSettings.shortBreakTime === 5 && timeSettings.longBreakTime === 15 ? styles.activePreset : '')}
+                                        className={cn(
+                                            styles.presetButton, 
+                                            styles.fullWidthPreset, 
+                                            timeSettings.focusTime === 25 && timeSettings.shortBreakTime === 5 && timeSettings.longBreakTime === 15 ? styles.activePreset : ''
+                                        )}
                                         onClick={() => setTimeSettings({
                                             focusTime: 25,
                                             shortBreakTime: 5,
