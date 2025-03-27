@@ -252,13 +252,19 @@ export default function StudyRoom() {
         }));
     };
 
+    const timerPercentage = isRunning 
+        ? (isBreak 
+            ? (timeLeft / ((cycles + 1) % 4 === 0 ? timeSettings.longBreakTime : timeSettings.shortBreakTime) / 60) * 100 
+            : (timeLeft / (timeSettings.focusTime * 60)) * 100) 
+        : 100;
+
     return (
         <Layout
-            title="开发自习室"
+            title="专注自习室"
             description="使用番茄工作法提高工作效率，专注于编程和学习"
         >
             <main className={cn(styles.studyRoomContainer, "container margin-vert--lg")}>
-                <h1 className="text-3xl font-bold text-center mb-8">开发自习室</h1>
+                <h1 className="text-3xl font-bold text-center mb-8">专注自习室</h1>
                 
                 {/* 主要功能区域 - 三列布局 */}
                 <div className={styles.mainContent}>
@@ -406,6 +412,18 @@ export default function StudyRoom() {
                         <div className={styles.timerDisplay}>
                             <h2 className={styles.timerTitle}>{isBreak ? '休息时间' : '专注时间'}</h2>
                             <div className={styles.timerCircle}>
+                                <div 
+                                    className={styles.waterWave} 
+                                    style={{ height: `${timerPercentage}%` }}
+                                ></div>
+                                <div 
+                                    className={styles.waterWave} 
+                                    style={{ height: `${timerPercentage}%` }}
+                                ></div>
+                                <div 
+                                    className={styles.waterWave} 
+                                    style={{ height: `${timerPercentage}%` }}
+                                ></div>
                                 <span className={styles.time}>{formatTime(timeLeft)}</span>
                             </div>
                             <div className={styles.timerStats}>
@@ -571,6 +589,20 @@ export default function StudyRoom() {
                         <li>每完成4个番茄，休息一个较长时间，默认15分钟（可在设置中自定义）</li>
                         <li>记录完成的番茄数量，追踪进度</li>
                     </ul>
+                    
+                    <h3 className={styles.subSectionTitle}>休息的重要性</h3>
+                    <p>
+                        休息并非浪费时间，而是高效工作的关键组成部分。科学研究表明，大脑在连续专注工作约25分钟后，注意力自然开始下降。这时短暂的休息能够：
+                    </p>
+                    <ul>
+                        <li>让大脑得到必要的恢复，防止精神疲劳和注意力枯竭</li>
+                        <li>促进工作记忆的巩固，增强对刚学习内容的理解</li>
+                        <li>减轻视觉疲劳和身体僵硬，预防久坐相关的健康问题</li>
+                        <li>提供潜意识思考的机会，常常能带来创造性的灵感</li>
+                    </ul>
+                    <p>
+                        休息时建议远离屏幕，可以站起来活动、喝杯水、做简单伸展，或短暂冥想。有效的休息能确保下一个番茄时段的高质量专注，从而形成可持续的工作节奏。
+                    </p>
                 </div>
             </main>
         </Layout>
