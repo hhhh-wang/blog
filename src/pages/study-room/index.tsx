@@ -139,82 +139,47 @@ export default function StudyRoom() {
         };
     }, [isRunning]);
 
-    // 替换原有的计时器逻辑
-    const startTomato = () => {
-        const currentTime = Date.now();
-        const endTime = currentTime + timeSettings.focusTime * 60 * 1000;
-        
-        setStartTimestamp(currentTime);
-        setTargetEndTime(endTime);
-        setTimeLeft(timeSettings.focusTime * 60);
-        setIsRunning(true);
-        setIsBreak(false);
-
-        timerRef.current = window.setInterval(() => {
-            setTimeLeft(prev => {
-                if (prev <= 1) {
-                    completeTomato();
-                    return 0;
-                }
-                return prev - 1;
-            });
-        }, 1000);
-    };
-
-    // 开始休息
-    const startBreak = () => {
-        const breakDuration = (cycles + 1) % 4 === 0 ? timeSettings.longBreakTime : timeSettings.shortBreakTime;
-        const currentTime = Date.now();
-        const endTime = currentTime + breakDuration * 60 * 1000;
-        
-        setStartTimestamp(currentTime);
-        setTargetEndTime(endTime);
-        setTimeLeft(breakDuration * 60);
-        setIsRunning(true);
-        setIsBreak(true);
-
-        timerRef.current = window.setInterval(() => {
-            setTimeLeft(prev => {
-                if (prev <= 1) {
-                    completeBreak();
-                    return 0;
-                }
-                return prev - 1;
-            });
-        }, 1000);
-    };
-
-    // 替换计时器效果
+    // 替换计时器效果，修复闪烁问题
     useEffect(() => {
         let timer: NodeJS.Timeout | null = null;
         
         if (isRunning && targetEndTime) {
+            // 计算初始剩余时间，确保初始值准确
+            const initialRemaining = Math.max(0, Math.ceil((targetEndTime - Date.now()) / 1000));
+            setTimeLeft(initialRemaining);
+            
+            // 使用固定的1秒间隔，避免视觉抖动
             timer = setInterval(() => {
                 const now = Date.now();
-                const remaining = Math.max(0, Math.floor((targetEndTime - now) / 1000));
                 
-                // 检查是否从后台返回
+                // 检查是否从后台返回，这部分逻辑只在可见性变化时执行
                 if (lastVisibilityChangeTime && lastVisibilityChangeTime > startTimestamp!) {
-                    // 计算实际应该剩余的时间
+                    // 重新计算目标结束时间，而不是直接修改剩余时间
                     const elapsed = now - startTimestamp!;
                     const totalDuration = isBreak 
                         ? ((cycles + 1) % 4 === 0 ? timeSettings.longBreakTime : timeSettings.shortBreakTime) * 60 * 1000
                         : timeSettings.focusTime * 60 * 1000;
-                    const newRemaining = Math.max(0, Math.floor((totalDuration - elapsed) / 1000));
+                    const newRemaining = Math.max(0, totalDuration - elapsed);
                     
-                    // 更新目标结束时间
-                    setTargetEndTime(now + newRemaining * 1000);
+                    // 只更新一次目标结束时间
+                    const newEndTime = now + newRemaining;
+                    setTargetEndTime(newEndTime);
                     setLastVisibilityChangeTime(null);
+                    
+                    // 立即更新显示的时间
+                    setTimeLeft(Math.ceil(newRemaining / 1000));
+                } else {
+                    // 正常情况下，简单计算剩余秒数
+                    const remaining = Math.max(0, Math.ceil((targetEndTime - now) / 1000));
+                    setTimeLeft(remaining);
+                    
+                    // 如果时间结束
+                    if (remaining <= 0) {
+                        clearInterval(timer!);
+                        handleTimerComplete();
+                    }
                 }
-                
-                setTimeLeft(remaining);
-                
-                // 如果时间结束
-                if (remaining <= 0) {
-                    clearInterval(timer!);
-                    handleTimerComplete();
-                }
-            }, 500); // 更频繁检查以提高精度
+            }, 1000); // 恢复为固定的1秒间隔
         }
         
         return () => {
@@ -222,7 +187,7 @@ export default function StudyRoom() {
                 clearInterval(timer);
             }
         };
-    }, [isRunning, targetEndTime, lastVisibilityChangeTime, startTimestamp]);
+    }, [isRunning, targetEndTime, lastVisibilityChangeTime]);
 
     const handleTimerComplete = () => {
         if (!isBreak) {
@@ -502,13 +467,32 @@ export default function StudyRoom() {
                                 <>
                                     <button
                                         className={cn(styles.timerButton, styles.startButton)}
-                                        onClick={startTomato}
+                                        onClick={() => {
+                                            const currentTime = Date.now();
+                                            const endTime = currentTime + timeSettings.focusTime * 60 * 1000;
+                                            
+                                            setStartTimestamp(currentTime);
+                                            setTargetEndTime(endTime);
+                                            setTimeLeft(timeSettings.focusTime * 60);
+                                            setIsRunning(true);
+                                            setIsBreak(false);
+                                        }}
                                     >
                                         开始专注 ({timeSettings.focusTime}分钟)
                                     </button>
                                     <button
                                         className={cn(styles.timerButton, styles.breakButton)}
-                                        onClick={startBreak}
+                                        onClick={() => {
+                                            const breakDuration = (cycles + 1) % 4 === 0 ? timeSettings.longBreakTime : timeSettings.shortBreakTime;
+                                            const currentTime = Date.now();
+                                            const endTime = currentTime + breakDuration * 60 * 1000;
+                                            
+                                            setStartTimestamp(currentTime);
+                                            setTargetEndTime(endTime);
+                                            setTimeLeft(breakDuration * 60);
+                                            setIsRunning(true);
+                                            setIsBreak(true);
+                                        }}
                                     >
                                         开始休息
                                     </button>
