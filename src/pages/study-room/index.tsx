@@ -603,6 +603,14 @@ export default function StudyRoom() {
                     <p>
                         休息时建议远离屏幕，可以站起来活动、喝杯水、做简单伸展，或短暂冥想。有效的休息能确保下一个番茄时段的高质量专注，从而形成可持续的工作节奏。
                     </p>
+                    
+                </div>
+
+                <div className={styles.disclaimerSection}>
+                    <h2 className={styles.sectionTitle}>免责声明</h2>
+                    <p>📋 隐私声明：本网站不会收集或读取您的个人信息，所有数据仅存储在您的浏览器本地缓存中。</p>
+                    <p>🔓 开源声明：本项目代码已在 <a href="https://github.com/HHHh-wang/blog" target="_blank" rel="noopener noreferrer">GitHub</a> 上开源，欢迎查看和贡献。</p>
+                    <p>💡 使用提示：定期清理浏览器缓存可能会导致数据丢失，请妥善管理您的任务和记录。</p>
                 </div>
             </main>
         </Layout>
