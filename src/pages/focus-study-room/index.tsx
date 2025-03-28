@@ -2,7 +2,7 @@ import React, {useState, useEffect, useRef} from 'react';
 import Layout from '@theme/Layout';
 import {motion} from 'framer-motion';
 import {cn} from '@site/src/lib/utils';
-import styles from './study-room.module.css';
+import styles from './focus-study-room.module.css';
 
 // 任务状态
 type TaskStatus = 'pending' | 'inProgress' | 'completed';
@@ -669,6 +669,7 @@ export default function StudyRoom() {
                     <p>📋 隐私声明：本网站不会收集或读取您的个人信息，所有数据仅存储在您的浏览器本地缓存中。</p>
                     <p>🔓 开源声明：本项目代码已在 <a href="https://github.com/HHHh-wang/blog" target="_blank" rel="noopener noreferrer">GitHub</a> 上开源，欢迎查看和贡献。</p>
                     <p>💡 使用提示：定期清理浏览器缓存可能会导致数据丢失，请妥善管理您的任务和记录。</p>
+                    <p>📚 使用手册：查看<a href="https://bianliangrensheng.cn/blog/focus-study-room" target="_blank" rel="noopener noreferrer">详细使用手册</a>获取更多使用技巧。</p>
                 </div>
             </main>
         </Layout>
