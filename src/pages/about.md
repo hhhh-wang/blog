@@ -145,7 +145,7 @@ import social from '@site/data/social'
     <Icon icon="ri:checkbox-circle-line" color="#d97706" /> **租房小程序**：全栈开发（中介跑路）
   </li>
   <li style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-    <Icon icon="ri:checkbox-circle-line" color="#d97706" /> **银闪闪App配套后台**：实时数据流开发
+    <Icon icon="ri:checkbox-circle-line" color="#d97706" /> **聚摘星App配套后台**：实时数据流开发
   </li>
 </ul>
 </div>
