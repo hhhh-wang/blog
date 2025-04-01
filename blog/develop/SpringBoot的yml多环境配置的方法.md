@@ -675,18 +675,193 @@ spring:
 
 
 ```
-###  命令行启动指定环境
-``` shell
-   # 开发环境
-   java -jar health-admin.jar --spring.profiles.active=dev --spring.profiles.include=druid-dev
-   
-   # 生产环境
-   java -jar health-admin.jar --spring.profiles.active=prod --spring.profiles.include=druid-prod
+## 📦 应用部署脚本
+
+在实际生产环境中，除了配置文件管理外，我们还需要便捷的应用启动和停止脚本来管理SpringBoot服务。以下是两个实用的管理脚本示例：
+
+### 🚀 应用启动脚本 (startup.sh)
+
+```bash
+#!/bin/bash
+
+# 应用名称
+APP_NAME="healthbite-admin"
+# JAR包路径
+JAR_PATH="/model/health-bite-api/healthbite-admin.jar"
+# 日志文件路径
+LOG_PATH="/model/health-bite-api/logs"
+# PID文件路径
+PID_FILE="/model/health-bite-api/healthbite.pid"
+# 上传路径
+UPLOAD_PATH="/home/healthbite/uploadPath"
+
+# 创建必要的目录
+if [ ! -d "$LOG_PATH" ]; then
+    mkdir -p "$LOG_PATH"
+fi
+
+if [ ! -d "$UPLOAD_PATH" ]; then
+    mkdir -p "$UPLOAD_PATH"
+    chmod 755 "$UPLOAD_PATH"
+fi
+
+# 检查应用是否已经运行
+if [ -f "$PID_FILE" ]; then
+    PID=$(cat "$PID_FILE")
+    if ps -p $PID > /dev/null; then
+        echo "应用已在运行中，PID: $PID"
+        exit 0
+    else
+        rm -f "$PID_FILE"
+    fi
+fi
+
+# 启动应用
+echo "正在启动 $APP_NAME ..."
+nohup java -Xms512m -Xmx1024m -jar "$JAR_PATH" > "$LOG_PATH/startup.log" 2>&1 &
+
+# 保存PID
+PID=$!
+echo $PID > "$PID_FILE"
+
+# 等待应用启动
+echo "应用正在启动，请等待..."
+sleep 10
+
+# 检查应用是否成功启动
+if ps -p $PID > /dev/null; then
+    echo "应用启动成功，PID: $PID"
+    echo "可通过以下命令查看启动日志："
+    echo "tail -f $LOG_PATH/startup.log"
+else
+    echo "应用启动失败，请检查日志文件：$LOG_PATH/startup.log"
+    exit 1
+fi
 ```
+
+### 🛑 应用停止脚本 (stop.sh)
+
+```bash
+#!/bin/bash
+
+# 应用名称
+APP_NAME="healthbite-admin"
+# JAR包路径（用于查找进程）
+JAR_NAME="healthbite-admin.jar"
+# PID文件路径（仅用于清理）
+PID_FILE="/model/health-bite-api/healthbite.pid"
+
+echo "正在查找 $APP_NAME 的运行进程..."
+
+# 查找运行JAR的Java进程
+PIDS=$(ps -ef | grep "java.*$JAR_NAME" | grep -v grep | awk '{print $2}')
+
+if [ -z "$PIDS" ]; then
+    echo "$APP_NAME 未运行"
+    
+    # 清理PID文件（如果存在）
+    if [ -f "$PID_FILE" ]; then
+        rm -f "$PID_FILE"
+        echo "已删除过时的PID文件"
+    fi
+    
+    exit 0
+fi
+
+# 显示找到的进程
+echo "找到以下 $APP_NAME 相关进程:"
+for PID in $PIDS; do
+    echo "PID: $PID - $(ps -p $PID -o cmd=)"
+done
+
+# 停止所有找到的进程
+for PID in $PIDS; do
+    echo "正在停止进程 PID:$PID..."
+    kill $PID
+done
+
+# 等待进程停止
+echo "等待进程停止..."
+MAX_WAIT=30
+WAIT_COUNT=0
+
+while [ $WAIT_COUNT -lt $MAX_WAIT ]; do
+    # 重新检查进程是否还在运行
+    RUNNING_PIDS=""
+    for PID in $PIDS; do
+        if ps -p $PID > /dev/null; then
+            RUNNING_PIDS="$RUNNING_PIDS $PID"
+        fi
+    done
+    
+    if [ -z "$RUNNING_PIDS" ]; then
+        echo "所有进程已停止"
+        break
+    fi
+    
+    echo "仍有进程运行中: $RUNNING_PIDS，已等待 $WAIT_COUNT 秒..."
+    sleep 1
+    let WAIT_COUNT++
+    
+    # 如果等待超过15秒，发送强制终止信号
+    if [ $WAIT_COUNT -eq 15 ]; then
+        echo "进程未能及时停止，尝试强制终止..."
+        for PID in $RUNNING_PIDS; do
+            echo "强制终止进程 PID:$PID"
+            kill -9 $PID
+        done
+    fi
+done
+
+# 最终检查
+REMAINING_PIDS=$(ps -ef | grep "java.*$JAR_NAME" | grep -v grep | awk '{print $2}')
+if [ -n "$REMAINING_PIDS" ]; then
+    echo "警告：以下进程仍在运行: $REMAINING_PIDS"
+    echo "可能需要手动终止，例如: kill -9 $REMAINING_PIDS"
+else
+    echo "$APP_NAME 已成功停止"
+fi
+
+# 清理PID文件（如果存在）
+if [ -f "$PID_FILE" ]; then
+    rm -f "$PID_FILE"
+    echo "PID文件已删除"
+fi
+```
+
+### 🖥️ 脚本使用示例
+
+以下是在Linux服务器上使用这些脚本的实际操作示例：
+
+```bash
+root@VM-20-4-ubuntu:/model/health-bite-api# ./startup.sh 
+正在启动 healthbite-admin ...
+应用正在启动，请等待...
+应用启动成功，PID: 2453759
+可通过以下命令查看启动日志：
+tail -f /model/health-bite-api/logs/startup.log
+root@VM-20-4-ubuntu:/model/health-bite-api# ./stop.sh 
+正在查找 healthbite-admin 的运行进程...
+找到以下 healthbite-admin 相关进程:
+PID: 2453759 - java -Xms512m -Xmx1024m -jar /model/health-bite-api/healthbite-admin.jar
+正在停止进程 PID:2453759...
+等待进程停止...
+仍有进程运行中:  2453759，已等待 0 秒...
+所有进程已停止
+healthbite-admin 已成功停止
+PID文件已删除
+root@VM-20-4-ubuntu:/model/health-bite-api# 
+```
+
+这些脚本可以帮助你在Linux/Unix环境中优雅地启动和停止SpringBoot应用。对于不同环境的部署，你可以根据需要调整配置参数，例如内存设置、JVM参数等。结合前面介绍的多环境配置方法，可以构建一套完整的应用部署方案。
 
 ## 📝 总结
 
-合理的多环境配置是SpringBoot项目开发的基础设施，能有效提高开发效率，降低环境切换风险。
+合理的多环境配置是SpringBoot项目开发的基础设施，能有效提高开发效率，降低环境切换风险。根据项目规模和团队需求，选择合适的配置方式，并结合环境变量或配置中心保护敏感信息，将帮助你构建更健壮、更易于维护的系统。
+
+随着项目的发展，可以考虑从简单的文件配置升级到更复杂的配置中心方案，满足分布式系统和微服务架构的需求。
+
+
 
 > "配置也是代码，应该像对待代码一样认真对待配置管理"
 
