@@ -61,6 +61,46 @@ const extractTextFromHtml = (html: string | undefined): string => {
   return doc.body.textContent || '';
 };
 
+// 处理 HTML 邮件内容
+const processHtmlContent = (html: string): string => {
+  if (!html) return '';
+  
+  // 解码 HTML 实体
+  const decodedHtml = html.replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'");
+  
+  // 提取隐藏的纯文本内容（如果有）
+  const hiddenTextMatch = decodedHtml.match(/<div[^>]*style="[^"]*display:none[^"]*"[^>]*>(.*?)<\/div>/s);
+  if (hiddenTextMatch) {
+    return hiddenTextMatch[1].trim();
+  }
+  
+  return decodedHtml;
+};
+
+// 修改邮件内容显示组件
+const EmailContent = ({ email }: { email: Email }) => {
+  const processedContent = processHtmlContent(email.html || email.content || '');
+  
+  return (
+    <div className={styles.emailBody}>
+      {processedContent ? (
+        <div 
+          className={styles.htmlContent}
+          dangerouslySetInnerHTML={{ __html: processedContent }}
+        />
+      ) : (
+        <div className={styles.plainTextContent}>
+          {email.body || '(空白邮件)'}
+        </div>
+      )}
+    </div>
+  );
+};
+
 export default function TempMailPage(): React.ReactNode {
   // 状态管理
   const [mailToken, setMailToken] = useState<string>('');
@@ -429,26 +469,17 @@ export default function TempMailPage(): React.ReactNode {
                     <h3 className={styles.emailDetailSubject}>{selectedEmail.subject || '(无主题)'}</h3>
                     <div className={styles.emailMeta}>
                       <div className={styles.emailFrom}>
-                        <strong>发件人:</strong> {selectedEmail.from || '未知'}
+                        <strong>发件人:</strong> {selectedEmail.fromName || selectedEmail.fromAddress || '未知'}
                       </div>
                       <div className={styles.emailTo}>
-                        <strong>收件人:</strong> {selectedEmail.to || mailAddress}
+                        <strong>收件人:</strong> {selectedEmail.toAddress || mailAddress}
                       </div>
                       <div className={styles.emailTimestamp}>
                         <strong>时间:</strong> {formatDate(selectedEmail.date)}
                       </div>
                     </div>
                   </div>
-                  
-                  <div className={styles.emailBody}>
-                    {selectedEmail.html ? (
-                      <div dangerouslySetInnerHTML={{ __html: selectedEmail.html }} />
-                    ) : (
-                      <div className={styles.plainTextContent}>
-                        {selectedEmail.body || '(空白邮件)'}
-                      </div>
-                    )}
-                  </div>
+                  <EmailContent email={selectedEmail} />
                 </motion.div>
               ) : (
                 <div className={styles.emptyState}>
