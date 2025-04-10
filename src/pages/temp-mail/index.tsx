@@ -74,7 +74,7 @@ const processHtmlContent = (html: string): string => {
   
   // 提取隐藏的纯文本内容（如果有）
   const hiddenTextMatch = decodedHtml.match(/<div[^>]*style="[^"]*display:none[^"]*"[^>]*>(.*?)<\/div>/s);
-  if (hiddenTextMatch) {
+  if (hiddenTextMatch && hiddenTextMatch[1]) {
     return hiddenTextMatch[1].trim();
   }
   
@@ -117,6 +117,18 @@ export default function TempMailPage(): React.ReactNode {
   const emailCheckInterval = useRef<NodeJS.Timeout | null>(null);
   const emailWaitTimeout = useRef<NodeJS.Timeout | null>(null);
   
+  // 组件挂载时从本地存储中恢复token和邮箱
+  useEffect(() => {
+    const savedToken = localStorage.getItem('tempMailToken');
+    const savedEmail = localStorage.getItem('tempMailEmail');
+    
+    if (savedToken && savedEmail) {
+      setMailToken(savedToken);
+      setMailAddress(savedEmail);
+      startCheckingEmails();
+    }
+  }, []);
+  
   // 复制到剪贴板
   const copyToClipboard = (text: string): void => {
     navigator.clipboard.writeText(text)
@@ -136,10 +148,27 @@ export default function TempMailPage(): React.ReactNode {
       setLoading(true);
       setError('');
       
-      const response = await axios.post(`${API_BASE_URL}/init`);
+      // 构建请求头，如果已有token和邮箱则传递
+      const headers: any = {};
+      if (mailToken) {
+        headers['Authorization'] = mailToken;
+      }
+      if (mailAddress) {
+        headers['X-Email'] = mailAddress;
+      }
+      
+      const response = await axios.post(`${API_BASE_URL}/init`, {}, { headers });
       if (response.data.code === 200) {
-        setMailToken(response.data.token);
-        return response.data.token;
+        const token = response.data.token || response.data.data?.token;
+        const email = response.data.email || response.data.data?.email;
+        
+        // 保存到本地存储
+        if (token) localStorage.setItem('tempMailToken', token);
+        if (email) localStorage.setItem('tempMailEmail', email);
+        
+        setMailToken(token);
+        if (email) setMailAddress(email);
+        return token;
       } else {
         throw new Error(response.data.msg || '初始化邮箱失败');
       }
@@ -160,26 +189,41 @@ export default function TempMailPage(): React.ReactNode {
       setEmails([]);
       setSelectedEmail(null);
       
-      // 确保有token
-      let token = mailToken;
-      if (!token) {
-        const newToken = await initMailbox();
-        if (!newToken) return;
-        token = newToken;
-      }
+      // 清除本地存储的旧数据
+      localStorage.removeItem('tempMailToken');
+      localStorage.removeItem('tempMailEmail');
       
-      const headers = { Authorization: token };
-      const response = await axios.post(`${API_BASE_URL}/generate`, {}, { headers });
-      
+      // 获取新的token
+      const response = await axios.post(`${API_BASE_URL}/init`);
       if (response.data.code === 200) {
-        setMailAddress(response.data.address);
-        setSuccess('邮箱生成成功！');
-        setTimeout(() => setSuccess(''), 2000);
+        const token = response.data.token || response.data.data?.token;
+        if (!token) {
+          throw new Error('获取token失败');
+        }
         
-        // 开始定时检查邮件
-        startCheckingEmails();
+        // 使用新token生成邮箱
+        const headers = { Authorization: token };
+        const generateResponse = await axios.post(`${API_BASE_URL}/generate`, {}, { headers });
+        
+        if (generateResponse.data.code === 200) {
+          const email = generateResponse.data.address;
+          
+          // 保存新的token和邮箱
+          localStorage.setItem('tempMailToken', token);
+          localStorage.setItem('tempMailEmail', email);
+          
+          setMailToken(token);
+          setMailAddress(email);
+          setSuccess('新邮箱生成成功！');
+          setTimeout(() => setSuccess(''), 2000);
+          
+          // 开始定时检查邮件
+          startCheckingEmails();
+        } else {
+          throw new Error(generateResponse.data.msg || '生成邮箱失败');
+        }
       } else {
-        throw new Error(response.data.msg || '生成邮箱失败');
+        throw new Error(response.data.msg || '初始化失败');
       }
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : '生成邮箱失败，请稍后再试';
@@ -197,12 +241,23 @@ export default function TempMailPage(): React.ReactNode {
       setEmails([]);
       setSelectedEmail(null);
       
+      // 清除本地存储的旧数据
+      localStorage.removeItem('tempMailToken');
+      localStorage.removeItem('tempMailEmail');
+      
       const response = await axios.post(`${API_BASE_URL}/getEmail`);
       
       if (response.data.code === 200) {
-        setMailToken(response.data.token);
-        setMailAddress(response.data.address);
-        setSuccess('邮箱生成成功！');
+        const token = response.data.token;
+        const email = response.data.address;
+        
+        // 保存新的token和邮箱
+        localStorage.setItem('tempMailToken', token);
+        localStorage.setItem('tempMailEmail', email);
+        
+        setMailToken(token);
+        setMailAddress(email);
+        setSuccess('新邮箱生成成功！');
         setTimeout(() => setSuccess(''), 2000);
         
         // 开始定时检查邮件
@@ -499,7 +554,6 @@ export default function TempMailPage(): React.ReactNode {
                 <li>收到的邮件会自动显示在收件箱中（每5秒自动刷新一次）</li>
                 <li>如需等待包含特定内容的邮件（如验证码），可以输入关键词并点击"等待此关键词邮件"</li>
                 <li>注意：每个IP每天最多可以生成3个临时邮箱</li>
-                <li>临时邮箱的内容不会保存，刷新页面后将丢失</li>
               </ol>
             </div>
           </div>

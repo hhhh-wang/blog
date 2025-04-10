@@ -101,6 +101,7 @@ const config: Config = {
           activeBaseRegex: '^/blog/tags'
         },
         { label: '项目', position: 'right', to: 'project' },
+        { label: '临时邮箱', position: 'right', to: 'temp-mail' },
         { label: '自习室', position: 'right', to: 'focus-study-room' },
         { label: '友链', position: 'right', to: 'friends' },
         { label: '关于', position: 'right', to: 'about' },
