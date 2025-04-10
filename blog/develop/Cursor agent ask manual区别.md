@@ -1,5 +1,5 @@
 ---
-id: 1035
+id: 1034
 slug: cursor-agent-ask-manual-differences
 title: Cursor agent ask manual区别
 date: 2025-04-08
