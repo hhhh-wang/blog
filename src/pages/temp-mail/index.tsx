@@ -8,7 +8,7 @@ import clsx from 'clsx';
 import styles from './styles.module.css';
 
 // 定义API基础URL
-const API_BASE_URL = 'http://127.0.0.1:8080/tempmail';
+const API_BASE_URL = 'https://bianliangrensheng.cn/tempmail';
 
 // 页面标题和描述
 const TITLE = translate({
