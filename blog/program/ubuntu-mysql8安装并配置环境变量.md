@@ -7,7 +7,7 @@ keywords: [Ubuntu, MySQL8, 数据库安装, 环境变量, Linux, 开发环境, M
 tags: [Ubuntu, MySQL, 环境配置, 数据库]
 description: 详细介绍在Ubuntu Server上手动安装MySQL8数据库并正确配置环境变量的完整步骤，帮助开发者快速搭建MySQL数据库环境
 image: https://bianliangrensheng.cn/gImage/title/ubuntu-mysql-cover.png
-date: 2025-03-28
+date: 2025-05-02
 ---
 
 # Ubuntu MySQL8安装并配置环境变量：完整指南

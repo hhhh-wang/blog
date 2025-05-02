@@ -7,7 +7,7 @@ keywords: [Ubuntu, Node.js, npm, 环境变量, Linux, 开发环境, Node21, Ubun
 tags: [Ubuntu, Node.js, 环境配置, 前端开发]
 description: 详细介绍在Ubuntu Server上手动安装Node.js 21并正确配置环境变量的完整步骤，帮助开发者快速搭建Node.js开发环境
 image: https://bianliangrensheng.cn/gImage/title/ubuntu-node-cover.png
-date: 2025-04-02
+date: 2025-05-02
 ---
 
 # Ubuntu Node.js 21安装并配置环境变量：完整指南
