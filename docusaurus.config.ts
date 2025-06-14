@@ -9,7 +9,7 @@ const beian1 = '湘公网安备43310002000135号'
 
 const config: Config = {
   title: '变量人生',
-  tagline: '外包接单，软件开发',
+  tagline: '全栈开发,软件开发',
   url: 'https://bianliangrensheng.cn',
   baseUrl: '/',
   favicon: 'img/favicon.ico',
