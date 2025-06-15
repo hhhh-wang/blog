@@ -1,0 +1,375 @@
+/* 基础样式设置 */
+.heroSection {
+  display: flex;
+  align-items: center;
+  padding: 2rem 0;
+  margin-bottom: 3rem;
+}
+
+.heroContent {
+  flex: 1;
+  padding-right: 2rem;
+}
+
+.heroTitle {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(120deg, #4CAF50, #8BC34A);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.heroSubtitle {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.heroDescription {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  color: var(--ifm-color-emphasis-700);
+  max-width: 600px;
+}
+
+.heroImage {
+  flex: 1;
+  text-align: center;
+}
+
+.heroImage img {
+  max-width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* CTA按钮 */
+.cta {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.primaryButton {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: all 0.2s ease;
+}
+
+.primaryButton:hover {
+  background-color: #3b8a3e;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.secondaryButton {
+  background-color: transparent;
+  color: #4CAF50;
+  border: 2px solid #4CAF50;
+  padding: 0.8rem 2rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: all 0.2s ease;
+}
+
+.secondaryButton:hover {
+  background-color: rgba(76, 175, 80, 0.1);
+  transform: translateY(-2px);
+}
+
+/* 功能区块 */
+.featuresSection {
+  margin: 5rem 0;
+}
+
+.sectionTitle {
+  text-align: center;
+  margin-bottom: 3rem;
+  font-size: 2.2rem;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.sectionTitle::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 3px;
+  background: linear-gradient(90deg, #4CAF50, #8BC34A);
+  border-radius: 3px;
+}
+
+.featuresGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.featureCard {
+  padding: 2rem;
+  border-radius: 10px;
+  background-color: var(--ifm-card-background-color);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.featureCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+}
+
+.featureIcon {
+  font-size: 3rem;
+  color: #4CAF50;
+  margin-bottom: 1rem;
+}
+
+/* 下载区块 */
+.downloadSection {
+  margin: 5rem 0;
+  padding: 3rem;
+  background-color: var(--ifm-card-background-color);
+  border-radius: 20px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+  gap: 1rem;
+}
+
+.tab {
+  padding: 0.8rem 2rem;
+  background-color: transparent;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+}
+
+.tab:hover {
+  background-color: var(--ifm-color-emphasis-100);
+}
+
+.activeTab {
+  background-color: #4CAF50;
+  color: white;
+  border-color: #4CAF50;
+}
+
+.downloadContent {
+  margin-top: 2rem;
+}
+
+.downloadCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+}
+
+.downloadIcon {
+  font-size: 4rem;
+  color: #4CAF50;
+  margin-bottom: 1rem;
+}
+
+.downloadButtons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.downloadButton {
+  background-color: var(--ifm-color-emphasis-200);
+  color: var(--ifm-font-color-base);
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  transition: all 0.2s ease;
+}
+
+.downloadButton:hover {
+  background-color: var(--ifm-color-emphasis-300);
+  transform: translateY(-2px);
+}
+
+/* 截图区块 */
+.screenshotSection {
+  margin: 5rem 0;
+}
+
+.screenshotGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.screenshotCard {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: 600px;
+}
+
+.screenshotCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.screenshotCard img {
+  width: 100%;
+  height: 550px;
+  object-fit: contain;
+  object-position: center;
+  background-color: #f5f5f5;
+}
+
+.screenshotCard p {
+  padding: 1rem;
+  text-align: center;
+  background-color: var(--ifm-card-background-color);
+  margin: 0;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* FAQ区块 */
+.faqSection {
+  margin: 5rem 0;
+}
+
+.faqGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.faqCard {
+  padding: 2rem;
+  border-radius: 10px;
+  background-color: var(--ifm-card-background-color);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.faqCard h3 {
+  color: #4CAF50;
+  margin-bottom: 1rem;
+}
+
+/* 底部CTA区块 */
+.ctaSection {
+  margin: 5rem 0;
+  text-align: center;
+  padding: 4rem 2rem;
+  background: linear-gradient(120deg, rgba(76, 175, 80, 0.1), rgba(139, 195, 74, 0.2));
+  border-radius: 20px;
+}
+
+.ctaSection h2 {
+  margin-bottom: 1rem;
+}
+
+.ctaSection p {
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+  color: var(--ifm-color-emphasis-700);
+}
+
+/* 小程序二维码容器 */
+.qrcodeContainer {
+  margin: 1.5rem 0;
+  text-align: center;
+}
+
+.qrcode {
+  width: 200px;
+  height: 200px;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 10px;
+  padding: 10px;
+  background-color: white;
+}
+
+/* 下载提示文字 */
+.downloadTip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: var(--ifm-color-emphasis-600);
+}
+
+/* CTA按钮组 */
+.ctaButtons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+  .heroSection {
+    flex-direction: column;
+  }
+  
+  .heroContent {
+    padding-right: 0;
+    margin-bottom: 2rem;
+  }
+  
+  .cta {
+    flex-direction: column;
+  }
+  
+  .tabs {
+    flex-direction: column;
+  }
+  
+  .ctaButtons {
+    flex-direction: column;
+    width: 100%;
+    max-width: 300px;
+    margin: 2rem auto 0;
+  }
+}
+
+/* 在大屏幕上限制每行显示数量，避免图片过小 */
+@media (min-width: 1200px) {
+  .screenshotGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+} 
