@@ -104,7 +104,12 @@ export default function QingkaDownloadPage() {
                                 <h3>Android 版本</h3>
                                 <p>版本：1.0.0 | 大小：33MB</p>
                                 <div className={styles.downloadButtons}>
-                                    <a href="#" className={styles.downloadButton}>
+                                    <a href="https://bianliangrensheng.cn/model/download/lite-calorie.apk" 
+                                       className={styles.downloadButton}
+                                       download="轻卡记.apk"
+                                       target="_blank"
+                                       rel="noopener noreferrer"
+                                    >
                                         <Icon icon="ri:download-2-line" width="22" className="mr-2" />
                                         下载 APK
                                     </a>
@@ -122,7 +127,7 @@ export default function QingkaDownloadPage() {
                                 <h3>微信小程序版</h3>
                                 <p>版本：1.0.0 | 随时随地记录健康数据</p>
                                 <div className={styles.qrcodeContainer}>
-                                    <img src="/img/qingka/miniprogram-qrcode.png" alt="微信小程序码" className={styles.qrcode} />
+                                    <img src="https://bianliangrensheng.cn/gImage/content/qingka-miniprogram-code.jpg" alt="微信小程序码" className={styles.qrcode} />
                                 </div>
                                 <p className={styles.downloadTip}>
                                     <Icon icon="ri:information-line" className="mr-1" />
