@@ -101,11 +101,12 @@ const config: Config = {
           activeBaseRegex: '^/blog/tags'
         },
         { label: '项目', position: 'right', to: 'project' },
+        { label: '轻卡记-下载', position: 'right', to: 'qingka-download' },
         { label: '临时邮箱', position: 'right', to: 'temp-mail' },
         { label: '自习室', position: 'right', to: 'focus-study-room' },
         { label: '友链', position: 'right', to: 'friends' },
         { label: '关于', position: 'right', to: 'about' },
-        { label: '商务', position: 'right', to: 'business' },
+/*  暂时注释掉商务部分 { label: '商务', position: 'right', to: 'business' }, */
         {
           label: '更多',
           position: 'right',
