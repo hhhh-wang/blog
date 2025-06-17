@@ -6,6 +6,7 @@ authors: bianliang
 keywords: [隐私协议, 个人信息保护, 数据安全, 轻卡记]
 tags: [隐私协议, 健康管理, 数据保护]
 description: 轻卡记隐私协议详细说明了我们如何收集、使用、存储和保护您的个人信息，以及您对个人信息的控制权限
+image: https://cdn.jsdelivr.net/gh/hhhh-wang/MyPic@main/blog/img/_e1937734-e770-40ed-b489-4383fd7b1bb5.jpg
 date: 2025-05-15
 ---
 
