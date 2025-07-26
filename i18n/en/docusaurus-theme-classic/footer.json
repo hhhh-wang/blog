@@ -41,15 +41,11 @@
   },
   "link.item.label.GitHub": {
     "message": "GitHub",
-    "description": "The label of footer link with label=GitHub linking to https://github.com/kuizuo"
+    "description": "The label of footer link with label=GitHub linking to https://github.com/hhhh-wang"
   },
   "link.item.label.掘金": {
     "message": "Juejin",
-    "description": "The label of footer link with label=掘金 linking to https://juejin.cn/user/1565318510545901"
-  },
-  "link.item.label.Discord": {
-    "message": "Discord",
-    "description": "The label of footer link with label=Discord linking to https://discord.gg/M8cVcjDxkz"
+    "description": "The label of footer link with label=掘金 linking to https://juejin.cn/user/3120872724108442"
   },
   "link.item.label.友链": {
     "message": "Friends",
@@ -60,7 +56,7 @@
     "description": "The label of footer link with label=导航 linking to resource"
   },
   "copyright": {
-    "message": "<p><a href=\"https://beian.miit.gov.cn/\" >闽ICP备2020017848号-2</a></p><p>Copyright © 2020 – PRESENT kuizuo Built with Docusaurus.</p>",
+    "message": "<p><a href=\"https://beian.miit.gov.cn/\" >湘ICP备2025099656号-2</a></p><p>Copyright © 2020 – PRESENT bianliang Built with Docusaurus.</p>",
     "description": "The footer copyright"
   }
 }
