@@ -8,7 +8,7 @@
     "description": "hero name"
   },
   "homepage.hero.text": {
-    "message": "Brevity and clarity have always been the main themes of my writing. I don't like adding background images to my articles, especially those that are unrelated to the content. They tend to distract the reader's attention and disrupt the flow of reading. What truly moves the soul is always the words themselves. They have the power to touch hearts and spark resonance.",
+    "message": "An old full-stack developer who handles both frontend and backend with ease, catching bugs and errors with both hands. My blog mainly documents my struggles and tumbling between technologies and tools, aiming to explain the most brain-wracking topics in the least brain-consuming way. Of course, it’s not just about code here—it’s also about the legendary life of a full-stack old-timer, seemingly full of ups and downs, twists and turns, but in reality, achieving very little. You can see this as a tech journal, or as a collection of life reflections from an old dev. Either way, I write it seriously—as long as you enjoy reading it, that’s enough for me.",
     "description": "hero text"
   },
   "hompage.hero.introduce": {
