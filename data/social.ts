@@ -1,12 +1,12 @@
 export type Social = {
     github?: string
-    x?: string
+    douyin?: string
     juejin?: string
     qq?: string
     wx?: string
     cloudmusic?: string
     zhihu?: string
-    email?: string
+    xiaohongshu?: string
     discord?: string
     bilibili?: string
 }
@@ -20,13 +20,13 @@ type SocialValue = {
 
 const social: Social = {
     github: 'https://github.com/hhhh-wang',
-    x: 'https://x.com/bianliangrs',
+    douyin: 'https://www.douyin.com/user/MS4wLjABAAAAfya1GxT921obJvCFCvTPDnYrjnXgbMGF6LAKaCVejQQtf7GfuGZnbBm8WQNLAmcM',
     juejin: 'https://juejin.cn/user/3120872724108442',
     wx: 'https://bianliangrensheng.cn/gImage/title/wechat.png',
     // qq: 'https://img..cn/qq.png',
     zhihu: 'https://zhihu.com/people/bianliangrensheng',
     // cloudmusic: 'https://music.163.com/#/user/home?',
-    email: 'mailto:kun64855@gmail.com',
+    xiaohongshu: 'https://www.xiaohongshu.com/user/profile/5be16262bce1e700017ab0fd',
     // discord: 'https://discord.gg/',
     bilibili: 'https://space.bilibili.com/336186486',
 }
@@ -44,11 +44,11 @@ const socialSet: Record<keyof Social | 'rss', SocialValue> = {
         icon: 'simple-icons:juejin',
         color: '#1E81FF',
     },
-    x: {
-        href: social.x,
-        title: 'X',
-        icon: 'ri:twitter-x-line',
-        color: '#000',
+    douyin: {
+        href: social.douyin,
+        title: '抖音',
+        icon: 'ri:tiktok-line',
+        color: '#FF0050',
     },
     wx: {
         href: social.wx,
@@ -74,18 +74,18 @@ const socialSet: Record<keyof Social | 'rss', SocialValue> = {
         icon: 'ri:qq-line',
         color: '#1296db',
     },
-    email: {
-        href: social.email,
-        title: '邮箱',
-        icon: 'ri:mail-line',
-        color: '#D44638',
+    xiaohongshu: {
+        href: social.xiaohongshu,
+        title: '小红书',
+        icon: 'ri:book-mark-line',
+        color: '#FF2442',
     },
-    // cloudmusic: {
-    //     href: social.cloudmusic,
-    //     title: '网易云',
-    //     icon: 'ri:netease-cloud-music-line',
-    //     color: '#C20C0C',
-    // },
+    cloudmusic: {
+        href: social.cloudmusic,
+        title: '网易云',
+        icon: 'ri:netease-cloud-music-line',
+        color: '#C20C0C',
+    },
     bilibili: {
         href: social.bilibili,
         title: '哔哩哔哩',
