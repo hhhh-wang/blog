@@ -364,18 +364,28 @@ import social from '@site/data/social'
 </p>
 
 <p style={{ display: 'flex', alignItems: 'center', gap: '8px', margin: '4px 0' }}>
-  <Icon icon="ri:twitter-x-line" width="20" height="20" />
-  <a href={social.x.href} target="_blank" style={{ color: '#d97706', textDecoration: 'none' }}>Twitter</a>
+  <Icon icon="ri:tiktok-line" width="20" height="20" />
+  <a href={social.douyin.href} target="_blank" style={{ color: '#d97706', textDecoration: 'none' }}>抖音</a>
 </p>
 
 <p style={{ display: 'flex', alignItems: 'center', gap: '8px', margin: '4px 0' }}>
   <Icon icon="ri:wechat-2-line" width="20" height="20" />
-  <a href={social.wx.href} target="_blank" style={{ color: '#d97706', textDecoration: 'none' }}>WeChat</a>
+  <a href={social.wx.href} target="_blank" style={{ color: '#d97706', textDecoration: 'none' }}>微信</a>
 </p>
 
 <p style={{ display: 'flex', alignItems: 'center', gap: '8px', margin: '4px 0' }}>
-  <Icon icon="ri:mail-open-line" width="20" height="20" />
-  <a href={social.email.href} target="_blank" style={{ color: '#d97706', textDecoration: 'none' }}>kun64855@gmail.com</a>
+  <Icon icon="ri:book-mark-line" width="20" height="20" />
+  <a href={social.xiaohongshu.href} target="_blank" style={{ color: '#d97706', textDecoration: 'none' }}>小红书</a>
+</p>
+
+<p style={{ display: 'flex', alignItems: 'center', gap: '8px', margin: '4px 0' }}>
+  <Icon icon="ri:bilibili-line" width="20" height="20" />
+  <a href={social.bilibili.href} target="_blank" style={{ color: '#d97706', textDecoration: 'none' }}>哔哩哔哩</a>
+</p>
+
+<p style={{ display: 'flex', alignItems: 'center', gap: '8px', margin: '4px 0' }}>
+  <Icon icon="ri:zhihu-line" width="20" height="20" />
+  <a href={social.zhihu.href} target="_blank" style={{ color: '#d97706', textDecoration: 'none' }}>知乎</a>
 </p>
 
 </div>
