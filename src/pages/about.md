@@ -7,7 +7,7 @@ hide_table_of_contents: true
 
 import { Icon } from '@iconify/react'
 import Comment from '@site/src/components/Comment'
-import socialSet from '@site/data/social'
+import social from '@site/data/social'
 
 # 你好👋，我是变量人生，也可以叫我变量。
 
