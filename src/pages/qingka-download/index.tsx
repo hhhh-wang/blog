@@ -104,7 +104,7 @@ export default function QingkaDownloadPage() {
                                 <h3>Android 版本</h3>
                                 <p>版本：1.0.0 | 大小：33MB</p>
                                 <div className={styles.downloadButtons}>
-                                    <a href="https://bianliangrensheng.cn/model/download/lite-calorie.apk" 
+                                    <a href="https://ucdl.25pp.com/fs08/2025/09/09/7/110_3e23eba6bb39f3e17d05ac1cb81b60ca.apk?nrd=0&fname=%E8%BD%BB%E5%8D%A1%E8%AE%B0&productid=2011&packageid=900568632&pkg=plus.H51DF111F&vcode=100&yingid=wdj_web&pos=wdj_web%2Fdetail_normal_dl%2F0&appid=8440800&apprd=8440800&iconUrl=http%3A%2F%2Fandroid-artworks.25pp.com%2Ffs08%2F2025%2F09%2F09%2F5%2F110_2fc211868fe0867641a9ee5f24ee945a_con.png&did=5a6576a5901ecbade43c804805130c04&md5=c5f623b20a71b519fe9d1719a1921bd9" 
                                        className={styles.downloadButton}
                                        download="轻卡记.apk"
                                        target="_blank"
