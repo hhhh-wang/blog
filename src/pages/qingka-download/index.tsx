@@ -96,7 +96,7 @@ export default function QingkaDownloadPage() {
                             微信小程序
                         </button>
                     </div>
-
+ 
                     <div className={styles.downloadContent}>
                         {activeTab === 'android' && (
                             <div className={styles.downloadCard}>
