@@ -1,46 +1,62 @@
 import Translate from '@docusaurus/Translate'
-import { type Project, projects } from '@site/data/projects'
-import Marquee from '@site/src/components/magicui/marquee'
+import Link from '@docusaurus/Link'
+import { type Project, projects, Tags } from '@site/data/projects'
+import { cn } from '@site/src/lib/utils'
+import { MagicCard, MagicContainer } from '@site/src/components/magicui/magic-card'
 import { Section } from '../Section'
 
 const removeHttp = (url: string) => {
   return url.replace(/(^\w+:|^)\/\//, '')
 }
 
-const showProjects = projects.filter(i => i.preview)
+const FEATURED_PROJECTS_COUNT = 5
+const showProjects = projects.filter(i => i.preview).slice(0, FEATURED_PROJECTS_COUNT)
 
-const Slider = ({ items }: { items: Project[] }) => {
+function ProjectCard({ project, large }: { project: Project; large?: boolean }) {
+  const linkUrl = project.ip || project.website
   return (
-    <div className="relative flex min-h-[260px] items-center overflow-hidden">
-      {/* 将布尔值 gradient 改为字符串值 "true" 这样可以避免 React 对非布尔属性使用布尔值的警告*/}
-      <Marquee pauseOnHover gradient="true" className="[--duration:60s]">
-        {items.map(item => {
-          const linkUrl = item.ip || item.website
-          return (
-            <div className="mx-2 h-full w-48 md:w-96" key={item.title}>
-              <a className="flex flex-col hover:no-underline" href={linkUrl} target="_blank" rel="noreferrer">
-                <img
-                  src={item.preview}
-                  alt={item.title}
-                  className="h-[120px] w-full rounded-lg object-cover md:h-[240px]"
-                  loading="lazy"
-                />
-                <div className="w-full py-2 text-center">
-                  <h2 className="m-0 overflow-hidden text-ellipsis whitespace-nowrap font-normal text-xl">
-                    {item.title}
-                  </h2>
-                  <p className="m-0 overflow-hidden text-ellipsis whitespace-nowrap text-primary">
-                    {removeHttp(item.website)}
-                  </p>
-                </div>
-              </a>
+    <MagicCard
+      className={cn('overflow-hidden border border-solid border-border p-px', large && 'md:col-span-2')}
+      borderColor="var(--ifm-color-primary)"
+      size={420}
+    >
+      <Link
+        href={linkUrl}
+        className="group flex h-full flex-col rounded-[15px] bg-background no-underline hover:no-underline"
+      >
+        <div className="overflow-hidden rounded-t-[15px]">
+          <img
+            src={project.preview}
+            alt={project.title}
+            loading="lazy"
+            className="h-44 w-full object-cover transition duration-500 group-hover:scale-105 md:h-52"
+          />
+        </div>
+        <div className="flex flex-1 flex-col gap-1.5 p-4">
+          <h3 className="m-0 line-clamp-1 text-base font-medium transition group-hover:text-primary">
+            {project.title}
+          </h3>
+          <p className="m-0 line-clamp-2 flex-1 text-sm leading-5 text-secondary">{project.description}</p>
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <div className="flex flex-wrap gap-1.5">
+              {project.tags.map(tag => (
+                <span
+                  key={tag}
+                  className="rounded-full px-2 py-0.5 text-xs"
+                  style={{
+                    color: Tags[tag].color,
+                    background: `${Tags[tag].color}15`,
+                  }}
+                >
+                  {Tags[tag].label}
+                </span>
+              ))}
             </div>
-          )
-        })}
-      </Marquee>
-      <div className="pointer-events-none absolute inset-y-0 left-0 w-1/6 bg-gradient-to-r from-white dark:from-zinc-900"></div>
-      <div className="pointer-events-none absolute inset-y-0 right-0 w-1/6 bg-gradient-to-l from-white dark:from-zinc-900"></div>
-    </div>
+            <span className="text-xs text-secondary">{removeHttp(linkUrl)}</span>
+          </div>
+        </div>
+      </Link>
+    </MagicCard>
   )
 }
 
@@ -51,7 +67,11 @@ export default function ProjectSection() {
       icon={'ri:projector-line'}
       href={'/project'}
     >
-      <Slider items={showProjects} />
+      <MagicContainer className="grid grid-cols-1 gap-4 md:grid-cols-3">
+        {showProjects.map((project, i) => (
+          <ProjectCard key={project.title} project={project} large={i === 0} />
+        ))}
+      </MagicContainer>
     </Section>
   )
 }

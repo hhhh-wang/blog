@@ -49,8 +49,10 @@ async function blogPluginEnhanced(context, options) {
             date: post.metadata.date,
             source: post.metadata.source, // 添加 source 字段用于分类
             tags: post.metadata.tags,  // 保留标签信息用于分类功能
+            readingTime: post.metadata.readingTime, // 阅读时长（分钟）
             frontMatter: {
-              image: post.metadata.frontMatter?.image || null
+              image: post.metadata.frontMatter?.image || null,
+              sticky: post.metadata.frontMatter?.sticky,
             }
           }
         })),

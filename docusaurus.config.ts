@@ -4,6 +4,13 @@ import { themes } from 'prism-react-renderer'
 import social from './data/social'
 import type { GiscusConfig } from './src/components/Comment'
 
+// 读取 .env（本地开发）；CI 环境请直接设置 DEEPSEEK_API_KEY 环境变量
+try {
+  process.loadEnvFile()
+} catch {
+  // .env 不存在时忽略（如 CI 环境）
+}
+
 const beian = '湘ICP备2025099656号-2'
 const beian1 = '湘公网安备43310002000135号'
 
@@ -19,36 +26,46 @@ const config: Config = {
     bio: '无论前路如何，探索与学习是我不断进化的动力',
     description:
         '这里是一片探索技术的乐园，记录着开发者的成长足迹。作为一个技术分享平台，网站采用现代化的 Docusaurus 框架打造，致力于为读者提供高质量的编程经验和项目实践心得。',
-    deepseekApiKey: 'sk-4c308839e3614f5f856bb15808dd85ed',
+    deepseekApiKey: process.env.DEEPSEEK_API_KEY ?? '',
     indexNow: {
       key: '78510668c3f04067a1358f3df2f70dd2'
     },
-      // 博客分类配置
+      // 博客分类配置（icon/color 供分类页展示使用）
     blogCategories: {
       develop: {
         name: '开发教程',
         description: '各类技术开发教程和指南',
-        folder: 'develop'
+        folder: 'develop',
+        icon: 'ri:code-s-slash-line',
+        color: '#12affa'
       },
       discuss: {
         name: '技术讨论',
         description: '关于技术、职业和生活的思考',
-        folder: 'discuss'
+        folder: 'discuss',
+        icon: 'ri:chat-smile-2-line',
+        color: '#8b5cf6'
       },
       lifestyle: {
         name: '生活随笔',
         description: '记录生活点滴和日常感悟',
-        folder: 'lifestyle'
+        folder: 'lifestyle',
+        icon: 'ri:coffee-line',
+        color: '#f59e0b'
       },
       project: {
         name: '项目实践',
         description: '实际项目经验和最佳实践分享',
-        folder: 'project'
+        folder: 'project',
+        icon: 'ri:rocket-line',
+        color: '#10b981'
       },
       program: {
         name: '工具应用',
         description: '各类软件和平台的使用技巧与经验分享',
-        folder: 'program'
+        folder: 'program',
+        icon: 'ri:tools-line',
+        color: '#ec4899'
       },
     },
   },

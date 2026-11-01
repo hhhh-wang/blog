@@ -1,0 +1,103 @@
+/* 开发历程时间线 */
+.timeline {
+  @apply relative ml-2 flex flex-col gap-5 pb-2 pl-8;
+}
+
+.timeline::before {
+  content: '';
+  @apply absolute top-2 bottom-2 left-[5px] w-[2px] rounded-full;
+  background: linear-gradient(
+    to bottom,
+    var(--ifm-color-primary),
+    var(--ifm-color-primary-lightest)
+  );
+}
+
+.timelineItem {
+  @apply relative;
+}
+
+.dot {
+  @apply absolute top-5 -left-8 ml-[1px] h-3 w-3 rounded-full border-2 border-solid;
+  border-color: var(--ifm-color-primary);
+  background: var(--content-background);
+  box-shadow: 0 0 0 4px rgba(18, 175, 250, 0.15);
+}
+
+.card {
+  @apply rounded-xl border border-solid p-4 transition;
+  border-color: var(--ifm-border-color);
+  background: var(--blog-item-background-color);
+  box-shadow: var(--blog-item-shadow);
+}
+
+.card:hover {
+  border-color: var(--ifm-color-primary-light);
+}
+
+.cardHeader {
+  @apply flex flex-wrap items-center gap-x-3 gap-y-1;
+}
+
+.period {
+  @apply rounded-full px-2.5 py-0.5 text-xs font-semibold;
+  color: var(--ifm-color-primary);
+  background: rgba(18, 175, 250, 0.12);
+}
+
+.direction {
+  @apply m-0 text-base font-semibold;
+  color: var(--ifm-heading-color);
+}
+
+.mode {
+  @apply ml-auto inline-flex items-center gap-1 text-xs;
+  color: var(--ifm-secondary-text-color);
+}
+
+.stack {
+  @apply mt-3 flex flex-wrap gap-1.5;
+}
+
+.stackPill {
+  @apply rounded-md border border-solid px-2 py-0.5 text-xs;
+  border-color: var(--ifm-border-color);
+  color: var(--ifm-secondary-text-color);
+  background: var(--ifm-color-emphasis-100);
+}
+
+/* 「现在的我」三张小卡 */
+.nowGrid {
+  @apply mt-6 grid grid-cols-1 gap-4 sm:grid-cols-3;
+}
+
+.nowCard {
+  @apply flex items-start gap-3 rounded-xl border border-solid p-4 transition;
+  border-color: var(--ifm-border-color);
+  background: var(--blog-item-background-color);
+  box-shadow: var(--blog-item-shadow);
+}
+
+.nowCard:hover {
+  border-color: var(--ifm-color-primary-light);
+}
+
+.nowIcon {
+  @apply mt-0.5 shrink-0;
+}
+
+.nowTitle {
+  @apply m-0 text-sm font-semibold;
+  color: var(--ifm-heading-color);
+}
+
+.nowDescription {
+  @apply m-0 mt-1 text-xs leading-5;
+  color: var(--ifm-secondary-text-color);
+}
+
+@media (max-width: 570px) {
+  .mode {
+    @apply ml-0;
+  }
+}

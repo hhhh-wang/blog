@@ -96,6 +96,11 @@ body {
   scroll-behavior: smooth;
 }
 
+/* 页面根背景显式上色，避免透明区域透出浏览器底色 */
+html {
+  background-color: var(--content-background);
+}
+
 body {
   font-family: "Microsoft YaHei", "微软雅黑", misans, system-ui, -apple-system, 'PingFang SC';
   font-size: 16px;
@@ -183,6 +188,13 @@ article p > span > a {
 
 .navbar {
   box-shadow: none;
+}
+
+/* 首页导航栏透明底：加磨砂玻璃，滚动时内容不再穿透 */
+.navbar.bg-transparent {
+  background: color-mix(in srgb, var(--ifm-navbar-background-color) 72%, transparent);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .navbar-sidebar__items {
@@ -407,4 +419,116 @@ div[class^='announcementBar_'] {
   padding: 1rem;
   border-top: 1px solid var(--ifm-color-emphasis-200);
   margin-top: auto;
+}
+
+/* ============ 关于页（about.md）专用样式 ============ */
+/* 用主题变量替代 about.md 里写死的内联样式，自动适配暗色模式 */
+:root {
+  --about-accent: #d97706;
+  --about-card-bg: linear-gradient(135deg, #fff7e6 0%, #fff2d9 100%);
+  --about-card-border: #f3e8c8;
+}
+
+html[data-theme='dark'] {
+  --about-accent: #f59e0b;
+  --about-card-bg: linear-gradient(135deg, #202024 0%, #26262b 100%);
+  --about-card-border: #3f3f46;
+}
+
+.about-card {
+  margin: 16px 0;
+  padding: 15px;
+  border: 1px solid var(--about-card-border);
+  border-radius: 10px;
+  background: var(--about-card-bg);
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.04);
+}
+
+.about-card h4 {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0 0 10px;
+  color: var(--about-accent);
+  font-size: 0.95rem;
+}
+
+.about-card h3 {
+  margin: 0 0 8px;
+  font-size: 1rem;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
+  margin: 12px 0;
+}
+
+.about-grid--wide {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.about-grid--two {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.about-social {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 8px;
+}
+
+.about-social p {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 4px 0;
+}
+
+.about-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.about-list li {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+
+.about-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.about-chip {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.9rem;
+}
+
+.about-icon {
+  color: var(--about-accent);
+}
+
+a.about-link,
+a.about-link:hover {
+  color: var(--about-accent);
+  text-decoration: none;
+  transition: filter 0.2s ease;
+}
+
+a.about-link:hover {
+  filter: brightness(1.12);
+}
+
+@media (max-width: 640px) {
+  .about-grid--two {
+    grid-template-columns: 1fr;
+  }
 }

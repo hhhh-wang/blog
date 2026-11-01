@@ -25,3 +25,6 @@ pnpm-error.log*
 
 .vercel
 .idea/
+
+# ZCode agent workspace
+.zcode/

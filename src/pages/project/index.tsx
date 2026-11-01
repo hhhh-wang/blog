@@ -5,8 +5,8 @@ import { cn } from '@site/src/lib/utils'
 import ShowcaseCard from './_components/ShowcaseCard'
 
 import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment'
+import { Icon } from '@iconify/react'
 
-import { MagicContainer } from '@site/src/components/magicui/magic-card'
 import MyLayout from '@site/src/theme/MyLayout'
 import { upperFirst } from '@site/src/utils/jsUtils'
 import styles from './styles.module.css'
@@ -39,18 +39,17 @@ export function prepareUserState(): ProjectState | undefined {
 }
 
 function ShowcaseHeader() {
+  // 统计信息：项目总数、开源数、产品数（按标签统计）
+  const openSourceCount = projects.filter(project => project.tags.includes('opensource')).length
+  const productCount = projects.filter(project => project.tags.includes('product')).length
+
   return (
     <section className="text-center">
-      <h2>{TITLE}</h2>
-      <p>{DESCRIPTION}</p>
-      {/* <a
-        className="button button--primary"
-        href={GITHUB_URL}
-        target="_blank"
-        rel="noreferrer"
-      >
-        <Translate id="showcase.header.button">前往 Github 克隆项目</Translate>
-      </a> */}
+      <h1 className="mb-2 text-3xl font-semibold">{TITLE}</h1>
+      <p className="mb-2 text-sm text-secondary">{DESCRIPTION}</p>
+      <p className="m-0 text-sm text-secondary">
+        共 {projects.length} 个项目 · {openSourceCount} 个开源 · {productCount} 个产品
+      </p>
     </section>
   )
 }
@@ -71,26 +70,21 @@ function ShowcaseCards() {
 
   return (
     <section className="margin-top--lg margin-bottom--xl">
-      <>
-        <div className="margin-top--lg container">
-          <div className={cn('my-4', styles.showcaseFavoriteHeader)} />
-          {Object.entries(groupByProjects).map(([key, value]) => {
-            return (
-              <div key={key}>
-                <div className={cn('my-4', styles.showcaseFavoriteHeader)}>
-                  <h3>{upperFirst(lang === 'en' ? key : projectTypeMap[key])}</h3>
-                </div>
-                <MagicContainer className={styles.showcaseList}>
-                  {value.map(project => (
-                    <ShowcaseCard key={project.title} project={project} />
-                  ))}
-                </MagicContainer>
-              </div>
-            )
-          })}
-          <MagicContainer />
-        </div>
-      </>
+      <div className="container">
+        {Object.entries(groupByProjects).map(([key, value]) => (
+          <div key={key} className="mb-10">
+            <h2 className="mb-4 flex items-center gap-2 text-lg font-semibold">
+              {upperFirst(lang === 'en' ? key : projectTypeMap[key])}
+              <span className={cn('rounded-full px-2 py-0.5 text-xs font-normal', styles.groupCount)}>{value.length}</span>
+            </h2>
+            <div className={styles.showcaseList}>
+              {value.map(project => (
+                <ShowcaseCard key={project.title} project={project} />
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
     </section>
   )
 }

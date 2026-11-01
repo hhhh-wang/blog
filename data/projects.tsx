@@ -30,8 +30,8 @@ export const projects: Project[] = [
         type: 'web',
     },
     {
-        title: '为开发者提供一个轻量级、易上手且可扩展的后台管理解决方案',
-        description: '📦基于 React 18 hooks 构建，后端使用NestJS、TypeORM',
+        title: '轻量级 React Admin 中后台模板',
+        description: '📦 为开发者提供的轻量级、易上手且可扩展的后台管理解决方案，基于 React 18 hooks 构建，后端使用 NestJS、TypeORM',
         preview: 'https://bianliangrensheng.cn/gImage/title/analysis2.png',
         website: 'https://sapling-react.bianliangrensheng.cn/#/login',
         ip: 'https://sapling-react.bianliangrensheng.cn',
@@ -89,16 +89,6 @@ export const projects: Project[] = [
         source: 'https://github.com/hhhh-wang/blog',
         tags: ['opensource', 'tools', 'personal'],
         type: 'tools',
-    },
-    {
-        title: '合作项目还在整理资料中',
-        description: '📦整理文档中',
-        preview: 'https://bianliangrensheng.cn/gImage/title/blog-404.jpg',
-        website: 'https://bianliangrensheng.cn',
-        ip: 'https://bianliangrensheng.cn',
-        source: 'https://github.com/',
-        tags: ['product', 'design', 'large'],
-        type: 'teamwork',
     },
 ]
 
