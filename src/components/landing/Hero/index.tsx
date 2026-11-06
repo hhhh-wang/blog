@@ -56,11 +56,25 @@ export default function Hero() {
     <motion.div className={styles.hero}>
       <div className={styles.intro}>
         <Name />
-        <motion.p custom={2} initial="hidden" animate="visible" variants={variants} className={styles.tagline}>
-          <Translate id="homepage.hero.tagline">
-            一名全栈开发的老登，前端后端一把抓，bug报错两手接。这里记录我在技术与工具间的翻滚和挣扎，力求用最不费脑的方式，讲清楚最烧脑的内容。
-          </Translate>
-        </motion.p>
+        <motion.div
+          custom={2}
+          initial="hidden"
+          animate="visible"
+          variants={variants}
+          className={styles.tagline}
+        >
+          <p className={styles.taglineParagraph}>
+            一名全栈开发的老登，前端后端一把抓，bug报错两手接。我的博客主要记录我在技术与工具间的翻滚和挣扎，力求用最不费脑的方式，讲清楚最烧脑的内容。
+          </p>
+          <p className={styles.taglineParagraph}>
+            当然，这里不仅有代码，还有全栈老登侠
+            <span className={styles.taglineHighlight}>表面跌宕起伏、波澜壮阔实则一事无成的传奇人生</span>
+            。
+          </p>
+          <p className={styles.taglineParagraph}>
+            你可以把这当成是技术日记，也可以当成老登的人生反思录，反正我写得认真，你看得开心就行
+          </p>
+        </motion.div>
         <motion.div custom={3} initial="hidden" animate="visible" variants={variants}>
           <Typewriter />
         </motion.div>

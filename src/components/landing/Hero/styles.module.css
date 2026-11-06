@@ -10,9 +10,23 @@
   @apply relative z-10 flex flex-col items-center px-4 pb-8 pt-12 text-center;
 }
 
+/* 公众号排版风：左对齐 + 大行距 + 舒展段落间距 */
 .tagline {
-  @apply my-6 max-w-2xl text-base leading-8;
+  @apply my-6 max-w-3xl text-left;
+}
+
+.taglineParagraph {
+  @apply m-0 mb-4 text-sm leading-[1.9] md:text-base;
   color: var(--ifm-secondary-text-color);
+}
+
+.taglineParagraph:last-child {
+  margin-bottom: 0;
+}
+
+.taglineHighlight {
+  font-weight: 600;
+  color: var(--ifm-color-primary);
 }
 
 .hero_text {
